@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Phòng Thí Nghiệm</h1>
+        <h1>LAB</h1>
         <nav>
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
@@ -16,16 +16,115 @@
         </nav>
     </header>
     <main>
-        <h2>Danh sách Labs</h2>
-        <div id="labsContainer">
+        <h2 contenteditable="false">Danh sách Labs</h2>
+        <!-- <div id="labsContainer">
             <div class="lab" onclick="window.open('https://xuni-dizan.github.io/lab1.html/', '_blank');">
                 <p>Lab 1</p>
             </div>
             <div class="lab" onclick="window.open('https://xuni-dizan.github.io/lab1-nhom2/', '_blank');">
                 <p>Lab 2</p>
             </div>
-        </div>
-        <button id="addLabButton" class="action-button">Add Lab</button>
+        </div> -->
+        <!-- <button id="addLabButton" class="action-button">Add Lab</button> -->
+        <div id="panel-container" class="container">
+            <div class="panel active" style="background-image: url('images/panel_1.jpg'); background-size: cover; background-position: center;">
+                <div class="lab-label">L<br>A<br>B<br>1</div>
+                <div class="card">
+                    <img src="images/lab_1_1.jpg" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">User Interface</h1>
+                        <p class="card-text">Giao diện người dùng yêu cầu các trường nhập liệu như Username, Password, Email, và Role, với validation và thông báo lỗi. Bao gồm nút "Create Account", "Save Changes", và "Cancel", cùng với các trường hiển thị thông tin chỉ đọc như "Account Created At" và "Last Updated At". Form cần phản hồi tốt trên desktop và mobile.</p>
+                        <a href="https://xuni-dizan.github.io/lab1.html/" class="read-more-btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="icon">1</div>
+            </div>
+            
+            <div class="panel" style="background-image: url('images/panel_2.jpg'); background-size: cover; background-position: center;">
+                <div class="lab-label">L<br>A<br>B<br>2</div>
+                <div class="card">
+                    <img src="images/lab_2.jpg" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">App</h1>
+                        <p class="card-text">Hệ thống yêu cầu sinh viên đăng nhập, chọn bài tập theo ngôn ngữ, lập trình và kiểm tra kết quả với test cases. Môi trường lập trình hỗ trợ tính năng như tô sáng cú pháp, chạy mã, lưu tiến độ, và hiển thị kết quả/điểm số.</p>
+                        <a href="https://xuni-dizan.github.io/lab2/" class="read-more-btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="icon">2</div>
+            </div>
+            <div class="panel" style="background-image: url('images/panel_3.jpg'); background-size: cover; background-position: center;">
+                <div class="portrait" style="background-image: url('images/panel_1.jpg');"></div> <!-- Thêm ảnh chân dung -->
+                <div class="lab-label">L<br>A<br>B<br>3</div>
+                <div class="card">
+                    <img src="images/lab_3.jpg" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">Trao đổi tài liệu</h1>
+                        <p class="card-text">Yêu cầu sáng tạo: Chia sẻ tài liệu học tập cho sinh viên theo môn học. Mỗi môn học có thể chia sẻ các tài liệu như Bài giảng / Bài tập / Tài liệu tham khảo.</p>
+                        <a href="https://xuni-dizan.github.io/Lab_3/" class="read-more-btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="icon">3</div>
+            </div>
+            <div class="panel" style="background-image: url('images/panel_4.jpg'); background-size: cover; background-position: center;">
+                <div class="lab-label">L<br>A<br>B<br>4</div>
+                <div class="card">
+                    <img src="images/lab_4.jpg" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">web học tập</h1>
+                        <p class="card-text">Tạo ra trang web theo Req1 và Req2 (hình ảnh cô đã gửi)</p>
+                        <a href="https://xuni-dizan.github.io/Lab_4/" class="read-more-btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="icon">4</div>
+            </div>
+            <div class="panel" style="background-image: url('images/panel_5.jpg'); background-size: cover; background-position: center;">
+                <div class="lab-label">L<br>A<br>B<br>5</div>
+                <div class="card">
+                    <img src="images/lab_5.jpg" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">My Learning</h1>
+                        <p class="card-text">Tạo ra trang web theo Req1 và Req2 (hình ảnh cô đã gửi)</p>
+                        <a href="https://xuni-dizan.github.io/Lab_5/" class="read-more-btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="icon">5</div>
+            </div>
+            <div class="panel" style="background-image: url('images/panel_6.jpg'); background-size: cover; background-position: center;">
+                <div class="lab-label">L<br>A<br>B<br>6</div>
+                <div class="card">
+                    <img src="images/lab_6.jpg" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">Morocco</h1>
+                        <p class="card-text">Tạo ra trang web theo Req1, Req2, Req3 và Req4 (hình ảnh cô đã gửi)</p>
+                        <a href="#" class="read-more-btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="icon">6</div>
+            </div>
+            <div class="panel" style="background-image: url('images/panel_7.jpg'); background-size: cover; background-position: center;">
+                <div class="lab-label">L<br>A<br>B<br>7</div>
+                <div class="card">
+                    <img src="images/lab_7.jpg" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">Yasuo Siêu Phẩm</h1>
+                        <p class="card-text">Một chiến binh huyền thoại với bộ trang phục lộng lẫy, hiệu ứng kỹ năng sống động và âm thanh mạnh mẽ, mang đến cảm giác như một vị thần chiến tranh. Mỗi cú chém và chuyển động của Yasuo đều trở nên mãn nhãn, thể hiện sự sang trọng và sức mạnh vượt trội.</p>
+                        <a href="#" class="read-more-btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="icon">7</div>
+            </div>
+            <!-- <div class="panel" style="background-color: rgb(120, 181, 34);">
+                <div class="lab-label">L<br>A<br>B</div>
+                <div class="card">
+                    <img src="https://th.bing.com/th?id=OIP.OXS4iGk4qXFpIG21i1pjbwHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="" class="card-image">
+                    <div class="card-content">
+                        <h1 class="card-title">Morocco</h1>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae ab nostrum maxime.</p>
+                        <a href="#" class="read-more-btn">Read More</a>
+                    </div>
+                </div>
+            </div> -->
+          </div>
     </main>
     <footer>
         <p>&copy; 2024 Tôi</p>
