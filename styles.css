@@ -749,6 +749,8 @@ footer {
     color: #E5E5E5;
     padding: 25px 0;
     text-align: center;
+    border-top-left-radius: 40px;  
+    border-top-right-radius: 40px; 
 }
 
 footer p {
@@ -767,8 +769,4 @@ footer p {
     100% {
         transform: translateY(-10px);
     }
-}
-
-.word{
-    position: absolute;
 }
