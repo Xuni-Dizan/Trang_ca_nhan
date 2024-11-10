@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Thông tin cá nhân</h1>
+        <h1>Information</h1>
         <nav>
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
@@ -17,52 +17,94 @@
     </header>
     <main>
         <h2>CV Cá Nhân</h2>
-        <form id="cvForm">
-            <div class="form-group">
-                <label for="name">Họ và tên:</label>
-                <input type="text" id="name" name="name" required>
+        <div class="cv-container">
+            <div class="cv-sidebar">
+                <div class="profile-image"></div>
+                <p class="cv-name">Nguyễn Xuân Đại</p>
+                <p class="cv-role" style="text-align: center;">Frontend Developer - Designer</p>
+                <section class="cv-section" id="thong-tin-ca-nhan">
+                    <h4>Thông tin cá nhân</h4>
+                    <p>📞 0359103126</p>
+                    <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
+                    <p>🌐 <a href="https://www.facebook.com/xuni.dizan" target="_blank">Facebook</a></p>
+                    <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+                </section>
+                <section class="cv-section" id="cac-ky-nang">
+                    <h4>Các kỹ năng</h4>
+                    <p style="color: antiquewhite;"><strong>Kỹ năng chuyên môn</strong></p>
+                    <ul>
+                        <li>Thành thạo ngôn ngữ lập trình: JavaScript, Python, C, C++, Java</li>
+                        <li>Có kinh nghiệm với HTML5, CSS5, SASS</li>
+                        <li>Thiết kế giao diện web và ứng dụng thân thiện</li>
+                        <li>Khả năng xử lý và trích xuất dữ liệu</li>
+                    </ul>
+                    <p style="color: antiquewhite;"><strong>Kỹ năng mềm</strong></p>
+                    <ul>
+                        <li>Kỹ năng giao tiếp, truyền đạt rõ ràng, dễ hiểu</li>
+                        <li>Khả năng làm việc độc lập, xử lý vấn đề</li>
+                    </ul>
+                </section>
+                <section class="cv-section" id="so-thich">
+                    <h4>Sở thích</h4>
+                    <p>Lập trình, đọc sách, thiết kế, khám phá công nghệ mới</p>
+                </section>
+                <section class="cv-section" id="nguoi-gioi-thieu">
+                    <h4>Người giới thiệu</h4>
+                    <p>Ông: Nguyễn Văn A - Lead IT Cty ABC</p>
+                    <p>SĐT: 036166XXX</p>
+                    <p>Thông tin thêm: ...</p>
+                </section>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+    
+            <div class="cv-main">
+                <section class="cv-section">
+                    <h4>Mục tiêu nghề nghiệp</h4>
+                    <p>Kỹ sư phần mềm với hơn 4 năm kinh nghiệm trong lĩnh vực phát triển phần mềm và ứng dụng thương mại. Tôi mong muốn được gia nhập vào công ty để xây dựng 
+                        các giải pháp kinh doanh tiên tiến và sáng tạo giúp tăng doanh thu cho công ty. 
+                        Trong các vai trò đảm nhận trước đây, 98% thời gian tôi hoàn thành dự án đúng 
+                        thời hạn. Đồng thời xây dựng quy trình quan trọng giúp tăng hiệu quả và tối ưu 
+                        thời gian trong dự án. </p>
+                </section>
+                <section class="cv-section">
+                    <h4>Kinh nghiệm làm việc</h4>
+                    <p><strong>Thực tập sinh Kỹ sư Phần mềm</strong> - Công ty ABC (3/2023 - 4/2024)</p>
+                    <ul>
+                        <li>Hỗ trợ các quy trình kiểm tra và kỹ thuật của công ty...</li>
+                        <li>Kiểm tra phần mềm đã hoàn thành đáp ứng các yêu cầu của khách hàng...</li>
+                    </ul>
+                </section>
+                <section class="cv-section">
+                    <h4>Học vấn</h4>
+                    <p><strong>Khoa Công nghệ Thông tin</strong> - Đại học Nông Lâm TP HCM (9/2023 - 10/2027)</p>
+                    <p>Tốt nghiệp bằng Giỏi</p>
+                </section>
+                <section class="cv-section">
+                    <h4>Danh hiệu & Giải thưởng</h4>
+                    <p>2024 - Nhận danh hiệu xuất sắc của năm</p>
+                </section>
+                <section class="cv-section">
+                    <h4>Chứng chỉ</h4>
+                    <p>2023-2024 - Hoàn thành khóa học Web Front - End tại Zentt</p>
+                </section>
+                <section class="cv-section">
+                    <h4>Hoạt động</h4>
+                    <p><strong>Thành viên</strong> - Tham gia CLB Học Thuật Khoa Công Nghệ Thông Tin (ICON)</p>
+                    <ul>
+                        <li>Tham gia đào tạo và dẫn dắt nhóm các bạn sinh viên mới</li>
+                    </ul>
+                </section>
+                <section class="cv-section">
+                    <h4>Dự án</h4>
+                    <p><strong>Front-end Developer</strong> - Thiết kế Website đặt phòng khách sạn (10/2023 - 12/2024)</p>
+                    <ul>
+                        <li>Xây dựng giao diện UI/UX tối ưu...</li>
+                    </ul>
+                </section>
             </div>
-            <div class="form-group">
-                <label for="phone">Số điện thoại:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="education">Học vấn:</label>
-                <input type="text" id="education" name="education" required>
-            </div>
-            <div class="form-group">
-                <label for="experience">Kinh nghiệm làm việc:</label>
-                <textarea id="experience" name="experience" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="skills">Kỹ năng:</label>
-                <input type="text" id="skills" name="skills" placeholder="VD: Lập trình, Thiết kế, Quản lý..." required>
-            </div>
-            <div class="form-group">
-                <label for="languages">Ngoại ngữ:</label>
-                <input type="text" id="languages" name="languages" placeholder="VD: Tiếng Anh, Tiếng Pháp..." required>
-            </div>
-            <button type="submit" class="submit-button">Gửi CV</button>
-        </form>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Tôi</p>
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

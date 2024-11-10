@@ -1,34 +1,57 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #C5C6C7; /* Màu nền nhẹ */
+    font-family: 'Roboto', sans-serif;
+    background-color: #C5C6C7; 
     color: #333;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #1F2833; /* Màu xanh lá dịu mát */
+    background-color: #1F2833;
     color: rgb(230, 219, 219);
-    padding: 20px 0;
+    padding: 20px 20px;
     text-align: center;
-    border-bottom-left-radius: 20px;  
-    border-bottom-right-radius: 20px;  
+    border-bottom-left-radius: 40px;  
+    border-bottom-right-radius: 40px;  
 }
 
+/* Hiệu ứng bounc khi header load */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+header h1 {
+    font-size: 3.5em;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0;
+    animation: headerAnimation 3s infinite ease-in-out;
+}
+nav {
+    margin-top: 20px;
+}
 nav a {
     text-align: center;
     position: relative;
-    display: block;
-    color: transparent;
-    -webkit-text-stroke: 1px #7a5959;
-    font-size: 6.5em;
-    font-weight: 900;
+    display: inline-block;
+    color: #e5e5e5;
+    font-size: 1.6em;
+    font-weight: bold;
     text-decoration: none;
-    line-height: 1.2em;
+    padding: 10px 5px;
+    margin: 0 10px;
+    border-radius: 30px;
+    background: rgba(118, 62, 62, 0.2);
+    transition: all 0.3s ease;
 }
 
 nav .nav-button:hover{
-    color: #874040;
+    color: #3c460a;
     -webkit-text-stroke: 1px #000;
     transition: 0.5s;
 }
@@ -43,7 +66,7 @@ nav .nav-button::after{
 }
 
 nav .nav-button:hover::before{
-    color: #f00;
+    color: #0e3742;
     z-index: 1;
     -webkit-text-stroke: 1px #000;
     transform: translate(10px, -10px);
@@ -65,17 +88,17 @@ nav .nav-button:hover::after{
     text-decoration: none;
     transition: background 0.3s, transform 0.2s;
     font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.2); /* Nền nhẹ cho nút */
+    background-color: rgba(255, 255, 255, 0.2); 
 }
 
 .nav-button:hover {
-    background-color: rgba(104, 18, 18, 0.4); /* Tăng độ sáng khi hover */
+    background-color: rgba(18, 104, 80, 0.4); 
     transform: scale(1.05);
 }
 
 main {
     background-color: #c5c6c7;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
 }
 
@@ -176,17 +199,17 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
 textarea:focus {
-    border-color: #1F2833; /* Màu viền khi focus */
+    border-color: #1F2833; 
 }
 
 footer {
-    background-color: #0B0C10; /* Màu xanh lá cho footer */
-    color: white;
+    background-color: #1F2833;
+    color: #ffffff;
     text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 /* Labs */
@@ -483,4 +506,154 @@ h3 {
 .lab-label:hover {
     color: #ffdd57; /* Màu vàng khi hover */
     transform: translate(-50%, -50%) scale(1.1); /* Hiệu ứng phóng to nhẹ khi hover */
+}
+
+/* CV Container */
+.cv-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Sidebar - Left */
+.cv-sidebar {
+    width: 35%;
+    background-color: #1F2833;
+    color: #FFF;
+    padding: 30px;
+    text-align: left;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    background-color: #CCC;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cv-name {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 2.1em;
+    margin-bottom: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.cv-role {
+    font-size: 1.5em;
+    color: #A3725C;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-left: 4px solid #FFD700;
+    border-right: 4px solid #FFD700;
+    padding: 10px 0;
+}
+
+/* CV Section */
+.cv-section {
+    margin-bottom: 25px;
+}
+
+.cv-section h4 {
+    font-size: 1.6em;
+    color: #A3725C;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 5px;
+}
+
+.cv-section p {
+    font-size: 1.1em;
+    /* color: #333; */
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.cv-section ul {
+    margin-left: 10px;
+    list-style: disc;
+    line-height: 1.8;
+}
+
+.cv-section ul li {
+    margin-bottom: 10px;
+}
+
+/* CV Main Content */
+.cv-main {
+    width: 65%;
+    padding: 30px;
+}
+
+.cv-main .cv-section {
+    background-color: #F9F9F9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.cv-main .cv-section h4 {
+    color: #1F2833;
+    border-color: #1F2833;
+}
+
+.cv-main .cv-section p {
+    color: #333;
+}
+
+/* Links */
+a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #FF6F00;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #1F2833;
+    color: #E5E5E5;
+    padding: 25px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+/* Smooth Animations */
+@keyframes headerAnimation {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
 }
