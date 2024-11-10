@@ -129,3 +129,57 @@ panel.addEventListener('mouseleave', () => {
     }
 });
 
+// script.js
+
+document.addEventListener("DOMContentLoaded", function() {
+    const profileImage = document.querySelector(".profile-image");
+    const mainImage = profileImage.querySelector(".main-img");
+    const additionalImages = profileImage.querySelector(".additional-images");
+    const images = Array.from(additionalImages.querySelectorAll("img"));
+    
+    let imageIndex = 0; // Để theo dõi ảnh phụ đang được hiển thị
+    let interval; // Biến để lưu interval (để dừng khi hover ra ngoài)
+
+    // Hàm để hiển thị ảnh phụ thay thế lần lượt
+    function startImageCycle() {
+        // Ẩn ảnh phụ cũ
+        images.forEach(img => img.style.opacity = "0");
+
+        // Hiển thị ảnh phụ hiện tại
+        images[imageIndex].style.opacity = "1";
+        images[imageIndex].style.transform = "scale(1.1)";
+        
+        // Tăng chỉ số ảnh phụ (quay vòng)
+        imageIndex = (imageIndex + 1) % images.length;
+    }
+
+    // Khi hover vào profile-image
+    profileImage.addEventListener("mouseenter", function() {
+        // Phóng to ảnh chính
+        mainImage.style.transform = "scale(1.3)";
+
+        // Hiển thị các ảnh phụ
+        additionalImages.style.opacity = "1";
+
+        // Bắt đầu chu trình thay đổi ảnh phụ
+        interval = setInterval(startImageCycle, 2000); // Mỗi 2 giây thay đổi ảnh phụ
+    });
+
+    // Khi di chuột ra ngoài profile-image
+    profileImage.addEventListener("mouseleave", function() {
+        // Trở lại ảnh chính ban đầu
+        mainImage.style.transform = "scale(1)";
+
+        // Ẩn ảnh phụ
+        additionalImages.style.opacity = "0";
+
+        // Dừng chu trình thay đổi ảnh phụ
+        clearInterval(interval);
+        
+        // Đặt lại ảnh phụ về trạng thái ẩn
+        images.forEach(img => img.style.opacity = "0");
+    });
+
+    // Bắt đầu chu trình ảnh phụ ngay khi trang load (nhưng ẩn ảnh ngay khi không hover)
+    startImageCycle();
+});

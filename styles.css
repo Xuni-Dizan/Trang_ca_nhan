@@ -1,3 +1,7 @@
+:root {
+    --animation-duration: 20.7s; /* Khai báo biến cho thời gian animation */
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #C5C6C7; 
@@ -537,9 +541,183 @@ h3 {
     background-color: #CCC;
     border-radius: 50%;
     margin: 0 auto 20px;
-    background-size: cover;
+    overflow: hidden; 
     background-position: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Ảnh chính */
+.profile-image .main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out; /* Hiệu ứng khi hover */
+}
+/* Ảnh phụ (ẩn mặc định) */
+.profile-image .additional-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Ẩn ảnh phụ mặc định */
+    transition: opacity 0.3s ease-in-out; 
+    z-index: 1;
+}
+.profile-image .additional-images img {
+    width: 100%; /* Đặt kích thước ảnh phụ đầy đủ như ảnh chính */
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 0;
+}
+/* Đặt các ảnh phụ thay thế lần lượt với thời gian delay khác nhau */
+.profile-image .additional-images img:nth-child(1) {
+    animation: imageCycle var(--animation-duration) infinite 1s;
+}
+
+.profile-image .additional-images img:nth-child(2) {
+    animation: imageCycle var(--animation-duration) infinite 2s;
+}
+
+.profile-image .additional-images img:nth-child(3) {
+    animation: imageCycle var(--animation-duration) infinite 3.1s;
+}
+
+.profile-image .additional-images img:nth-child(4) {
+    animation: imageCycle var(--animation-duration) infinite 3.8s;
+}
+
+.profile-image .additional-images img:nth-child(5) {
+    animation: imageCycle var(--animation-duration) infinite 4.5s;
+}
+
+.profile-image .additional-images img:nth-child(6) {
+    animation: imageCycle var(--animation-duration) infinite 5.2s;
+}
+
+.profile-image .additional-images img:nth-child(7) {
+    animation: imageCycle var(--animation-duration) infinite 6.9s;
+}
+
+.profile-image .additional-images img:nth-child(8) {
+    animation: imageCycle var(--animation-duration) infinite 7.6s;
+}
+
+.profile-image .additional-images img:nth-child(9) {
+    animation: imageCycle var(--animation-duration) infinite 8.3s;
+}
+
+.profile-image .additional-images img:nth-child(10) {
+    animation: imageCycle var(--animation-duration) infinite 9s;
+}
+
+.profile-image .additional-images img:nth-child(11) {
+    animation: imageCycle var(--animation-duration) infinite 9.7s;
+}
+
+.profile-image .additional-images img:nth-child(12) {
+    animation: imageCycle var(--animation-duration) infinite 10.7s;
+}
+
+.profile-image .additional-images img:nth-child(13) {
+    animation: imageCycle var(--animation-duration) infinite 11.7s;
+}
+
+.profile-image .additional-images img:nth-child(14) {
+    animation: imageCycle var(--animation-duration) infinite 13s;
+}
+
+.profile-image .additional-images img:nth-child(15) {
+    animation: imageCycle var(--animation-duration) infinite 14s;
+}
+
+.profile-image .additional-images img:nth-child(16) {
+    animation: imageCycle var(--animation-duration) infinite 15.1s;
+}
+
+.profile-image .additional-images img:nth-child(17) {
+    animation: imageCycle var(--animation-duration) infinite 16.5s;
+}
+
+.profile-image .additional-images img:nth-child(18) {
+    animation: imageCycle var(--animation-duration) infinite 17.5s;
+}
+
+.profile-image .additional-images img:nth-child(19) {
+    animation: imageCycle var(--animation-duration) infinite 18.5s;
+}
+
+.profile-image .additional-images img:nth-child(20) {
+    animation: imageCycle var(--animation-duration) infinite 19.8s;
+}
+
+.profile-image .additional-images img:nth-child(21) {
+    animation: imageCycle var(--animation-duration) infinite 21s;
+}
+/* Hiệu ứng thay thế các ảnh */
+@keyframes imageCycle {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    25% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+/* Khi hover vào profile-image, ẩn ảnh chính và phóng to ảnh */
+.profile-image:hover {
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
+}
+
+.profile-image:hover .main-img {
+    opacity: 0; /* Ẩn ảnh chính khi hover */
+}
+
+.profile-image:hover .additional-images {
+    opacity: 1; /* Hiển thị các ảnh phụ khi hover */
+}
+
+/* Khi di chuột ra ngoài, trở lại ảnh gốc */
+.profile-image:not(:hover) .additional-images img {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.profile-image:not(:hover) .main-img {
+    transform: scale(1); /* Trở lại ảnh chính bình thường khi không hover */
+}
+/* Điều chỉnh ảnh trong profile */
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cắt ảnh sao cho phù hợp với không gian */
+    object-position: center center; /* Căn giữa ảnh */
+    border-radius: 50%;
 }
 
 .cv-name {
