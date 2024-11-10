@@ -147,16 +147,6 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng khi hover */
     transform: scale(1.05); /* Hiệu ứng phóng to */
 }
-
-/* @keyframes animate1 {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
-  } */
-
 .action-button, .submit-button {
     background-color: #1F2833; /* Màu xanh cho nút thêm */
     color: white;
@@ -172,48 +162,6 @@ h2 {
 .action-button:hover, .submit-button:hover {
     background-color: #1F2833; /* Màu khi hover */
     transform: scale(1.05);
-}
-
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-    max-width: 500px; /* Đặt chiều rộng tối đa cho form */
-    margin: 0 auto; /* Căn giữa form */
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-textarea:focus {
-    border-color: #1F2833; 
-}
-
-footer {
-    background-color: #1F2833;
-    color: #ffffff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
 }
 
 /* Labs */
@@ -255,10 +203,6 @@ h3 {
 .panel.active {
     background: none; /* Không có background khi panel mở */
     flex: 3;
-    /* & h3 {
-      opacity: 1;
-      transition: opacity .3s ease-in;
-    } */
     transition: all .7s cubic-bezier(.47,1.64,.41,.8);
 }
 
@@ -308,11 +252,6 @@ h3 {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Bóng đổ đậm hơn */
     background-color: #ff6347; /* Đổi màu nền khi hover */
 }
-/* .card.expanded {
-    height: 500px; 
-    transition: transform 0.2s ease-in-out, height 0.5s ease; 
-} */
-
 /* Chữ "Lab" dọc khi panel thu gọn */
 .lab-label {
     display: block;
@@ -372,12 +311,6 @@ h3 {
     align-items: center;
     text-align: center;
 }
-
-/* .card:hover .card-content {
-    transform: translateY(0); 
-    opacity: 1;
-    filter: blur(0); 
-} */
 
 /* Hiệu ứng khi di chuột ra ngoài card (chỉ áp dụng khi panel được mở) */
 .panel.active .card:hover .card-content {
@@ -834,4 +767,8 @@ footer p {
     100% {
         transform: translateY(-10px);
     }
+}
+
+.word{
+    position: absolute;
 }
