@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'><link rel="stylesheet" href="./style.css">
     <script src="script.js" defer></script>
     <title>About</title>
 </head>
@@ -52,7 +53,7 @@
                     <h4>Thông tin cá nhân</h4>
                     <p>📞 0359103126</p>
                     <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
-                    <p>🌐 <a href="https://www.facebook.com/xuni.dizan" target="_blank">Facebook</a></p>
+                    <!-- <p>🌐 <a href="https://www.facebook.com/xuni.dizan" target="_blank">Facebook</a></p> -->
                     <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
                 </section>
                 <section class="cv-section" id="cac-ky-nang">
@@ -78,7 +79,39 @@
                     <h4>Người giới thiệu</h4>
                     <p>Ông: Nguyễn Văn A - Lead IT Cty ABC</p>
                     <p>SĐT: 036166XXX</p>
-                    <p>Thông tin thêm: ...</p>
+                </section>
+                <section class="cv-section" id="lien-he">
+                    <h4>Liên hệ</h4>
+                    <div class="media">
+                        <!-- partial:index.partial.html -->
+                        <ul class="wrapper">
+                            <li class="icon facebook" data-url="https://www.facebook.com/xuni.dizan">
+                            <span class="tooltip">Facebook</span>
+                            <span><i class="fab fa-facebook-f"></i></span>
+                            </li>
+                            <li class="icon twitter" data-url="https://x.com/xuni518211">
+                            <span class="tooltip">Twitter</span>
+                            <span><i class="fab fa-x-twitter"></i></span>
+                            </li>
+                            <li class="icon tiktok" data-url="https://www.tiktok.com/@nxd.dizan.2005">
+                                <span class="tooltip">Tiktok</span>
+                                <span><i class="fab fa-tiktok"></i></span>
+                                </li>
+                            <li class="icon instagram" data-url="https://www.instagram.com/xuni.dizan/">
+                            <span class="tooltip">Instagram</span>
+                            <span><i class="fab fa-instagram"></i></span>
+                            </li>
+                            <li class="icon github" data-url="https://github.com/Xuni-Dizan">
+                            <span class="tooltip">Github</span>
+                            <span><i class="fab fa-github"></i></span>
+                            </li>
+                            <li class="icon youtube" data-url="#">
+                            <span class="tooltip">Youtube</span>
+                            <span><i class="fab fa-youtube"></i></span>
+                            </li>
+                        </ul>
+                        <!-- partial -->
+                    </div>
                 </section>
             </div>
     
@@ -132,6 +165,21 @@
     <footer>
         <p>&copy; 2024 Tôi</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Lắng nghe sự kiện click trên các phần tử <li> trong .wrapper
+            const socialIcons = document.querySelectorAll('.wrapper .icon');
+
+            socialIcons.forEach(icon => {
+                icon.addEventListener('click', function() {
+                    // Lấy URL từ thuộc tính data-url của thẻ <li>
+                    const url = icon.getAttribute('data-url');
+                    
+                    // Mở URL trong một cửa sổ/tab mới
+                    window.open(url, '_blank');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

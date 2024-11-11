@@ -183,3 +183,19 @@ document.addEventListener("DOMContentLoaded", function() {
     // Bắt đầu chu trình ảnh phụ ngay khi trang load (nhưng ẩn ảnh ngay khi không hover)
     startImageCycle();
 });
+
+// media of about cv
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Lắng nghe sự kiện click trên các phần tử <li> trong .wrapper
+//     const socialIcons = document.querySelectorAll('.wrapper .icon');
+
+//     socialIcons.forEach(icon => {
+//         icon.addEventListener('click', function() {
+//             // Lấy URL từ thuộc tính data-url của thẻ <li>
+//             const url = icon.getAttribute('data-url');
+            
+//             // Mở URL trong một cửa sổ/tab mới
+//             window.open(url, '_blank');
+//         });
+//     });
+// });
