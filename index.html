@@ -4,26 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=DM+Sans&display=swap'>
     <title>Trang Chủ</title>
+    <style>
+       /* Thêm hiệu ứng cho text gõ chữ */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+@media only screen and (max-width: 768px) {
+    h2#h2{
+    position: relative;
+    overflow: hidden; /* Đảm bảo rằng văn bản không tràn ra ngoài */
+    white-space: nowrap; /* Ngừng xuống dòng */
+    width: 0; /* Bắt đầu với chiều rộng bằng 0 */
+  font-size: medium;
+  display: inline;
+  border-right: 3px solid #0e3742; /* Thêm dấu gạch đứng như con trỏ */
+    animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite; /* Hiệu ứng gõ chữ */
+}
+}
+
+h2 {
+    font-size: 6em;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden; /* Đảm bảo rằng văn bản không tràn ra ngoài */
+    white-space: nowrap; /* Ngừng xuống dòng */
+    width: 0; /* Bắt đầu với chiều rộng bằng 0 */
+    border-right: 4px solid #0e3742; /* Thêm dấu gạch đứng như con trỏ */
+    animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite; /* Hiệu ứng gõ chữ */
+}
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to my Website</h1>
-        <nav>
+        <h1 id="index-text">Welcome to my Website</h1>
+        <!-- Chỉ hiển thị menu-toggle trên giao diện điện thoại -->
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <nav id="main-nav">
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
         </nav>
     </header>
     <main>
-        <h2>Giới thiệu</h2>
+        <h2 id="h2">Introduction</h2>
         <p>Đây là trang web cá nhân của tôi, nơi tôi chia sẻ thông tin và dự án của mình. Tôi hy vọng bạn sẽ tìm thấy những điều hữu ích và thú vị ở đây!</p>
         <p>Cảm ơn bạn đã ghé thăm! Hãy cùng khám phá những nội dung mà tôi đã chuẩn bị nhé!</p>
         <p>Tôi sẽ cập nhật Trang cá nhân vào vài ngày tới.</p>
     </main>
-    <footer>
-        <p>&copy; 2024 Tôi</p>
-    </footer>
+    <script >
+        // function index-text
+  function adjustTitle() {
+    const index_text = document.getElementById("index-text");
+    if (window.innerWidth <= 768) {  // Kích thước màn hình điện thoại (<=768px)
+      index_text.textContent = "Welcome";
+    } else {
+      index_text.textContent = "Welcome my website";  // Giao diện desktop
+    }
+  }
+
+  // Gọi hàm khi tải trang và khi thay đổi kích thước cửa sổ
+  window.addEventListener('load', adjustTitle);
+  window.addEventListener('resize', adjustTitle);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('#main-nav');
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            let isMenuVisible = false;
+        
+            // Hàm bật/tắt menu khi click vào menu-toggle
+            function toggleMobileMenu() {
+                isMenuVisible = !isMenuVisible;
+                nav.classList.toggle('show', isMenuVisible);
+            }
+        
+            menuToggle.addEventListener('click', toggleMobileMenu);
+        
+            // Hàm kiểm tra sự kiện cuộn trang
+            window.addEventListener('scroll', function () {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                const headerHeight = header.offsetHeight;
+        
+                // Kiểm tra nếu cuộn qua header thì hiển thị menu-toggle
+                if (currentScroll > headerHeight) {
+                    menuToggle.classList.add('visible');
+                } else {
+                    menuToggle.classList.remove('visible');
+                    nav.classList.remove('show'); // Đóng menu nếu người dùng cuộn trở về đầu trang
+                }
+        
+                // Lưu lại vị trí cuộn
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+        });
+        </script>
+        <footer>
+            <div class="footer-container">
+                <!-- Logo hoặc Tên trang -->
+                <div class="footer-logo">
+                    <img src="images/logo.jpg" alt="Logo của Xuni Dizan" class="logo-img">
+                    <h2 class="logo-text" style="border-right: none;">Xuni Dizan</h2>
+                </div>
+                
+                <!-- Điều hướng nhanh -->
+                <div class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="lab.html">Lab</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <!-- Thông tin liên hệ -->
+                <div class="footer-contact">
+                    <p>📞 Call me now :  0359103126</p>
+                    <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
+                    <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+                </div>
+                
+                <!-- Mạng xã hội -->
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/xuni.dizan" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/xuni.dizan/" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/xuni518211" class="icon twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+            </div>
+        </footer>
+        
 </body>
 </html>
 

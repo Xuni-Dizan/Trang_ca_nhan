@@ -10,8 +10,10 @@
 </head>
 <body>
     <header>
-        <h1>Information</h1>
-        <nav>
+        <h1 id="about-text">Information</h1>
+        <!-- Chỉ hiển thị menu-toggle trên giao diện điện thoại -->
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <nav id="main-nav">
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
@@ -163,8 +165,41 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Tôi</p>
+        <div class="footer-container">
+            <!-- Logo hoặc Tên trang -->
+            <div class="footer-logo">
+                <img src="images/logo.jpg" alt="Logo của Xuni Dizan" class="logo-img">
+                <h2 class="logo-text">Xuni Dizan</h2>
+            </div>
+            
+            <!-- Điều hướng nhanh -->
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="lab.html">Lab</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <!-- Thông tin liên hệ -->
+            <div class="footer-contact">
+                <p>📞 Call me now :  0359103126</p>
+                <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
+                <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+            </div>
+            
+            <!-- Mạng xã hội -->
+            <div class="footer-social">
+                <a href="https://www.facebook.com/xuni.dizan" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/xuni.dizan/" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/xuni518211" class="icon twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        </div>
     </footer>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
     // Lắng nghe sự kiện click trên các phần tử <li> trong .wrapper
@@ -181,5 +216,57 @@
             });
         });
     </script>
+
+    <script>
+        // function about-text
+  function adjustTitle() {
+    const about_text = document.getElementById("about-text");
+    if (window.innerWidth <= 768) {  // Kích thước màn hình điện thoại (<=768px)
+      about_text.textContent = "Infor";
+    } else {
+      about_text.textContent = "Information";  // Giao diện desktop
+    }
+  }
+
+  // Gọi hàm khi tải trang và khi thay đổi kích thước cửa sổ
+  window.addEventListener('load', adjustTitle);
+  window.addEventListener('resize', adjustTitle);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('#main-nav');
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            let isMenuVisible = false;
+        
+            // Hàm bật/tắt menu khi click vào menu-toggle
+            function toggleMobileMenu() {
+                isMenuVisible = !isMenuVisible;
+                nav.classList.toggle('show', isMenuVisible);
+            }
+        
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('show');
+            });
+        
+            // Hàm kiểm tra sự kiện cuộn trang
+            window.addEventListener('scroll', function () {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                const headerHeight = header.offsetHeight;
+        
+                // Kiểm tra nếu cuộn qua header thì hiển thị menu-toggle
+                if (currentScroll > headerHeight) {
+                    menuToggle.classList.add('visible');
+                } else {
+                    menuToggle.classList.remove('visible');
+                    nav.classList.remove('show'); // Đóng menu nếu người dùng cuộn trở về đầu trang
+                }
+        
+                // Lưu lại vị trí cuộn
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+        });
+        </script>
 </body>
 </html>

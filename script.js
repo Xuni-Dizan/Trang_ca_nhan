@@ -184,18 +184,30 @@ document.addEventListener("DOMContentLoaded", function() {
     startImageCycle();
 });
 
-// media of about cv
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Lắng nghe sự kiện click trên các phần tử <li> trong .wrapper
-//     const socialIcons = document.querySelectorAll('.wrapper .icon');
+// // function index-text
+//   function adjustTitle() {
+//     const index_text = document.getElementById("index-text");
+//     if (window.innerWidth <= 768) {  // Kích thước màn hình điện thoại (<=768px)
+//       index_text.textContent = "Welcome";
+//     } else {
+//       index_text.textContent = "Welcome my website";  // Giao diện desktop
+//     }
+//   }
 
-//     socialIcons.forEach(icon => {
-//         icon.addEventListener('click', function() {
-//             // Lấy URL từ thuộc tính data-url của thẻ <li>
-//             const url = icon.getAttribute('data-url');
-            
-//             // Mở URL trong một cửa sổ/tab mới
-//             window.open(url, '_blank');
-//         });
-//     });
-// });
+//   // Gọi hàm khi tải trang và khi thay đổi kích thước cửa sổ
+//   window.addEventListener('load', adjustTitle);
+//   window.addEventListener('resize', adjustTitle);
+
+//   // function about-text
+//   function adjustTitle() {
+//     const about_text = document.getElementById("about-text");
+//     if (window.innerWidth <= 768) {  // Kích thước màn hình điện thoại (<=768px)
+//       about_text.textContent = "Infor";
+//     } else {
+//       about_text.textContent = "Information";  // Giao diện desktop
+//     }
+//   }
+
+//   // Gọi hàm khi tải trang và khi thay đổi kích thước cửa sổ
+//   window.addEventListener('load', adjustTitle);
+//   window.addEventListener('resize', adjustTitle);

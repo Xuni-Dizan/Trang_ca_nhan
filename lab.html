@@ -2,133 +2,716 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=DM+Sans&display=swap'>
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <title>Lab</title>
 </head>
 <body>
     <header>
         <h1>LAB</h1>
-        <nav>
+        <!-- Chỉ hiển thị menu-toggle trên giao diện điện thoại -->
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <nav id="main-nav">
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
         </nav>
+        <!-- <section class="section-mode">
+            <div class="buttton-mode">
+                <div class="drop" id="dummy">
+                    <button class="drop__btn" aria-expanded="false" aria-haspopup="true" type="button"></button>
+                    <div class="drop__items" data-items>
+                        <div class="drop__items-inner">
+                            <button class="drop__btn" type="button" value="windows">Windows</button>
+                            <button class="drop__btn" type="button" value="mac">Mac</button>
+                            <button class="drop__btn" type="button" value="linux">Linux</button>
+                            <button class="drop__btn" type="button" value="android">Android</button>
+                            <button class="drop__btn" type="button" value="ios">iOS</button>
+                            <button class="drop__btn" type="button" value="ubuntu">Ubuntu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
     </header>
     <main>
+        <div>
+        <section class="section-mode">
+            <div class="buttton-mode">
+                <div class="drop" id="dummy">
+                    <button class="drop__btn" aria-expanded="false" aria-haspopup="true" type="button"></button>
+                    <div class="drop__items" data-items>
+                        <div class="drop__items-inner">
+                            <button class="drop__btn" type="button" value="windows">Preview 1</button>
+                            <button class="drop__btn" type="button" value="mac">Preview 2</button>
+                            <button class="drop__btn" type="button" value="linux">See Lab live</button>
+                            <!-- <button class="drop__btn" type="button" value="android">Android</button>
+                            <button class="drop__btn" type="button" value="ios">iOS</button>
+                            <button class="drop__btn" type="button" value="ubuntu">Ubuntu</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <h2 contenteditable="false">Danh sách Labs</h2>
-        <!-- <div id="labsContainer">
-            <div class="lab" onclick="window.open('https://xuni-dizan.github.io/lab1.html/', '_blank');">
-                <p>Lab 1</p>
-            </div>
-            <div class="lab" onclick="window.open('https://xuni-dizan.github.io/lab1-nhom2/', '_blank');">
-                <p>Lab 2</p>
-            </div>
-        </div> -->
-        <!-- <button id="addLabButton" class="action-button">Add Lab</button> -->
-        <div id="panel-container" class="container">
-            <div class="panel active" style="background-image: url('images/panel_1.jpg'); background-size: cover; background-position: center;">
-                <div class="lab-label">L<br>A<br>B<br>1</div>
-                <div class="card">
-                    <img src="images/lab_1_1.jpg" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">User Interface</h1>
-                        <p class="card-text">Giao diện người dùng yêu cầu các trường nhập liệu như Username, Password, Email, và Role, với validation và thông báo lỗi. Bao gồm nút "Create Account", "Save Changes", và "Cancel", cùng với các trường hiển thị thông tin chỉ đọc như "Account Created At" và "Last Updated At". Form cần phản hồi tốt trên desktop và mobile.</p>
-                        <a href="https://xuni-dizan.github.io/lab1.html/" class="read-more-btn" target="_blank">Read More</a>
+        <section class="section-0">
+                <div id="panel-container" class="container">
+                    <div class="panel active" style="background-image: url('images/panel_1.jpg'); background-size: cover; background-position: center;">
+                        <div class="lab-label">L<br>A<br>B<br>1</div>
+                        <div class="card">
+                            <img src="images/lab_1.jpg" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">User Interface</h1>
+                                <p class="card-text">Giao diện người dùng yêu cầu các trường nhập liệu như Username, Password, Email, và Role, với validation và thông báo lỗi. Bao gồm nút "Create Account", "Save Changes", và "Cancel", cùng với các trường hiển thị thông tin chỉ đọc như "Account Created At" và "Last Updated At". Form cần phản hồi tốt trên desktop và mobile.</p>
+                                <a href="https://xuni-dizan.github.io/lab1.html/" class="read-more-btn" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                        <div class="icon">1</div>
                     </div>
-                </div>
-                <div class="icon">1</div>
-            </div>
-            
-            <div class="panel" style="background-image: url('images/panel_2.jpg'); background-size: cover; background-position: center;">
-                <div class="lab-label">L<br>A<br>B<br>2</div>
-                <div class="card">
-                    <img src="images/lab_2.jpg" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">App</h1>
-                        <p class="card-text">Hệ thống yêu cầu sinh viên đăng nhập, chọn bài tập theo ngôn ngữ, lập trình và kiểm tra kết quả với test cases. Môi trường lập trình hỗ trợ tính năng như tô sáng cú pháp, chạy mã, lưu tiến độ, và hiển thị kết quả/điểm số.</p>
-                        <a href="https://xuni-dizan.github.io/lab2/" class="read-more-btn" target="_blank">Read More</a>
+                    
+                    <div class="panel" style="background-image: url('images/panel_2.jpg'); background-size: cover; background-position: center;">
+                        <div class="lab-label">L<br>A<br>B<br>2</div>
+                        <div class="card">
+                            <img src="images/lab_2.jpg" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">App</h1>
+                                <p class="card-text">Hệ thống yêu cầu sinh viên đăng nhập, chọn bài tập theo ngôn ngữ, lập trình và kiểm tra kết quả với test cases. Môi trường lập trình hỗ trợ tính năng như tô sáng cú pháp, chạy mã, lưu tiến độ, và hiển thị kết quả/điểm số.</p>
+                                <a href="https://xuni-dizan.github.io/lab2/" class="read-more-btn" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                        <div class="icon">2</div>
                     </div>
-                </div>
-                <div class="icon">2</div>
-            </div>
-            <div class="panel" style="background-image: url('images/panel_3.jpg'); background-size: cover; background-position: center;">
-                <div class="portrait" style="background-image: url('images/panel_1.jpg');"></div> <!-- Thêm ảnh chân dung -->
-                <div class="lab-label">L<br>A<br>B<br>3</div>
-                <div class="card">
-                    <img src="images/lab_3.jpg" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">Trao đổi tài liệu</h1>
-                        <p class="card-text">Yêu cầu sáng tạo: Chia sẻ tài liệu học tập cho sinh viên theo môn học. Mỗi môn học có thể chia sẻ các tài liệu như Bài giảng / Bài tập / Tài liệu tham khảo.</p>
-                        <a href="https://xuni-dizan.github.io/Lab_3/" class="read-more-btn" target="_blank">Read More</a>
+                    <div class="panel" style="background-image: url('images/panel_3.jpg'); background-size: cover; background-position: center;">
+                        <div class="portrait" style="background-image: url('images/panel_1.jpg');"></div> <!-- Thêm ảnh chân dung -->
+                        <div class="lab-label">L<br>A<br>B<br>3</div>
+                        <div class="card">
+                            <img src="images/lab_3.jpg" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">Trao đổi tài liệu</h1>
+                                <p class="card-text">Yêu cầu sáng tạo: Chia sẻ tài liệu học tập cho sinh viên theo môn học. Mỗi môn học có thể chia sẻ các tài liệu như Bài giảng / Bài tập / Tài liệu tham khảo.</p>
+                                <a href="https://xuni-dizan.github.io/Lab_3/" class="read-more-btn" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                        <div class="icon">3</div>
                     </div>
-                </div>
-                <div class="icon">3</div>
-            </div>
-            <div class="panel" style="background-image: url('images/panel_4.jpg'); background-size: cover; background-position: center;">
-                <div class="lab-label">L<br>A<br>B<br>4</div>
-                <div class="card">
-                    <img src="images/lab_4.jpg" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">web học tập</h1>
-                        <p class="card-text">Tạo ra trang web theo Req1 và Req2 (hình ảnh cô đã gửi)</p>
-                        <a href="https://xuni-dizan.github.io/Lab_4/" class="read-more-btn" target="_blank">Read More</a>
+                    <div class="panel" style="background-image: url('images/panel_4.jpg'); background-size: cover; background-position: center;">
+                        <div class="lab-label">L<br>A<br>B<br>4</div>
+                        <div class="card">
+                            <img src="images/lab_4.jpg" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">web học tập</h1>
+                                <p class="card-text">Tạo ra trang web theo Req1 và Req2 (hình ảnh cô đã gửi)</p>
+                                <a href="https://xuni-dizan.github.io/Lab_4/" class="read-more-btn" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                        <div class="icon">4</div>
                     </div>
-                </div>
-                <div class="icon">4</div>
-            </div>
-            <div class="panel" style="background-image: url('images/panel_5.jpg'); background-size: cover; background-position: center;">
-                <div class="lab-label">L<br>A<br>B<br>5</div>
-                <div class="card">
-                    <img src="images/lab_5.jpg" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">My Learning</h1>
-                        <p class="card-text">Tạo ra trang web theo Req1 và Req2 (hình ảnh cô đã gửi)</p>
-                        <a href="https://xuni-dizan.github.io/Lab_5/" class="read-more-btn" target="_blank">Read More</a>
+                    <div class="panel" style="background-image: url('images/panel_5.jpg'); background-size: cover; background-position: center;">
+                        <div class="lab-label">L<br>A<br>B<br>5</div>
+                        <div class="card">
+                            <img src="images/lab_5.jpg" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">My Learning</h1>
+                                <p class="card-text">Tạo ra trang web theo Req1 và Req2 (hình ảnh cô đã gửi)</p>
+                                <a href="https://xuni-dizan.github.io/Lab_5/" class="read-more-btn" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                        <div class="icon">5</div>
                     </div>
-                </div>
-                <div class="icon">5</div>
-            </div>
-            <div class="panel" style="background-image: url('images/panel_6.jpg'); background-size: cover; background-position: center;">
-                <div class="lab-label">L<br>A<br>B<br>6</div>
-                <div class="card">
-                    <img src="images/lab_6.jpg" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">Web coding</h1>
-                        <p class="card-text">Tạo ra trang web theo Req1, Req2, Req3 và Req4 (hình ảnh cô đã gửi)</p>
-                        <a href="https://xuni-dizan.github.io/Lab_6/" class="read-more-btn" target="_blank">Read More</a>
+                    <div class="panel" style="background-image: url('images/panel_6.jpg'); background-size: cover; background-position: center;">
+                        <div class="lab-label">L<br>A<br>B<br>6</div>
+                        <div class="card">
+                            <img src="images/lab_6.jpg" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">Web coding</h1>
+                                <p class="card-text">Tạo ra trang web theo Req1, Req2, Req3 và Req4 (hình ảnh cô đã gửi)</p>
+                                <a href="https://xuni-dizan.github.io/Lab_6/" class="read-more-btn" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                        <div class="icon">6</div>
                     </div>
-                </div>
-                <div class="icon">6</div>
-            </div>
-            <div class="panel" style="background-image: url('images/panel_7.jpg'); background-size: cover; background-position: center;">
-                <div class="lab-label">L<br>A<br>B<br>7</div>
-                <div class="card">
-                    <img src="images/lab_7.jpg" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">Yasuo Siêu Phẩm</h1>
-                        <p class="card-text">Một chiến binh huyền thoại với bộ trang phục lộng lẫy, hiệu ứng kỹ năng sống động và âm thanh mạnh mẽ, mang đến cảm giác như một vị thần chiến tranh. Mỗi cú chém và chuyển động của Yasuo đều trở nên mãn nhãn, thể hiện sự sang trọng và sức mạnh vượt trội.</p>
-                        <a href="#" class="read-more-btn" target="_blank">Read More</a>
+                    <div class="panel" style="background-image: url('images/panel_7.jpg'); background-size: cover; background-position: center;">
+                        <div class="lab-label">L<br>A<br>B<br>7</div>
+                        <div class="card">
+                            <img src="images/lab_7.jpg" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">Yasuo Siêu Phẩm</h1>
+                                <p class="card-text">Một chiến binh huyền thoại với bộ trang phục lộng lẫy, hiệu ứng kỹ năng sống động và âm thanh mạnh mẽ, mang đến cảm giác như một vị thần chiến tranh. Mỗi cú chém và chuyển động của Yasuo đều trở nên mãn nhãn, thể hiện sự sang trọng và sức mạnh vượt trội.</p>
+                                <a href="#" class="read-more-btn" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                        <div class="icon">7</div>
                     </div>
+                    <!-- <div class="panel" style="background-color: rgb(120, 181, 34);">
+                        <div class="lab-label">L<br>A<br>B</div>
+                        <div class="card">
+                            <img src="https://th.bing.com/th?id=OIP.OXS4iGk4qXFpIG21i1pjbwHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="" class="card-image">
+                            <div class="card-content">
+                                <h1 class="card-title">Morocco</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae ab nostrum maxime.</p>
+                                <a href="#" class="read-more-btn">Read More</a>
+                            </div>
+                        </div>
+                    </div> -->
+            </section>
+          <section class="section-1">
+            <div class="section-1-body">
+                <div class="box">
+                    <span id="img1" style="--i:1;" data-link="https://xuni-dizan.github.io/lab1.html/">
+                        <img src="images/lab_1.jpg" alt="Image 1">
+                      </span>
+                      <span id="img2" style="--i:2;" data-link="https://xuni-dizan.github.io/lab2/">
+                        <img src="images/lab_2.jpg" alt="Image 2">
+                      </span>
+                      <span id="img3" style="--i:3;" data-link="https://xuni-dizan.github.io/Lab_3/">
+                        <img src="images/lab_3.jpg" alt="Image 3">
+                      </span>
+                      <span id="img4" style="--i:4;" data-link="https://xuni-dizan.github.io/Lab_4/">
+                        <img src="images/lab_4.jpg" alt="Image 4">
+                      </span>
+                      <span id="img5" style="--i:5;" data-link="https://xuni-dizan.github.io/Lab_5/">
+                        <img src="images/lab_5.jpg" alt="Image 5">
+                      </span>
+                      <span id="img6" style="--i:6;" data-link="https://xuni-dizan.github.io/Lab_6/">
+                        <img src="images/lab_6.jpg" alt="Image 6">
+                      </span>
+                      <span id="img7" style="--i:7;" data-link="#">
+                        <img src="images/panel_4.jpg" alt="Image 7">
+                      </span>
+                      <span id="img8" style="--i:8;" data-link="#">
+                        <img src="images/panel_7.jpg" alt="Image 8">
+                      </span>
                 </div>
-                <div class="icon">7</div>
             </div>
-            <!-- <div class="panel" style="background-color: rgb(120, 181, 34);">
-                <div class="lab-label">L<br>A<br>B</div>
-                <div class="card">
-                    <img src="https://th.bing.com/th?id=OIP.OXS4iGk4qXFpIG21i1pjbwHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="" class="card-image">
-                    <div class="card-content">
-                        <h1 class="card-title">Morocco</h1>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae ab nostrum maxime.</p>
-                        <a href="#" class="read-more-btn">Read More</a>
-                    </div>
+          </section>
+          <section class="section-2" id="section-2">
+            <!-- partial:index.partial.html -->
+            <div class="sidebar">
+                <div class="logo-details">
+                <i class='bx bxl-c-plus-plus icon'></i>
+                <div class="logo_name">Dizan</div>
+                <i class='bx bx-menu' id="btn"></i>
                 </div>
-            </div> -->
-          </div>
+                <ul class="nav-list-1">
+                <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" links_namelinks_name>
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-code-alt'></i>
+                    <span class="links_name">Coding</span>
+                    </a>
+                    <span class="tooltip">Coding</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-news'></i>
+                    <span class="links_name">News project</span>
+                    </a>
+                    <span class="tooltip">News project</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-chat'></i>
+                    <span class="links_name">Messages</span>
+                    </a>
+                    <span class="tooltip">Messages</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Analytics</span>
+                    </a>
+                    <span class="tooltip">Analytics</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-folder'></i>
+                    <span class="links_name">File Manager</span>
+                    </a>
+                    <span class="tooltip">Files</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-color'></i>
+                    <span class="links_name">Color code</span>
+                    </a>
+                    <span class="tooltip">Color code</span>
+                </li>
+                <li>
+                    <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Setting</span>
+                    </a>
+                    <span class="tooltip">Setting</span>
+                </li>
+                </ul>
+            </div>
+            <div class="home-section">
+                <div class="section" id="section-1">
+                    <div class="text">Dashboard</div>
+                </div>
+                <div class="section" id="section-2">
+                    <div class="text">Analytics</div>
+                </div>
+            </div>            
+          </section>
     </main>
     <footer>
-        <p>&copy; 2024 Tôi</p>
+        <div class="footer-container">
+            <!-- Logo hoặc Tên trang -->
+            <div class="footer-logo">
+                <img src="images/logo.jpg" alt="Logo của Xuni Dizan" class="logo-img">
+                <h2 class="logo-text">Xuni Dizan</h2>
+            </div>
+            
+            <!-- Điều hướng nhanh -->
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="lab.html">Lab</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <!-- Thông tin liên hệ -->
+            <div class="footer-contact">
+                <p>📞 Call me now :  0359103126</p>
+                <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
+                <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+            </div>
+            
+            <!-- Mạng xã hội -->
+            <div class="footer-social">
+                <a href="https://www.facebook.com/xuni.dizan" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/xuni.dizan/" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/xuni518211" class="icon twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        </div>
     </footer>
+    
+    <script>
+        // Hàm khởi tạo xử lý sự kiện click cho các ảnh
+        document.addEventListener('DOMContentLoaded', function() {
+          // Lấy tất cả các phần tử <span> trong .box
+          const spans = document.querySelectorAll('.box span');
+      
+          // Duyệt qua từng phần tử <span> và thêm sự kiện click
+          spans.forEach(span => {
+            span.addEventListener('click', function() {
+              const link = span.getAttribute('data-link');
+              // Mở đường link trong tab mới
+              window.open(link, '_blank');
+            });
+          });
+        });
+      </script>
+      <script>
+        "use strict";
+        window.addEventListener("DOMContentLoaded", () => {
+            const drop = new DropdownMenu("#dummy");
+        });
+        class DropdownMenu {
+            /**
+            * @param el CSS selector of the menu
+            */
+            constructor(el) {
+                var _a, _b, _c;
+                /** Animation objects */
+                this.animations = [];
+                /** Options for this menu */
+                this.options = [
+                    { name: "windows", friendlyName: "Preview 1" },
+                    { name: "mac", friendlyName: "Preview 2" },
+                    { name: "linux", friendlyName: "See Lab live" },
+                    // { name: "android", friendlyName: "Android" },  // Thêm lựa chọn Android
+                    // { name: "ios", friendlyName: "iOS" },          // Thêm lựa chọn iOS
+                    // { name: "ubuntu", friendlyName: "Ubuntu" }      // Thêm lựa chọn Ubuntu
+                ];
+
+                /** Selected option by name */
+                this.selected = "windows";
+                /** Menu is collapsing */
+                this.isCollapsing = false;
+                /** Menu is expanding */
+                this.isExpanding = false;
+                /** Actions to run after collapsing the item. */
+                this.animActionsCollapse = {
+                    onfinish: this.onAnimationFinish.bind(this, false),
+                    oncancel: () => { this.isCollapsing = false; }
+                };
+                /** Actions to run after expanding the item. */
+                this.animActionsExpand = {
+                    onfinish: this.onAnimationFinish.bind(this, true),
+                    oncancel: () => { this.isExpanding = false; }
+                };
+                this.el = document.querySelector(el);
+                this.menuButton = (_a = this.el) === null || _a === void 0 ? void 0 : _a.querySelector("button");
+                this.itemList = (_b = this.el) === null || _b === void 0 ? void 0 : _b.querySelector("[data-items]");
+                this.defaultOption();
+                document.addEventListener("click", this.outsideToClose.bind(this));
+                window.addEventListener("keydown", this.escToClose.bind(this));
+                (_c = this.el) === null || _c === void 0 ? void 0 : _c.addEventListener("click", this.toggle.bind(this));
+                window.addEventListener("keydown", this.kbdAction.bind(this));
+            }
+            /** Transition duration specific to the menu */
+            get transDuration() {
+                if (this.el) {
+                    const style = getComputedStyle(this.el);
+                    const rawDur = style.getPropertyValue("--drop-trans-dur");
+                    let dur = rawDur.substring(0, rawDur.indexOf("s"));
+                    const mIndex = dur.indexOf("m");
+                    if (mIndex > -1) {
+                        dur = dur.substring(0, mIndex);
+                        return +dur;
+                    }
+                    // seconds to milliseconds
+                    return +dur * 1e3;
+                }
+                return 0;
+            }
+            /** Display the default selected option. */
+            defaultOption() {
+                var _a;
+                const buttonEl = (_a = this.itemList) === null || _a === void 0 ? void 0 : _a.querySelector(`[value="${this.selected}"]`);
+                buttonEl === null || buttonEl === void 0 ? void 0 : buttonEl.classList.add("drop__btn--selected");
+                if (this.menuButton) {
+                    const optionFound = this.options.find(option => option.name === this.selected);
+                    this.menuButton.textContent = (optionFound === null || optionFound === void 0 ? void 0 : optionFound.friendlyName) || "";
+                }
+            }
+            /**
+            * Navigate the menu options with arrow keys.
+            * @param e Keydown event
+            */
+            kbdAction(e) {
+                var _a;
+                const { key } = e;
+                const tabOrArrow = key === "Tab" || key === "ArrowUp" || key === "ArrowDown";
+                const notAnimating = !this.isExpanding && !this.isCollapsing;
+                if (notAnimating && ((_a = this.menuButton) === null || _a === void 0 ? void 0 : _a.ariaExpanded) === "true" && tabOrArrow) {
+                    this.navigateOption(e);
+                }
+            }
+            /**
+            * Press Esc to close the menu.
+            * @param e Keydown event
+            */
+            escToClose(e) {
+                var _a;
+                if (e.key === "Escape" && (!this.isCollapsing && ((_a = this.menuButton) === null || _a === void 0 ? void 0 : _a.ariaExpanded) === "true")) {
+                    this.toggle(e);
+                }
+            }
+            /**
+            * Click outside the menu to close.
+            * @param e Click event
+            */
+            outsideToClose(e) {
+                var _a;
+                let target = e.target;
+                let elFound = false;
+                if (!this.isCollapsing && ((_a = this.menuButton) === null || _a === void 0 ? void 0 : _a.ariaExpanded) === "true") {
+                    do {
+                        target = target.parentElement;
+                        if (target === this.el) {
+                            elFound = true;
+                        }
+                    } while (target);
+                    if (!elFound) {
+                        this.toggle(e);
+                    }
+                }
+            }
+            /**
+            * Navigate the menu options with arrow keys.
+            * @param e Keydown event
+            */
+            navigateOption(e) {
+                var _a;
+                const itemList = (_a = this.el) === null || _a === void 0 ? void 0 : _a.querySelector("[data-items]");
+                const buttonEls = itemList === null || itemList === void 0 ? void 0 : itemList.querySelectorAll("button");
+                const buttons = Array.from(buttonEls || []);
+                const buttonsTemp = [...buttons]; // for getting the first and last
+                const first = buttonsTemp.shift();
+                const last = buttonsTemp.pop();
+                const currentItem = document.activeElement;
+                const { key, shiftKey } = e;
+                const downKey = key === "ArrowDown";
+                const upKey = key === "ArrowUp";
+                const currentIndex = buttons.indexOf(currentItem);
+                if (!buttons.length) {
+                    // do nothing for no items
+                    e.preventDefault();
+                }
+                else if (downKey) {
+                    // next item, go to the first if on the last
+                    e.preventDefault();
+                    const nextIndex = currentIndex + 1;
+                    if (nextIndex >= buttons.length) {
+                        first === null || first === void 0 ? void 0 : first.focus();
+                        return;
+                    }
+                    buttons[nextIndex].focus();
+                }
+                else if (upKey) {
+                    // previous item, go to the last if on the first
+                    e.preventDefault();
+                    const prevIndex = currentIndex - 1;
+                    if (prevIndex < 0) {
+                        last === null || last === void 0 ? void 0 : last.focus();
+                        return;
+                    }
+                    buttons[prevIndex].focus();
+                }
+                else if (buttons.length === 1 || ((!(itemList === null || itemList === void 0 ? void 0 : itemList.contains(currentItem)) || currentItem === last) && !shiftKey)) {
+                    // go to the first item if on the last
+                    e.preventDefault();
+                    first === null || first === void 0 ? void 0 : first.focus();
+                }
+                else if ((!(itemList === null || itemList === void 0 ? void 0 : itemList.contains(currentItem)) || currentItem === first) && shiftKey) {
+                    // go to the last item if on the first
+                    e.preventDefault();
+                    last === null || last === void 0 ? void 0 : last.focus();
+                }
+            }
+            /**
+            * Open or close the menu.
+            * @param e Click event
+            */
+            toggle(e) {
+                var _a, _b;
+                e.preventDefault();
+                (_a = this.el) === null || _a === void 0 ? void 0 : _a.classList.remove("drop--collapsing", "drop--expanding");
+                const shouldExpand = ((_b = this.menuButton) === null || _b === void 0 ? void 0 : _b.ariaExpanded) === "true";
+                if (this.isCollapsing || !shouldExpand) {
+                    this.expand();
+                }
+                else if (this.isExpanding || shouldExpand) {
+                    this.collapse(e);
+                }
+            }
+            /** Expand the menu. */
+            expand() {
+                var _a, _b;
+                if (!this.el || !this.itemList)
+                    return;
+                this.itemList.style.height = `${this.itemList.offsetHeight}px`;
+                (_a = this.menuButton) === null || _a === void 0 ? void 0 : _a.setAttribute("aria-expanded", "true");
+                this.el.classList.add("drop--expanding");
+                this.isExpanding = true;
+                // reset the animations
+                this.animations.forEach(anim => anim.cancel());
+                this.animations = [];
+                const buttonEls = this.itemList.querySelectorAll("button");
+                const buttons = Array.from(buttonEls || []);
+                // animate the menu height
+                const startHeight = this.itemList.offsetHeight || 0;
+                const endHeight = ((_b = this.itemList.firstElementChild) === null || _b === void 0 ? void 0 : _b.offsetHeight) || 0;
+                const itemListAnim = this.itemList.animate({ height: [`${startHeight}px`, `${endHeight}px`] }, {
+                    duration: this.transDuration,
+                    easing: "cubic-bezier(0.33,1,0.68,1.33)"
+                });
+                itemListAnim.onfinish = this.animActionsExpand.onfinish;
+                itemListAnim.oncancel = this.animActionsExpand.oncancel;
+                this.animations.push(itemListAnim);
+                // animate the buttons
+                buttons.forEach((button, i) => {
+                    // animate the buttons
+                    const buttomAnim = button.animate({ transform: ["translateY(100%)", "translateY(0)"] }, {
+                        duration: this.transDuration,
+                        delay: this.transDuration / 12 * i,
+                        easing: "cubic-bezier(0.33,1,0.68,1)"
+                    });
+                    this.animations.push(buttomAnim);
+                });
+                // animate the flare
+                this.el.style.setProperty("--drop-flare-dist", `${endHeight}px`);
+            }
+            /**
+            * Collapse the menu.
+            * @param e Click event
+            */
+            collapse(e) {
+                var _a, _b, _c;
+                if (!this.el || !this.itemList)
+                    return;
+                this.el.classList.add("drop--collapsing");
+                this.isCollapsing = true;
+                // reset the animations
+                this.animations.forEach(anim => anim.cancel());
+                this.animations = [];
+                const clickedButton = e.target;
+                const buttonEls = (_a = this.itemList) === null || _a === void 0 ? void 0 : _a.querySelectorAll("button");
+                const buttons = Array.from(buttonEls || []);
+                // animate the menu height
+                const startHeight = ((_b = this.itemList) === null || _b === void 0 ? void 0 : _b.offsetHeight) || 0;
+                const endHeight = 0;
+                const easing = "cubic-bezier(0.33,1,0.68,1)";
+                const itemListAnim = this.itemList.animate({ height: [`${startHeight}px`, `${endHeight}px`] }, { duration: this.transDuration, easing });
+                itemListAnim.onfinish = this.animActionsCollapse.onfinish;
+                itemListAnim.oncancel = this.animActionsCollapse.oncancel;
+                this.animations.push(itemListAnim);
+                // animate the buttons
+                buttons.forEach((button, i) => {
+                    if (clickedButton.value) {
+                        // remove the previous checkmark after selecting an option
+                        button.classList.remove("drop__btn--selected");
+                    }
+                    // animate the buttons
+                    const delayInc = this.transDuration / 12;
+                    const buttomAnim = button.animate({ transform: ["translateY(0)", "translateY(100%)"] }, {
+                        duration: this.transDuration,
+                        delay: delayInc * (buttons.length - 1) - (delayInc * i),
+                        easing
+                    });
+                    this.animations.push(buttomAnim);
+                });
+                if (clickedButton.value) {
+                    // set this menu’s option from a `value`
+                    clickedButton.classList.add("drop__btn--selected");
+                    if (this.menuButton) {
+                        const optionFound = this.options.find(option => option.name === clickedButton.value);
+                        this.menuButton.textContent = (optionFound === null || optionFound === void 0 ? void 0 : optionFound.friendlyName) || "";
+                    }
+                }
+                (_c = this.menuButton) === null || _c === void 0 ? void 0 : _c.focus();
+                // animate the flare
+                this.el.style.setProperty("--drop-flare-dist", `${endHeight}px`);
+            }
+            /**
+            * Actions to run when the animation is finished
+            * @param open Menu should be expanded
+            */
+            onAnimationFinish(open) {
+                var _a, _b;
+                if (!this.el || !this.itemList)
+                    return;
+                (_a = this.menuButton) === null || _a === void 0 ? void 0 : _a.setAttribute("aria-expanded", `${open}`);
+                this.animations = [];
+                this.isCollapsing = false;
+                this.isExpanding = false;
+                this.itemList.style.height = "";
+                (_b = this.el) === null || _b === void 0 ? void 0 : _b.classList.remove("drop--collapsing", "drop--expanding");
+            }
+        } 
+      </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Ẩn section-1 và section-2 khi trang tải
+    document.querySelector('.section-1').style.display = 'none';
+    document.querySelector('.section-2').style.display = 'none';
+
+    // Lấy các phần tử nút button-mode
+    const buttonModeWindows = document.querySelector('.drop__btn[value="windows"]');
+    const buttonModeMac = document.querySelector('.drop__btn[value="mac"]');
+    const buttonModeLinux = document.querySelector('.drop__btn[value="linux"]');
+    
+    // Lấy các phần tử section
+    const panelContainer = document.querySelector('#panel-container');
+    const section1 = document.querySelector('.section-1');
+    const section2 = document.querySelector('.section-2');
+    // const sidebar = section2.querySelector(".sidebar");
+
+    // Sự kiện cho nút "Preview 1"
+    if (buttonModeWindows) {
+        buttonModeWindows.addEventListener('click', function() {
+            panelContainer.style.display = 'flex';
+            section1.style.display = 'none';
+            section2.style.display = 'none';
+        });
+    }
+
+    // Sự kiện cho nút "Preview 2"
+    if (buttonModeMac) {
+        buttonModeMac.addEventListener('click', function() {
+            panelContainer.style.display = 'none';
+            section1.style.display = 'block';
+            section2.style.display = 'none';
+        });
+    }
+
+    // Sự kiện cho nút "See lab live"
+    if (buttonModeLinux) {
+        buttonModeLinux.addEventListener('click', function() {
+            panelContainer.style.display = 'none';
+            section1.style.display = 'none';
+            section2.style.display = 'block';
+        });
+    }
+});
+      </script>
+      <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+        closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+        });
+        searchBtn.addEventListener("click", () => {
+        // Sidebar open when you click on the search iocn
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+        });
+        // following are the code to change sidebar button(optional)
+        function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
+        } else {
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+        }
+        }
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('#main-nav');
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            let isMenuVisible = false;
+        
+            // Hàm bật/tắt menu khi click vào menu-toggle
+            function toggleMobileMenu() {
+                isMenuVisible = !isMenuVisible;
+                nav.classList.toggle('show', isMenuVisible);
+            }
+        
+            menuToggle.addEventListener('click', toggleMobileMenu);
+        
+            // Hàm kiểm tra sự kiện cuộn trang
+            window.addEventListener('scroll', function () {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                const headerHeight = header.offsetHeight;
+        
+                // Kiểm tra nếu cuộn qua header thì hiển thị menu-toggle
+                if (currentScroll > headerHeight) {
+                    menuToggle.classList.add('visible');
+                } else {
+                    menuToggle.classList.remove('visible');
+                    nav.classList.remove('show'); // Đóng menu nếu người dùng cuộn trở về đầu trang
+                }
+        
+                // Lưu lại vị trí cuộn
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+        });
+        </script>
     <script src="script.js"></script>
 </body>
 </html>
