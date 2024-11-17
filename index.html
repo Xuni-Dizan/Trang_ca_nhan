@@ -17,21 +17,38 @@
 @keyframes blink {
     50% { border-color: transparent; }
 }
+@media only screen and (max-width: 398px) {
+    h2#h2{
+        font-size: 1.5em;
+
+    }
+    .content-overlay p {
+    font-size: 5.5em;
+}
+}
 
 @media only screen and (max-width: 768px) {
-    h2#h2{
+    h2{
     position: relative;
     overflow: hidden; /* Đảm bảo rằng văn bản không tràn ra ngoài */
     white-space: nowrap; /* Ngừng xuống dòng */
     width: 0; /* Bắt đầu với chiều rộng bằng 0 */
-  font-size: medium;
-  display: inline;
-  border-right: 3px solid #0e3742; /* Thêm dấu gạch đứng như con trỏ */
+    font-size: 1.6em;
+    top: -10px;
+    display: inline;
+    border-right: 3px solid #0e3742; /* Thêm dấu gạch đứng như con trỏ */
     animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite; /* Hiệu ứng gõ chữ */
 }
+.content-overlay p {
+    font-size: 1.1em;
+}
+}
+body{
+    background: none;
 }
 
 h2 {
+    background: none;
     font-size: 6em;
     letter-spacing: 15px;
     text-transform: uppercase;
@@ -40,31 +57,195 @@ h2 {
     white-space: nowrap; /* Ngừng xuống dòng */
     width: 0; /* Bắt đầu với chiều rộng bằng 0 */
     border-right: 4px solid #0e3742; /* Thêm dấu gạch đứng như con trỏ */
-    animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite; /* Hiệu ứng gõ chữ */
+    animation: typing 4s steps(40) forwards, blink 0.75s step-end infinite; /* Hiệu ứng gõ chữ */
 }
+/* Video nền cho phần main */
+#background-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Đảm bảo video nằm dưới các nội dung khác */
+}
+
+/* Đảm bảo nội dung hiển thị trên video */
+.content-overlay {
+    position: relative;
+    z-index: 1;
+    color: black;
+    text-align: center;
+}
+
+main {
+    position: relative;
+    background: none;
+    overflow: hidden; /* Đảm bảo video không tràn ra ngoài */
+    min-height: 100vh; /* Chiều cao tối thiểu để video phủ toàn bộ màn hình */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Điều chỉnh kích thước cho tiêu đề và đoạn văn */
+/* .content-overlay h2 {
+    font-size: 4em;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
+} */
+
+.content-overlay p {
+    font-size: 1.2em;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+/* Video nền toàn trang */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+/* Animation cho header xuất hiện */
+/* @keyframes headerFadeSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */
+ 
+ /* Animation tổng thể cho header */
+@keyframes headerSlideDown {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+#animated-header h1 {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.8);
+    animation: titleAppear 1.5s 0.5s ease-out forwards;
+}
+
+/* Animation hiệu ứng nảy cho header */
+@keyframes headerBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+/* Hiệu ứng cho từng mục trong nav */
+#main-nav a {
+    /* cursor: pointer;
+    transform: translateY(-5px); */
+    opacity: 0;
+    /* transform: translateY(50px); */
+    /* display: inline-block;
+    margin: 0 15px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e5e5e5;
+    text-decoration: none;
+    border-radius: 30px; */
+    /* background: rgba(255, 255, 255, 0.1); */
+    transition: all 0.3s ease;
+    animation: menuItemAppear 1.2s ease-out forwards;
+}
+nav .nav-class a:hover{
+    transform: translateY(-5px);
+}
+
+/* Tạo hiệu ứng delay khác nhau cho từng mục nav */
+#main-nav a:nth-child(1) { animation-delay: 1s; }
+#main-nav a:nth-child(2) { animation-delay: 1.2s; }
+#main-nav a:nth-child(3) { animation-delay: 1.4s; }
+
+/* Hiệu ứng cho tiêu đề h1 */
+@keyframes titleAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Hiệu ứng cho mục menu nav */
+@keyframes menuItemAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
     </style>
 </head>
 <body>
-    <header>
+    <div class="video-container">
+    <!-- Video nền cho phần main -->
+        <video id="background-video" autoplay loop muted>
+            <source src="videos/br1.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+    </div>
+    <header id="animated-header">
         <h1 id="index-text">Welcome to my Website</h1>
-        <!-- Chỉ hiển thị menu-toggle trên giao diện điện thoại -->
-        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-        <nav id="main-nav">
+        <nav id="main-nav" class="nav-class">
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
         </nav>
     </header>
     <main>
-        <h2 id="h2">Introduction</h2>
-        <p>Đây là trang web cá nhân của tôi, nơi tôi chia sẻ thông tin và dự án của mình. Tôi hy vọng bạn sẽ tìm thấy những điều hữu ích và thú vị ở đây!</p>
-        <p>Cảm ơn bạn đã ghé thăm! Hãy cùng khám phá những nội dung mà tôi đã chuẩn bị nhé!</p>
-        <p>Tôi sẽ cập nhật Trang cá nhân vào vài ngày tới.</p>
+        <!-- Video nền cho phần main -->
+        <!-- <video id="main-background-video" autoplay loop muted>
+            <source src="videos/br1.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video> -->
+        <div class="content-overlay">
+            <h2 id="h2">Introduction</h2>
+            <p>Đây là trang web cá nhân của tôi, nơi tôi chia sẻ thông tin và dự án của mình. Tôi hy vọng bạn sẽ tìm thấy những điều hữu ích và thú vị ở đây!</p>
+            <p>Cảm ơn bạn đã ghé thăm! Hãy cùng khám phá những nội dung mà tôi đã chuẩn bị nhé!</p>
+            <p>Tôi sẽ cập nhật Trang cá nhân vào vài ngày tới.</p>
+        </div>
     </main>
+    
     <script >
         // function index-text
   function adjustTitle() {
     const index_text = document.getElementById("index-text");
+    const h2_text = document.getElementById("h2");
+    if (window.innerWidth <=894 && window.innerWidth >=400) {
+        h2_text.textContent = "Intro"
+    }else{
+        h2_text.textContent = "Introduction"
+    }
     if (window.innerWidth <= 768) {  // Kích thước màn hình điện thoại (<=768px)
       index_text.textContent = "Welcome";
     } else {
@@ -76,7 +257,7 @@ h2 {
   window.addEventListener('load', adjustTitle);
   window.addEventListener('resize', adjustTitle);
     </script>
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('#main-nav');
@@ -109,7 +290,7 @@ h2 {
                 lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
             });
         });
-        </script>
+        </script> -->
         <footer>
             <div class="footer-container">
                 <!-- Logo hoặc Tên trang -->
@@ -128,9 +309,11 @@ h2 {
                 
                 <!-- Thông tin liên hệ -->
                 <div class="footer-contact">
-                    <p>📞 Call me now :  0359103126</p>
+                    <p>📞 Call me : (+84) 0359103126</p>
                     <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
                     <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+                    <p><i class="fas fa-laptop-code"></i> Khoa Công nghệ Thông tin</p>
+                    <p><i class="fas fa-university"></i> Đại học Nông Lâm TP HCM</p>
                 </div>
                 
                 <!-- Mạng xã hội -->

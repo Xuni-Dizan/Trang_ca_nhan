@@ -11,14 +11,30 @@
 </head>
 <body>
     <header>
-        <h1>LAB</h1>
-        <!-- Chỉ hiển thị menu-toggle trên giao diện điện thoại -->
-        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <div >
+        <h1 >LAB</h1>
         <nav id="main-nav">
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
         </nav>
+        <section class="section-mode">
+            <div class="button-mode">
+                <div class="drop" id="dummy">
+                    <button class="drop__btn" aria-expanded="false" aria-haspopup="true" type="button"></button>
+                    <div class="drop__items" data-items>
+                        <div class="drop__items-inner">
+                            <button class="drop__btn" type="button" value="windows">Preview 1</button>
+                            <button class="drop__btn" type="button" value="mac">Preview 2</button>
+                            <button class="drop__btn" type="button" value="linux">See Lab live</button>
+                            <!-- <button class="drop__btn" type="button" value="android">Android</button>
+                            <button class="drop__btn" type="button" value="ios">iOS</button>
+                            <button class="drop__btn" type="button" value="ubuntu">Ubuntu</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- <section class="section-mode">
             <div class="buttton-mode">
                 <div class="drop" id="dummy">
@@ -36,27 +52,11 @@
                 </div>
             </div>
         </section> -->
+        </div>
     </header>
     <main>
         <div>
-        <section class="section-mode">
-            <div class="buttton-mode">
-                <div class="drop" id="dummy">
-                    <button class="drop__btn" aria-expanded="false" aria-haspopup="true" type="button"></button>
-                    <div class="drop__items" data-items>
-                        <div class="drop__items-inner">
-                            <button class="drop__btn" type="button" value="windows">Preview 1</button>
-                            <button class="drop__btn" type="button" value="mac">Preview 2</button>
-                            <button class="drop__btn" type="button" value="linux">See Lab live</button>
-                            <!-- <button class="drop__btn" type="button" value="android">Android</button>
-                            <button class="drop__btn" type="button" value="ios">iOS</button>
-                            <button class="drop__btn" type="button" value="ubuntu">Ubuntu</button> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <h2 contenteditable="false">Danh sách Labs</h2>
+        <h2 contenteditable="false" id="lab-text">Danh sách Labs</h2>
         <section class="section-0">
                 <div id="panel-container" class="container">
                     <div class="panel active" style="background-image: url('images/panel_1.jpg'); background-size: cover; background-position: center;">
@@ -191,7 +191,7 @@
             <!-- partial:index.partial.html -->
             <div class="sidebar">
                 <div class="logo-details">
-                <i class='bx bxl-c-plus-plus icon'></i>
+                <i class='bx bxl-java icon'></i>
                 <div class="logo_name">Dizan</div>
                 <i class='bx bx-menu' id="btn"></i>
                 </div>
@@ -267,6 +267,12 @@
                     <div class="text">Analytics</div>
                 </div>
             </div>            
+            <!-- <div class="home-section">
+                <button id="menu-btn">&#9776;</button>
+                <div class="content">
+                    <h2>Dash board</h2>
+                </div>
+            </div> -->
           </section>
     </main>
     <footer>
@@ -287,9 +293,11 @@
             
             <!-- Thông tin liên hệ -->
             <div class="footer-contact">
-                <p>📞 Call me now :  0359103126</p>
+                <p>📞 Call me : (+84) 0359103126</p>
                 <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
                 <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+                <p><i class="fas fa-laptop-code"></i> Khoa Công nghệ Thông tin</p>
+                <p><i class="fas fa-university"></i> Đại học Nông Lâm TP HCM</p>
             </div>
             
             <!-- Mạng xã hội -->
@@ -304,6 +312,34 @@
             <p>&copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuBtn = document.getElementById('menu-btn');
+            const sidebar = document.querySelector('.sidebar');
+            const homeSection = document.querySelector('.home-section');
+        
+            // Sự kiện cho nút mở/đóng sidebar
+            menuBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('open');
+            });
+        
+            // Đóng sidebar khi nhấn vào bất kỳ đâu trên giao diện mobile
+            document.addEventListener('click', function (event) {
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        
+            // Sidebar cho desktop (thu/phóng sidebar khi nhấn vào nút menu)
+            const desktopBtn = document.getElementById('btn');
+            desktopBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('open');
+                homeSection.classList.toggle('shifted');
+            });
+        });
+        </script>
+        
     
     <script>
         // Hàm khởi tạo xử lý sự kiện click cho các ảnh
@@ -320,6 +356,39 @@
             });
           });
         });
+      </script>
+      <script>
+        // function about-text
+        function adjustTitle() {
+            const lab_text = document.getElementById("lab-text");
+            if (window.innerWidth <= 889) {  // Kích thước màn hình điện thoại (<=768px)
+            lab_text.textContent = "List Labs";
+            } else {
+            lab_text.textContent = "Danh sách Labs";  // Giao diện desktop
+            }
+        }
+        // Gọi hàm khi tải trang và khi thay đổi kích thước cửa sổ
+  window.addEventListener('load', adjustTitle);
+  window.addEventListener('resize', adjustTitle);
+      </script>
+      <script>
+        // Hàm cập nhật giá trị của biến CSS
+function updateDynamicValue() {
+    // Lấy chiều rộng cửa sổ
+    const viewportWidth = window.innerWidth;
+
+    // Tính toán giá trị mới cho biến (ví dụ: 10% chiều rộng cửa sổ)
+    const newValue = (viewportWidth *0.1+200) + "px"; // 10% chiều rộng của viewport
+
+    // Cập nhật giá trị của biến CSS
+    document.documentElement.style.setProperty('--dynamic-value', newValue);
+}
+
+// Gọi hàm khi cửa sổ thay đổi kích thước
+window.addEventListener('resize', updateDynamicValue);
+
+// Gọi hàm lần đầu tiên khi trang tải
+updateDynamicValue();
       </script>
       <script>
         "use strict";
@@ -678,40 +747,6 @@
         }
         }
       </script>
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('#main-nav');
-            const header = document.querySelector('header');
-            let lastScrollTop = 0;
-            let isMenuVisible = false;
-        
-            // Hàm bật/tắt menu khi click vào menu-toggle
-            function toggleMobileMenu() {
-                isMenuVisible = !isMenuVisible;
-                nav.classList.toggle('show', isMenuVisible);
-            }
-        
-            menuToggle.addEventListener('click', toggleMobileMenu);
-        
-            // Hàm kiểm tra sự kiện cuộn trang
-            window.addEventListener('scroll', function () {
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                const headerHeight = header.offsetHeight;
-        
-                // Kiểm tra nếu cuộn qua header thì hiển thị menu-toggle
-                if (currentScroll > headerHeight) {
-                    menuToggle.classList.add('visible');
-                } else {
-                    menuToggle.classList.remove('visible');
-                    nav.classList.remove('show'); // Đóng menu nếu người dùng cuộn trở về đầu trang
-                }
-        
-                // Lưu lại vị trí cuộn
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-            });
-        });
-        </script>
     <script src="script.js"></script>
 </body>
 </html>
