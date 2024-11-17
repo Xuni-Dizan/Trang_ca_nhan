@@ -7,6 +7,8 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=DM+Sans&display=swap'>
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+
     <title>Lab</title>
 </head>
 <body>
@@ -299,14 +301,21 @@
                 <p><i class="fas fa-laptop-code"></i> Khoa Công nghệ Thông tin</p>
                 <p><i class="fas fa-university"></i> Đại học Nông Lâm TP HCM</p>
             </div>
-            
-            <!-- Mạng xã hội -->
-            <div class="footer-social">
-                <a href="https://www.facebook.com/xuni.dizan" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/xuni.dizan/" class="icon instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://x.com/xuni518211" class="icon twitter"><i class="fab fa-twitter"></i></a>
+            <div>
+                <!-- Mạng xã hội -->
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/xuni.dizan" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/xuni.dizan/" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/xuni518211" class="icon twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/Xuni-Dizan" class="icon github"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="footer-signature-container">
+                    <canvas id="signatureCanvas"></canvas>
+                </div>
             </div>
+            <!-- Chữ ký với hiệu ứng vẽ -->
+            <div class="footer-signature" id="footer-signature"></div> 
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
@@ -680,6 +689,7 @@ updateDynamicValue();
             }
         } 
       </script>
+      <script src="script.js"></script>
       <script>
         document.addEventListener("DOMContentLoaded", function() {
     // Ẩn section-1 và section-2 khi trang tải
@@ -747,7 +757,117 @@ updateDynamicValue();
         }
         }
       </script>
-    <script src="script.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const canvas = document.getElementById("signatureCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    // Đặt kích thước canvas
+    canvas.width = 300; // Chiều rộng
+    canvas.height = 100; // Chiều cao
+    
+    // Vẽ chữ ký
+    ctx.font = "30px 'Great Vibes', cursive"; // Font chữ giống thiết kế
+    ctx.fillStyle = "#000"; // Màu chữ
+    ctx.textAlign = "center";
+    ctx.fillText("Nguyễn Xuân Đại", canvas.width / 2, canvas.height / 2 + 10);
+});
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+    let progress = 0; // Biến kiểm soát độ tiến của chữ
+    let targetProgress = 0; // Tiến độ mục tiêu để làm mượt chuyển động
+    let signatureDrawn = false; // Đảm bảo vẽ đúng lúc
+
+    function setup() {
+        const canvas = createCanvas(240, 190); // Tạo canvas
+        canvas.parent('footer-signature'); // Gắn vào div có id là 'signatureCanvas'
+        noFill();
+        strokeWeight(2);
+        stroke(0); 
+    }
+
+    function draw() {
+        background(0,0); // Đặt nền tối
+
+        // Tăng tiến độ
+        targetProgress += 0.005; // Tăng dần
+        progress = lerp(progress, targetProgress, 0.1); // Làm mượt
+
+        if (progress > 1) progress = 1; // Giới hạn
+
+        // Vẽ từng chữ dựa trên tiến độ
+        if (progress >= 0.1) drawD();
+        if (progress >= 0.2) drawI();
+        if (progress >= 0.4) drawZ();
+        if (progress >= 0.6) drawA();
+        if (progress >= 0.8) drawN();
+    }
+
+    // Các hàm vẽ chữ
+    function drawD() { 
+        var xtam = 22;
+        var ytam = 0;
+        curve(334, 16, xtam + 31, ytam + 117, xtam + 41, ytam + 119, 174, -180);
+        curve(63, 135, xtam + 48, ytam + 117, xtam + 66, ytam + 139, 80, 198);
+        curve(-80, 285, xtam + 40, ytam + 121, xtam + -12, ytam + 125, -18, 212);
+        curve(0, 0, xtam + 66, ytam + 139, xtam + 6, ytam + 184, 0, 107);
+        curve(360, 325, xtam + 12, ytam + 186, xtam + 16, ytam + 176, 201, 0);
+        curve(-5, 193, xtam + 11, ytam + 180, xtam + 58, ytam + 127, 264, 0);
+        curve(-17, 200, xtam + 80, ytam + 144, xtam + 55, ytam + 130, -77, 273);
+        curve(0, 174, xtam + 19, ytam + 123, xtam + 54, ytam + 120, 73, 160);
+    }
+    function drawI() {
+        strokeWeight(2);
+        var xtam = 22;
+        var ytam = 0;
+        curve(250, 29, xtam + 68, ytam + 162, xtam + 68, ytam + 180, 210, 103);
+        strokeWeight(3);
+        ellipse(95, 158, 1, 1);
+        strokeWeight(1);
+        curve(178, 48, xtam + 84, ytam + 165, xtam + 52, ytam + 179, 147, 103);
+        }
+    function drawZ() {
+        strokeWeight(2);
+        var xtam = 22;
+        var ytam = 0;
+        curve(158, 101, xtam + 83, ytam + 162, xtam + 94, ytam + 162, 68, 171);
+        line(95, 187, 119, 162);
+        curve(-79, 328, xtam + 73, ytam + 187, xtam + 98, ytam + 176, 310, 10);
+        }
+    function drawA() {
+        strokeWeight(2);
+        var xtam = 22;
+        var ytam = 0;
+        beginShape();
+        vertex(140, 173);
+        bezierVertex(133, 140, 96, 209, 138, 178);
+        endShape();
+        curve(402, -153, xtam + 122, ytam + 164, xtam + 201, 185, 490, 398);
+        }
+    function drawN() {
+        strokeWeight(2);
+        var xtam = 22;
+        var ytam = 0;
+        curve(57, 311, xtam + 120, ytam + 185, xtam + 138, ytam + 188, -6, 446);
+        curve(57, 392, xtam + 144, ytam + 177, xtam + 165, ytam + 187, -6, 180);
+        }
+
+    // Kiểm tra nếu footer nằm trong viewport
+    function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Lắng nghe sự kiện cuộn
+    document.addEventListener('scroll', function () {
+        const footer = document.querySelector('.footer-signature');
+        if (!signatureDrawn && isInViewport(footer)) {
+            signatureDrawn = true; // Đảm bảo chỉ vẽ một lần
+            loop(); // Kích hoạt vẽ
+        }
+    });
+    </script>
 </body>
 </html>
 

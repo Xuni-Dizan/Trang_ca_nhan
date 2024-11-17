@@ -1823,4 +1823,28 @@ nav#main-nav a{
 }
 
 }
+/* Phong cách cho chữ ký */
+.footer-signature {
+  width: 100%;
+  max-width: 300px; /* Giới hạn chiều rộng */
+  margin: 20px auto; /* Căn giữa */
+  text-align: center;
+}
 
+/* #signatureCanvas {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  background-color: transparent; 
+} */
+
+#signatureCanvas {
+  display: block; 
+  margin: 0 auto; 
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  background: transparent; 
+}
