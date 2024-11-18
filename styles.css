@@ -803,6 +803,10 @@ footer {
   text-align: center;
   flex: 1 1 200px;
 }
+.social-signature{
+  align-items: center;
+  justify-items: center;
+}
 
 .footer-logo .logo-img {
   width: 100px; /* Kích thước logo lớn hơn */
