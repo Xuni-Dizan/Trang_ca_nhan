@@ -28,7 +28,7 @@
                         <div class="drop__items-inner">
                             <button class="drop__btn" type="button" value="windows">Preview 1</button>
                             <button class="drop__btn" type="button" value="mac">Preview 2</button>
-                            <button class="drop__btn" type="button" value="linux">See Lab live</button>
+                            <button class="drop__btn" type="button" value="linux">Labs app</button>
                             <!-- <button class="drop__btn" type="button" value="android">Android</button>
                             <button class="drop__btn" type="button" value="ios">iOS</button>
                             <button class="drop__btn" type="button" value="ubuntu">Ubuntu</button> -->
@@ -204,56 +204,56 @@
                     <span class="tooltip">Search</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links active" onclick="openApp(event, 'dashboard')">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                     </a>
                     <span class="tooltip">Dashboard</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links" onclick="openApp(event, 'coding')">
                     <i class='bx bx-code-alt'></i>
                     <span class="links_name">Coding</span>
                     </a>
                     <span class="tooltip">Coding</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links" onclick="openApp(event, 'news_project')">
                     <i class='bx bx-news'></i>
                     <span class="links_name">News project</span>
                     </a>
                     <span class="tooltip">News project</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links" onclick="openApp(event, 'messages')">
                     <i class='bx bx-chat'></i>
                     <span class="links_name">Messages</span>
                     </a>
                     <span class="tooltip">Messages</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links" onclick="openApp(event, 'analytics')">
                     <i class='bx bx-pie-chart-alt-2'></i>
                     <span class="links_name">Analytics</span>
                     </a>
                     <span class="tooltip">Analytics</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links" onclick="openApp(event, 'file_manager')">
                     <i class='bx bx-folder'></i>
                     <span class="links_name">File Manager</span>
                     </a>
                     <span class="tooltip">Files</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links" onclick="openApp(event, 'color_code')">
                     <i class='bx bx-color'></i>
                     <span class="links_name">Color code</span>
                     </a>
                     <span class="tooltip">Color code</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="links" onclick="openApp(event, 'setting')">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Setting</span>
                     </a>
@@ -261,14 +261,37 @@
                 </li>
                 </ul>
             </div>
-            <div class="home-section">
-                <div class="section" id="section-1">
+            <section id="dashboard" class="tab-content" style="display: block;">
+                <iframe src="app/dashboard.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="coding" class="tab-content" style="display: none;">
+                <iframe src="app/coding.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="news_project" class="tab-content" style="display: none;">
+                <iframe src="app/news_project.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="messages" class="tab-content" style="display: none;">
+                <iframe src="app/messages.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="analytics" class="tab-content" style="display: none;">
+                <iframe src="app/analytics.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="file_manager" class="tab-content" style="display: none;">
+                <iframe src="app/file_manager.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="color_code" class="tab-content" style="display: none;">
+                <iframe src="app/color_code.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="setting" class="tab-content" style="display: none;">
+                <iframe src="app/setting.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+        
+                <!-- <div class="section" id="section-1">
                     <div class="text">Dashboard</div>
                 </div>
                 <div class="section" id="section-2">
                     <div class="text">Analytics</div>
-                </div>
-            </div>            
+                </div> -->         
             <!-- <div class="home-section">
                 <button id="menu-btn">&#9776;</button>
                 <div class="content">
@@ -416,7 +439,7 @@ updateDynamicValue();
                 this.options = [
                     { name: "windows", friendlyName: "Preview 1" },
                     { name: "mac", friendlyName: "Preview 2" },
-                    { name: "linux", friendlyName: "See Lab live" },
+                    { name: "linux", friendlyName: "Labs app" },
                     // { name: "android", friendlyName: "Android" },  // Thêm lựa chọn Android
                     // { name: "ios", friendlyName: "iOS" },          // Thêm lựa chọn iOS
                     // { name: "ubuntu", friendlyName: "Ubuntu" }      // Thêm lựa chọn Ubuntu
@@ -727,10 +750,12 @@ updateDynamicValue();
 
     // Sự kiện cho nút "See lab live"
     if (buttonModeLinux) {
+        const lab_text = document.getElementById("lab-text");
         buttonModeLinux.addEventListener('click', function() {
             panelContainer.style.display = 'none';
             section1.style.display = 'none';
             section2.style.display = 'block';
+            lab_text.textContent = "Labs App";
         });
     }
 });
@@ -867,6 +892,26 @@ updateDynamicValue();
             loop(); // Kích hoạt vẽ
         }
     });
+    </script>
+    <script>
+        function openApp(evt, appName) {
+            var i, tabcontent, links;
+    
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+    
+            links = document.getElementsByClassName("link");
+            for (i = 0; i < links.length; i++) {
+                links[i].className = links[i].className.replace(" active", "");
+            }
+    
+            document.getElementById(appName).style.display = "block";
+            document.getElementById(appName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
     </script>
 </body>
 </html>
