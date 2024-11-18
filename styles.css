@@ -1386,7 +1386,7 @@ footer {
     top: 0;
     height: 100%;
     width: 50px;
-    background: #11101d;
+    background: #1F2833;
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
@@ -1399,6 +1399,9 @@ footer {
     display: flex;
     align-items: center;
     position: relative;
+  }
+  .sidebar .logo-details i{
+    background: #1F2833;
   }
   .sidebar .logo-details .icon {
     margin-left: -10px;
@@ -1490,28 +1493,33 @@ footer {
     border: none;
     border-radius: 12px;
     transition: all 0.5s ease;
-    background: #1d1b31;
+    background: #1F2833;
   }
   .sidebar.open input {
+    font-size: medium;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background: #2f3b4a;
+    text-align: center;
     padding: 0 20px 0 -5px;
     width: 100%;
   }
   .sidebar .bx-search {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 50%;
+    top: 49%;
     left: 0;
     transform: translateY(-50%);
     font-size: 22px;
-    background: #1d1b31;
+    background: #1F2833;
     color: #fff;
   }
   .sidebar.open .bx-search:hover {
-    background: #1d1b31;
+    background: #1F2833;
     color: #fff;
   }
   .sidebar .bx-search:hover {
     background: #fff;
-    color: #11101d;
+    color: #1F2833;
   }
   .sidebar li a {
     display: flex;
@@ -1521,7 +1529,7 @@ footer {
     align-items: center;
     text-decoration: none;
     transition: all 0.4s ease;
-    background: #11101d;
+    background: #1F2833;
   }
   .sidebar li a:hover {
     width: 100%;
@@ -1543,7 +1551,7 @@ footer {
   .sidebar li a:hover .links_name,
   .sidebar li a:hover i {
     transition: all 0.5s ease;
-    color: #11101d;
+    color: #000000;
   }
   .sidebar li i {
     height: 50px;
@@ -1574,7 +1582,7 @@ footer {
   }
  .text {
     display: inline-block;
-    color: #11101d;
+    color: #1F2833;
     font-size: 25px;
     font-weight: 500;
     margin: 18px;
