@@ -13,6 +13,9 @@ html, body {
     padding: 0;
     flex: 1;
 }
+body::-webkit-scrollbar {
+  display: none; 
+}
 main{
   flex: 1;
 }
@@ -1383,39 +1386,57 @@ footer {
     min-height: 100vh;
     background-color: transparent;
     font-family: "Poppins", sans-serif;
+    z-index: 1;
 }
 .sidebar {
     position: relative;
+    overflow-y: auto;
     left: 0;
     top: 0;
+    overflow-x: visible; 
     height: 100%;
     width: 50px;
     background: #1F2833;
     padding: 6px 14px;
-    z-index: 99;
     transition: all 0.5s ease;
+    z-index: 3;
   }
+  .sidebar::-webkit-scrollbar {
+    display: none; 
+}
   .sidebar.open {
-    width: 200px;
+    width: 190px;
   }
   .sidebar .logo-details {
-    height: 60px;
+    width: 114%;
+    background-color: #1F2833;
+    margin-top: -6px;
+    top: -7px;
+    margin-left: -7%;
+    height: 80px;
     display: flex;
     align-items: center;
-    position: relative;
+    position: sticky;
+    z-index: 2;
+    border-radius: 30px;
+    box-shadow: 0 5px 5px rgba(0.3, 0.3, 0.3, 0.3);
+  }
+  .logo-details i,.logo_name{
+    position: sticky;
   }
   .sidebar .logo-details i{
     background: #1F2833;
   }
   .sidebar .logo-details .icon {
-    margin-left: -10px;
+    margin-top: -3%;
+    margin-left: 3%;
     opacity: 0;
     transition: all 0.5s ease;
   }
   .sidebar .logo-details .logo_name {
     position: relative;
-    top: 10px;
-    left: -65px;
+    top: 5%;
+    left: -37%;
     color: #fff;
     font-size: 20px;
     font-weight: 600;
@@ -1429,7 +1450,8 @@ footer {
   .sidebar .logo-details #btn {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 7%;
+    background: none;
     transform: translateY(-50%);
     font-size: 22px;
     transition: all 0.4s ease;
@@ -1450,6 +1472,7 @@ footer {
     line-height: 60px;
   }
   .sidebar .nav-list-1 {
+
     margin-top: 20px;
     height: 100%;
   }
@@ -1464,7 +1487,7 @@ footer {
     position: absolute;
     top: -20px;
     left: calc(100% + 15px);
-    z-index: 3;
+    z-index: 9999;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     padding: 6px 2px;
@@ -1508,13 +1531,13 @@ footer {
     width: 100%;
   }
   .sidebar .bx-search {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 49%;
     left: 0;
     transform: translateY(-50%);
     font-size: 22px;
-    background: #212a34;
+    background: #2f3b4a;
     color: #fff;
   }
   .sidebar.open .bx-search:hover {
@@ -1567,23 +1590,26 @@ footer {
     position: relative;
     background: #e4e9f7;
     min-height: 100vh;
-    top: -111vh;
+    top: -102%;
     margin-left: 78px;
     width: calc(100% - 78px);
     transition: all 0.5s ease;
     z-index: 2;
-    height: 101.8%; /* Đảm bảo home-section chiếm toàn bộ chiều cao */
+    height: 102%; /* Đảm bảo home-section chiếm toàn bộ chiều cao */
     margin-left: auto; /* Khoảng cách với sidebar */
     flex: 1; /* Phân chia không gian đều */
-    overflow: scroll;
+    overflow: auto;
   }
+  .tab-content::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn */
+}
   .section {
     margin-bottom: 20px;
 }
 
   .sidebar.open ~ .tab-content {
     /* margin-left: 230px; */
-    width: calc(100% - 230px);
+    width: calc(100% - 218px);
   }
  .text {
     display: inline-block;
@@ -1860,4 +1886,10 @@ nav#main-nav a{
   max-width: 800px;
   height: auto;
   background: transparent; 
+}
+
+@media only screen and (min-height: 686px) {
+  .home-section{
+    height: calc(100%-var(--dynamic-value));
+  }
 }

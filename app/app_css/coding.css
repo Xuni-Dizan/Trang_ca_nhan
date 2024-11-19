@@ -38,13 +38,15 @@ body {
     width: 78%;
     height: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    overflow: scroll;
+    overflow: auto;
     transition: all 0.3s ease;
 }
-/* .editor #editor-html, #editor-css, #editor-js{
-    overflow: scroll;
-} */
-
+.editor::-webkit-scrollbar {
+    display: none; 
+  }
+  .result::-webkit-scrollbar {
+    display: none; 
+}
 h2 {
     font-size: 24px;
     color: #ffffff;
