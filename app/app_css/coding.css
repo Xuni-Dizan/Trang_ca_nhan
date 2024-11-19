@@ -170,22 +170,30 @@ iframe {
 }
 
 #ai-icon {
+    justify-items: center;
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: #007BFF;
+    /* background-color: #007BFF; */
+    background-color: transparent;
     color: white;
     border-radius: 50%;
-    padding: 15px;
-    font-size: 30px;
+    padding: 5px;
+    font-size: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); */
     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#ai-icon img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
 }
 
 #ai-icon:hover {
-    background-color: #0056b3;
-    transform: scale(1.1);
+    background-color: transparent;
+    transform: scale(1.2);
 }
 
 #ai {
