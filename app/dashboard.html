@@ -7,7 +7,7 @@
 <body>
     <style>
 body {
-    height: 95vh;
+    height: 100vh;
     margin: 0;
     background: #121212; /* Màu nền tối */
     color: #fff;
@@ -221,8 +221,9 @@ li:hover .btn {
     /* Các section khác */
     #section-ds, #section-p {
         padding: 20px;
+        text-align: center;
     }
-
+    
     /* Hiệu ứng chuyển tiếp */
     .transition-fade {
         opacity: 0;
@@ -256,6 +257,7 @@ li:hover .btn {
             <li>
                 <div class="info">
                     <span class="title">Human Computing Interaction</span>
+                    <p>Ngôn ngữ: HTML, CSS, JS</p>
                     <p>Đã hoàn thành 6 Labs.</p>
                 </div>
                 <button id="btn-hci" class="btn">Details</button>
@@ -263,6 +265,7 @@ li:hover .btn {
             <li>
                 <div class="info">
                     <span class="title">Data Strructure</span>
+                    <p>Ngôn ngữ: Java</p>
                     <p>Sẽ sớm cập nhật.</p>
                 </div>
                 <button id="btn-ds" class="btn">Details</button>
@@ -270,6 +273,7 @@ li:hover .btn {
             <li>
                 <div class="info">
                     <span class="title">Pertional</span>
+                    <p>Ngôn ngữ: HTML, CSS, JS, Java</p>
                     <p>Sẽ sớm cập nhật.</p>
                 </div>
                 <button id="btn-p" class="btn">Details</button>
@@ -282,7 +286,8 @@ li:hover .btn {
         <i class="fas fa-arrow-left back-icon" onclick="goBack('home')"></i> <!-- Icon quay lại -->
             <!-- Tab Navigation -->
             <div class="tab-container">
-                <button class="tab-link active" onclick="openLab(event, 'lab1')">Lab 1</button>
+                <button class="tab-link active" onclick="openLab(event, 'lab1_1')">Lab 1_1</button>
+                <button class="tab-link" onclick="openLab(event, 'lab1_2')">Lab 1_2</button>
                 <button class="tab-link" onclick="openLab(event, 'lab2')">Lab 2</button>
                 <button class="tab-link" onclick="openLab(event, 'lab3')">Lab 3</button>
                 <button class="tab-link" onclick="openLab(event, 'lab4')">Lab 4</button>
@@ -291,8 +296,11 @@ li:hover .btn {
                 <button class="tab-link" onclick="openLab(event, 'lab7')">Lab 7</button>
             </div>
             <div class="section-labs">
-            <section id="lab1" class="tab-content" style="display: none;">
+            <section id="lab1_1" class="tab-content" style="display: none;">
                 <iframe src="https://xuni-dizan.github.io/lab1.html/" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            </section>
+            <section id="lab1_2" class="tab-content" style="display: none;">
+                <iframe src="https://xuni-dizan.github.io/lab1-nhom2/" style="width: 100%; height: 100%;" frameborder="0"></iframe>
             </section>
             <section id="lab2" class="tab-content" style="display: none;">
                 <iframe src="https://xuni-dizan.github.io/lab2/" style="width: 100%; height: 100%;" frameborder="0"></iframe>
@@ -312,9 +320,6 @@ li:hover .btn {
 
             <section id="lab6" class="tab-content" style="display: none;">
                 <iframe src="https://xuni-dizan.github.io/Lab_6/" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="lab7" class="tab-content" style="display: none;">
-                <iframe src="https://xuni-dizan.github.io/lab1-nhom2/" style="width: 100%; height: 100%;" frameborder="0"></iframe>
             </section>
             </div>
         <!-- </section> -->
@@ -361,7 +366,7 @@ li:hover .btn {
         document.getElementById('btn-hci').addEventListener('click', function() {
     document.getElementById('home').style.display = 'none';
     let sectionHci = document.getElementById('section-hci');
-    let sectionLab1 = document.getElementById('lab1');
+    let sectionLab1 = document.getElementById('lab1_1');
     sectionHci.style.display = 'block';
     sectionHci.classList.add('transition-fade');
     sectionLab1.style.display = 'block';

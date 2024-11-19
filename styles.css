@@ -1575,6 +1575,7 @@ footer {
     height: 101.8%; /* Đảm bảo home-section chiếm toàn bộ chiều cao */
     margin-left: auto; /* Khoảng cách với sidebar */
     flex: 1; /* Phân chia không gian đều */
+    overflow: scroll;
   }
   .section {
     margin-bottom: 20px;
@@ -1600,8 +1601,8 @@ footer {
     }
 }
   @media only screen and (max-width: 546px) {
-    .section-mode{
-    }
+    /* .section-mode{
+    } */
     
     .button-mode {
       font-size: 15px;
@@ -1689,8 +1690,8 @@ footer {
   text-align: center;
   padding: 5px;
 }
-  .sidebar {
-  }
+  /* .sidebar {
+  } */
 
   /* .nav-list-1 {
       display: flex;

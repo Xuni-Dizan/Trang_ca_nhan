@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trình Soạn Thảo Mã</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/material-darker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/hint/html-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/hint/css-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/hint/javascript-hint.min.js"></script>
+    <link rel="stylesheet" href="app_css/coding.css">
+</head>
+<body>
+    <div class="container">
+        <div class="editor">
+            <h2>Soạn thảo mã</h2>
+            <!-- Language selection buttons -->
+            <div class="editor-buttons">
+                <button onclick="showEditor('html')">HTML</button>
+                <button onclick="showEditor('css')">CSS</button>
+                <button onclick="showEditor('js')">JavaScript</button>
+            </div>
+            
+            <div id="editor-html"></div>
+            <div id="editor-css" style="display: none;"></div>
+            <div id="editor-js" style="display: none;"></div>
+            
+            <button onclick="runCode()">Chạy mã</button>
+        </div>
+        <div class="result">
+            <h2>Hiển thị kết quả</h2>
+            <iframe id="result-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+    </div>
+
+    <!-- AI Section -->
+    <section id="ai">
+        <iframe src="https://chat.webllm.ai/#/chat" frameborder="0"></iframe>
+    </section>
+
+    <!-- AI Icon -->
+    <div id="ai-icon" onclick="toggleAI()">🤖</div>
+
+    <script src="app_script/coding.js"></script>
+</body>
+</html>
