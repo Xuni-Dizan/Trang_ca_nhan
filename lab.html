@@ -8,7 +8,6 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=DM+Sans&display=swap'>
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
-
     <title>Lab</title>
 </head>
 <body>
@@ -370,7 +369,6 @@
                 sidebar.classList.toggle('open');
                 homeSection.classList.toggle('shifted');
             });
-            openApp(null, 'dashboard'); // Đặt tab mặc định
         });
         </script>
         
@@ -914,6 +912,10 @@ updateDynamicValue();
         //     document.getElementById(appName).classList.add("active");
         //     evt.currentTarget.className += " active";
         // }
+        document.addEventListener('DOMContentLoaded', () => {
+    // Gọi hàm openApp để thiết lập mặc định
+    openApp(null, 'dashboard');
+});
         function openApp(event, tabId) {
     // Ẩn tất cả tab-content
     const tabs = document.querySelectorAll('.tab-content');

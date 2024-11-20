@@ -1409,7 +1409,7 @@ footer {
   }
   .sidebar .logo-details {
     width: 114%;
-    background-color: #1F2833;
+    background-color: #212932;
     margin-top: -6px;
     top: -7px;
     margin-left: -7%;
@@ -1418,7 +1418,7 @@ footer {
     align-items: center;
     position: sticky;
     z-index: 2;
-    border-radius: 30px;
+    border-radius: 20px;
     box-shadow: 0 5px 5px rgba(0.3, 0.3, 0.3, 0.3);
   }
   .logo-details i,.logo_name{
