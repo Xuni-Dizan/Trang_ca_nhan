@@ -1476,6 +1476,20 @@ footer {
     margin-top: 20px;
     height: 100%;
   }
+  .nav-list-1 li.active {
+    border-radius: 10px;
+    background-color: rgba(100, 149, 237, 0.2); /* Màu nền nổi bật */
+    border-left: 4px solid #6495ED; /* Thêm đường viền trái */
+    color: #6495ED; /* Đổi màu chữ */
+}
+.nav-list-1 li.active a {
+  color: #6495ED;
+  font-weight: bold;
+}
+.nav-list-1 li.active .tooltip {
+  background: #6495ED; /* Đổi màu tooltip */
+  color: #fff;
+}
   .sidebar li {
     position: relative;
     left: -40px;

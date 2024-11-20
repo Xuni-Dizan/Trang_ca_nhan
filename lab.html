@@ -203,56 +203,56 @@
                     <input type="text" links_namelinks_name placeholder="Search">
                     <span class="tooltip">Search</span>
                 </li>
-                <li>
+                <li id="sidebar-dashboard">
                     <a class="links active" onclick="openApp(event, 'dashboard')">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                     </a>
                     <span class="tooltip">Dashboard</span>
                 </li>
-                <li>
+                <li id="sidebar-coding">
                     <a class="links" onclick="openApp(event, 'coding')">
                     <i class='bx bx-code-alt'></i>
                     <span class="links_name">Coding</span>
                     </a>
                     <span class="tooltip">Coding</span>
                 </li>
-                <li>
+                <li id="sidebar-news_project">
                     <a class="links" onclick="openApp(event, 'news_project')">
                     <i class='bx bx-news'></i>
                     <span class="links_name">News project</span>
                     </a>
                     <span class="tooltip">News project</span>
                 </li>
-                <li>
+                <li id="sidebar-messages">
                     <a class="links" onclick="openApp(event, 'messages')">
                     <i class='bx bx-chat'></i>
                     <span class="links_name">Messages</span>
                     </a>
                     <span class="tooltip">Messages</span>
                 </li>
-                <li>
+                <li id="sidebar-analytics">
                     <a class="links" onclick="openApp(event, 'analytics')">
                     <i class='bx bx-pie-chart-alt-2'></i>
                     <span class="links_name">Analytics</span>
                     </a>
                     <span class="tooltip">Analytics</span>
                 </li>
-                <li>
+                <li id="sidebar-file_manager">
                     <a class="links" onclick="openApp(event, 'file_manager')">
                     <i class='bx bx-folder'></i>
                     <span class="links_name">File Manager</span>
                     </a>
                     <span class="tooltip">Files</span>
                 </li>
-                <li>
+                <li id="sidebar-color_code">
                     <a class="links" onclick="openApp(event, 'color_code')">
                     <i class='bx bx-color'></i>
                     <span class="links_name">Color code</span>
                     </a>
                     <span class="tooltip">Color code</span>
                 </li>
-                <li>
+                <li id="sidebar-setting">
                     <a class="links" onclick="openApp(event, 'setting')">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Setting</span>
@@ -370,6 +370,7 @@
                 sidebar.classList.toggle('open');
                 homeSection.classList.toggle('shifted');
             });
+            openApp(null, 'dashboard'); // Đặt tab mặc định
         });
         </script>
         
@@ -895,24 +896,50 @@ updateDynamicValue();
     });
     </script>
     <script>
-        function openApp(evt, appName) {
-            var i, tabcontent, links;
+        // function openApp(evt, appName) {
+        //     var i, tabcontent, links;
     
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                tabcontent[i].classList.remove("active");
-            }
+        //     tabcontent = document.getElementsByClassName("tab-content");
+        //     for (i = 0; i < tabcontent.length; i++) {
+        //         tabcontent[i].style.display = "none";
+        //         tabcontent[i].classList.remove("active");
+        //     }
     
-            links = document.getElementsByClassName("link");
-            for (i = 0; i < links.length; i++) {
-                links[i].className = links[i].className.replace(" active", "");
-            }
+        //     links = document.getElementsByClassName("link");
+        //     for (i = 0; i < links.length; i++) {
+        //         links[i].className = links[i].className.replace(" active", "");
+        //     }
     
-            document.getElementById(appName).style.display = "block";
-            document.getElementById(appName).classList.add("active");
-            evt.currentTarget.className += " active";
-        }
+        //     document.getElementById(appName).style.display = "block";
+        //     document.getElementById(appName).classList.add("active");
+        //     evt.currentTarget.className += " active";
+        // }
+        function openApp(event, tabId) {
+    // Ẩn tất cả tab-content
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+        tab.style.display = 'none';
+    });
+
+    // Hiển thị tab-content được chọn
+    const activeTab = document.getElementById(tabId);
+    if (activeTab) {
+        activeTab.style.display = 'block';
+    }
+
+    // Bỏ class 'active' của tất cả mục trong sidebar
+    const sidebarItems = document.querySelectorAll('.nav-list-1 li');
+    sidebarItems.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Thêm class 'active' vào mục tương ứng
+    const activeSidebarItem = document.getElementById(`sidebar-${tabId}`);
+    if (activeSidebarItem) {
+        activeSidebarItem.classList.add('active');
+    }
+}
+
     </script>
 </body>
 </html>
