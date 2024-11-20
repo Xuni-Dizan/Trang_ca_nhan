@@ -905,6 +905,7 @@ footer {
   display: flex;
   text-align: center;
   justify-content: center;
+  gap: 10px;
 }
 
 .footer-bottom a {
@@ -1959,14 +1960,18 @@ nav#main-nav a{
 /* styles.css */
 .loading-overlay {
   font-family: 'Roboto', sans-serif;
+  position: fixed;
   margin: 0;
   padding: 0;
   background-color: #121212; /* Nền tối để làm nổi bật logo */
+  background: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
+  z-index: 9999;
 }
 
 .logo-container-1 {

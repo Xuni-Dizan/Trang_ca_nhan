@@ -113,15 +113,15 @@ main {
     margin: 15px 0;
     line-height: 1.6;
 }
-/* Video nền toàn trang */
+/* Container của video nền */
 .video-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: -1; /* Đặt phía sau nội dung */
     overflow: hidden;
-    z-index: -1;
 }
 /* Animation cho header xuất hiện */
 /* @keyframes headerFadeSlideDown {
@@ -249,14 +249,33 @@ nav .nav-class a:hover{
 
 /* Ẩn video ban đầu */
 #background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    visibility: hidden; /* Ban đầu ẩn */
+}
+/* Hiển thị video sau khi sẵn sàng */
+#background-video.ready {
+    visibility: visible;
+    transition: visibility 0.5s ease;
+}
+/* Ẩn nội dung chính khi overlay hiển thị */
+.hidden {
     visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
+/* Hiển thị nội dung sau khi tài nguyên đã tải */
+.visible {
+    visibility: visible;
+    opacity: 1;
+}
     </style>
 </head>
 <body>
     <!-- Spinner hiển thị khi video đang tải -->
-    <div id="video-loading" class="loading-overlay">
+    <div id="overlay" class="loading-overlay">
         <div class="logo-container-1">
             <div class="loading-spinner"></div>
             <div class="logo-text">
@@ -355,21 +374,41 @@ nav .nav-class a:hover{
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const video = document.getElementById("background-video");
-            const loadingOverlay = document.getElementById("video-loading");
+            const overlay = document.getElementById("overlay");
+            const mainContent = document.getElementById("main-content");
+            const backgroundVideo = document.getElementById("background-video");
+            const animatedHeader = document.getElementById("animated-header");
+            const animatedH2 = document.getElementById("animated-h2");
     
-            // Lắng nghe sự kiện video sẵn sàng phát
-            video.addEventListener("canplaythrough", () => {
-                loadingOverlay.style.display = "none"; // Ẩn overlay
-                video.style.visibility = "visible"; // Hiển thị video
+            let videoLoaded = false;
+    
+            // Đợi video sẵn sàng
+            backgroundVideo.addEventListener("canplaythrough", () => {
+                videoLoaded = true;
+                backgroundVideo.classList.add("ready");
+                checkAllReady();
             });
     
-            // Xử lý lỗi khi video không tải được
-            video.addEventListener("error", () => {
-                loadingOverlay.innerHTML = "<p>Video không thể tải. Vui lòng thử lại sau.</p>";
+            // Đợi toàn bộ tài nguyên trang được tải
+            window.addEventListener("load", () => {
+                checkAllReady();
             });
+    
+            // Kiểm tra nếu cả video và tài nguyên khác đã sẵn sàng
+            function checkAllReady() {
+                if (videoLoaded) {
+                    overlay.style.display = "none"; // Ẩn overlay
+                    mainContent.classList.remove("hidden");
+                    mainContent.classList.add("visible");
+    
+                    // Kích hoạt animation
+                    animatedHeader.style.opacity = "1";
+                    animatedH2.style.opacity = "1";
+                }
+            }
         });
     </script>
+    
      
     <script >
         // function index-text
