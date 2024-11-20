@@ -214,12 +214,62 @@ nav .nav-class a:hover{
         transform: translateY(0);
     }
 }
+/* Overlay loading cho video */
+/* .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+} */
+
+/* Spinner animation */
+/* .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+} */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ẩn video ban đầu */
+#background-video {
+    visibility: hidden;
+}
 
     </style>
 </head>
 <body>
+    <!-- Spinner hiển thị khi video đang tải -->
+    <div id="video-loading" class="loading-overlay">
+        <div class="logo-container-1">
+            <div class="loading-spinner"></div>
+            <div class="logo-text">
+                <span class="d">D</span>
+                <span class="i">I</span>
+                <span class="z">Z</span>
+                <span class="a">A</span>
+                <span class="n">N</span>
+            </div>
+        </div>
+    </div>
     <div class="video-container">
-    <!-- Video nền cho phần main -->
+        <!-- Video nền cho phần main -->
         <video id="background-video" autoplay loop muted>
             <source src="videos/br1.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ video.
@@ -251,7 +301,7 @@ nav .nav-class a:hover{
             <!-- Logo hoặc Tên trang -->
             <div class="footer-logo">
                 <img src="images/logo.jpg" alt="Logo của Xuni Dizan" class="logo-img">
-                <h2 class="logo-text" style="border-right: none;">Xuni Dizan</h2>
+                <h2 class="logo-text-1" style="border-right: none;">Xuni Dizan</h2>
             </div>
             
             <!-- Điều hướng nhanh -->
@@ -293,16 +343,34 @@ nav .nav-class a:hover{
                 <i class="fas fa-eye"></i>
                 <span id="visitor-text">Lượt truy cập: 0</span>
             </div> -->
-            <p>
                 <div id="visitor-count">
                 <i class="fas fa-eye"></i>
                 <span id="visitor-text">View: 0</span>
-                </div>  
-                &copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
-            </p>
+                </div>
+                <div class="ft">
+                <img src="images/logo.jpg" alt="logo" style="height: 30px; width: 30px; border-radius: 50%; margin-top: 5px;"> 
+                <p>&copy; 2024 Nguyễn Xuân Đại | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+            </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.getElementById("background-video");
+            const loadingOverlay = document.getElementById("video-loading");
     
+            // Lắng nghe sự kiện video sẵn sàng phát
+            video.addEventListener("canplaythrough", () => {
+                loadingOverlay.style.display = "none"; // Ẩn overlay
+                video.style.visibility = "visible"; // Hiển thị video
+            });
+    
+            // Xử lý lỗi khi video không tải được
+            video.addEventListener("error", () => {
+                loadingOverlay.innerHTML = "<p>Video không thể tải. Vui lòng thử lại sau.</p>";
+            });
+        });
+    </script>
+     
     <script >
         // function index-text
   function adjustTitle() {

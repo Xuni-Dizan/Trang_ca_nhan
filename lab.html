@@ -11,6 +11,18 @@
     <title>Lab</title>
 </head>
 <body>
+    <div id="overlay" class="loading-overlay">
+        <div class="logo-container-1">
+            <div class="loading-spinner"></div>
+            <div class="logo-text">
+                <span class="d">D</span>
+                <span class="i">I</span>
+                <span class="z">Z</span>
+                <span class="a">A</span>
+                <span class="n">N</span>
+            </div>
+        </div>
+    </div>
     <header>
         <div >
         <h1 >LAB</h1>
@@ -304,7 +316,7 @@
             <!-- Logo hoặc Tên trang -->
             <div class="footer-logo">
                 <img src="images/logo.jpg" alt="Logo của Xuni Dizan" class="logo-img">
-                <h2 class="logo-text">Xuni Dizan</h2>
+                <h2 class="logo-text-1">Xuni Dizan</h2>
             </div>
             
             <!-- Điều hướng nhanh -->
@@ -354,7 +366,18 @@
             </p>
         </div>
     </footer>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.getElementById("overlay");
+    
+            // Chờ toàn bộ tài nguyên được tải
+            window.addEventListener("load", () => {
+                // Ẩn overlay sau khi mọi tài nguyên đã sẵn sàng
+                overlay.style.display = "none";
+            });
+        });
+    </script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const menuBtn = document.getElementById('menu-btn');

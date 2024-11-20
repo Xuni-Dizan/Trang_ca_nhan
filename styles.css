@@ -824,7 +824,7 @@ footer {
   transform: scale(1.1); /* Phóng to nhẹ khi hover */
 }
 
-.footer-logo .logo-text {
+.footer-logo .logo-text-1 {
   font-size: 2em;
   color: #66FCF1;
   font-weight: 800;
@@ -894,11 +894,17 @@ footer {
 }
 
 .footer-bottom {
+  gap: 20px;
   text-align: center;
   border-top: 1px solid #333;
   padding-top: 20px;
   margin-top: 20px;
   font-size: 0.9em;
+}
+.ft{
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 .footer-bottom a {
@@ -1393,7 +1399,7 @@ footer {
     overflow-y: auto;
     left: 0;
     top: 0;
-    overflow-x: visible; 
+    overflow-x: hidden; 
     height: 100%;
     width: 50px;
     background: #1F2833;
@@ -1476,6 +1482,10 @@ footer {
     margin-top: 20px;
     height: 100%;
   }
+  .nav-list-1 {
+    position: relative; /* Đảm bảo tooltip dựa vào .nav-list-1 làm điểm gốc */
+}
+
   .nav-list-1 li.active {
     border-radius: 10px;
     background-color: rgba(100, 149, 237, 0.2); /* Màu nền nổi bật */
@@ -1490,6 +1500,10 @@ footer {
   background: #6495ED; /* Đổi màu tooltip */
   color: #fff;
 }
+.nav-list-1 li:hover .tooltip {
+  visibility: visible; /* Hiển thị tooltip khi hover */
+  opacity: 1; /* Đặt tooltip thành hiện */
+}
   .sidebar li {
     position: relative;
     left: -40px;
@@ -1501,7 +1515,7 @@ footer {
     position: absolute;
     top: -20px;
     left: calc(100% + 15px);
-    z-index: 9999;
+    /* z-index: 99999; */
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     padding: 6px 2px;
@@ -1571,6 +1585,7 @@ footer {
     text-decoration: none;
     transition: all 0.4s ease;
     background: #1F2833;
+    z-index: 3;
   }
   .sidebar li a:hover {
     width: 100%;
@@ -1584,6 +1599,7 @@ footer {
     opacity: 0;
     pointer-events: none;
     transition: 0.4s;
+    z-index: 1;
   }
   .sidebar.open li a .links_name {
     opacity: 1;
@@ -1909,8 +1925,29 @@ nav#main-nav a{
   color: wheat;
 }
 
+/* Hiệu ứng biểu tượng */
 #visitor-count i {
-  margin-right: 10px;
+  color: #66FCF1;
+  margin-right: 8px;
+  font-size: 1.2em; /* Kích thước biểu tượng lớn hơn một chút */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#visitor-count i:hover {
+  transform: scale(1.2); /* Phóng to nhẹ khi hover */
+  color: #45A29E; /* Đổi màu khi hover */
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .footer-bottom {
+      flex-direction: column; /* Xếp chồng nội dung */
+      text-align: center;
+  }
+
+  #visitor-count {
+      margin-bottom: 10px;
+  }
 }
 
 @media only screen and (min-height: 686px) {
@@ -1918,3 +1955,116 @@ nav#main-nav a{
     height: calc(100%-var(--dynamic-value));
   }
 }
+
+/* styles.css */
+.loading-overlay {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212; /* Nền tối để làm nổi bật logo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logo-container-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+}
+
+.logo-text {
+  display: flex;
+  font-weight: 900;
+  color: #f0f0f0;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-left: 30px;
+}
+
+/* Hiệu ứng chữ chuyển động */
+.logo-text span {
+  display: inline-block;
+  position: relative;
+  animation: textMove 2s infinite ease-in-out;
+}
+
+.logo-text .d {
+  animation-delay: 0s;
+}
+
+.logo-text .i {
+  animation-delay: 0.2s;
+}
+
+.logo-text .z {
+  animation-delay: 0.4s;
+}
+
+.logo-text .a {
+  animation-delay: 0.6s;
+}
+
+.logo-text .n {
+  animation-delay: 0.8s;
+}
+
+/* Hiệu ứng chuyển động nhẹ cho chữ */
+@keyframes textMove {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-8px);
+  }
+}
+
+/* Tạo hiệu ứng loading spinner */
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #00aaff; /* Màu xanh dương neon */
+  border-radius: 50%;
+  animation: spin 2s linear infinite, glowEffect 1.5s ease-in-out infinite;
+  margin-right: 20px;
+}
+
+/* Hiệu ứng quay cho spinner */
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes glowEffect {
+  0%, 100% {
+      box-shadow: 0 0 10px rgba(0, 170, 255, 0.8), 0 0 20px rgba(0, 170, 255, 0.6), 0 0 30px rgba(0, 170, 255, 0.4);
+  }
+  50% {
+      box-shadow: 0 0 30px rgba(0, 170, 255, 1), 0 0 60px rgba(0, 170, 255, 0.8), 0 0 90px rgba(0, 170, 255, 0.6);
+  }
+}
+
+/* Ánh sáng xung quanh logo */
+@keyframes glowTextEffect {
+  0%, 100% {
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.8), 0 0 20px rgba(0, 170, 255, 0.6), 0 0 30px rgba(0, 170, 255, 0.4);
+  }
+  50% {
+      text-shadow: 0 0 30px rgba(0, 170, 255, 1), 0 0 60px rgba(0, 170, 255, 0.8), 0 0 90px rgba(0, 170, 255, 0.6);
+  }
+}
+
+/* Áp dụng hiệu ứng glow cho chữ */
+.logo-text {
+  animation: glowTextEffect 3s infinite ease-in-out;
+}
+

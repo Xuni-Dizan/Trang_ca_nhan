@@ -27,8 +27,16 @@ body {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     background-color: #181818;
     padding: 20px;
-    overflow: hidden;
+    overflow: auto;
     transition: all 0.3s ease;
+}
+@media only screen and (max-height: 934px) {
+    .container{
+        overflow: scroll;
+    }
+    .container::-webkit-scrollbar {
+        display: none; 
+      }
 }
 
 .editor, .result {
@@ -100,6 +108,9 @@ h2 {
     margin-top: 5px; /* Khoảng cách giữa con trỏ và gợi ý */
     width: auto;
 }
+.CodeMirror-hints::-webkit-scrollbar {
+    display: none; 
+  }
 
 /* Màu sắc của các mục trong gợi ý */
 .CodeMirror-hint-active {
