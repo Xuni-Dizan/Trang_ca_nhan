@@ -234,7 +234,17 @@
             <div class="footer-signature" id="footer-signature"></div>            
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+            <!-- <div id="visitor-count">
+                <i class="fas fa-eye"></i>
+                <span id="visitor-text">Lượt truy cập: 0</span>
+            </div> -->
+            <p>
+                <div id="visitor-count">
+                <i class="fas fa-eye"></i>
+                <span id="visitor-text">Lượt truy cập: 0</span>
+                </div>  
+                &copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
+            </p>
         </div>
     </footer>
     
@@ -382,5 +392,27 @@
     ctx.fillText("Nguyễn Xuân Đại", canvas.width / 2, canvas.height / 2 + 10);
 });
       </script>
+      <script>
+        // Kiểm tra và cập nhật số lượt truy cập
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy số lượt truy cập từ localStorage
+            let visitCount = localStorage.getItem("visitCount1");
+
+            // Nếu chưa có dữ liệu lượt truy cập, khởi tạo với 1
+            if (!visitCount) {
+                visitCount = 1;
+            } else {
+                // Nếu đã có, tăng lượt truy cập lên 1
+                visitCount = parseInt(visitCount) + 1;
+            }
+
+            // Lưu lại lượt truy cập mới vào localStorage
+            localStorage.setItem("visitCount1", visitCount);
+
+            // Cập nhật số lượt truy cập vào trang
+            const visitorText = document.getElementById("visitor-text");
+            visitorText.textContent = `Lượt truy cập: ${visitCount}`;
+        });
+    </script>
 </body>
 </html>

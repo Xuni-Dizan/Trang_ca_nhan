@@ -1901,6 +1901,17 @@ nav#main-nav a{
   height: auto;
   background: transparent; 
 }
+/* Các style đã có từ trước */
+#visitor-count {
+  display: flex;
+  align-items: center;
+  font-size: 1.3em;
+  color: wheat;
+}
+
+#visitor-count i {
+  margin-right: 10px;
+}
 
 @media only screen and (min-height: 686px) {
   .home-section{
