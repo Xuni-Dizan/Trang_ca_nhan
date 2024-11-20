@@ -241,7 +241,7 @@
             <p>
                 <div id="visitor-count">
                 <i class="fas fa-eye"></i>
-                <span id="visitor-text">Lượt truy cập: 0</span>
+                <span id="visitor-text">View: 0</span>
                 </div>  
                 &copy; 2024 YourLogo. All rights reserved | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
             </p>
@@ -393,25 +393,47 @@
 });
       </script>
       <script>
-        // Kiểm tra và cập nhật số lượt truy cập
-        document.addEventListener("DOMContentLoaded", function () {
-            // Lấy số lượt truy cập từ localStorage
-            let visitCount = localStorage.getItem("visitCount1");
+        // Lấy địa chỉ IP của người dùng từ API ipify
+        function getVisitorIP() {
+            return fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => data.ip)
+                .catch(error => {
+                    console.error('Không thể lấy địa chỉ IP:', error);
+                    return null; // Trả về null nếu có lỗi
+                });
+        }
 
-            // Nếu chưa có dữ liệu lượt truy cập, khởi tạo với 1
-            if (!visitCount) {
-                visitCount = 1;
-            } else {
-                // Nếu đã có, tăng lượt truy cập lên 1
-                visitCount = parseInt(visitCount) + 1;
+        // Cập nhật lượt truy cập duy nhất từ mỗi địa chỉ IP
+        document.addEventListener("DOMContentLoaded", async function () {
+            // Lấy địa chỉ IP của người dùng
+            const ip = await getVisitorIP();
+            if (!ip) {
+                return; // Nếu không thể lấy địa chỉ IP, không làm gì thêm
             }
 
-            // Lưu lại lượt truy cập mới vào localStorage
-            localStorage.setItem("visitCount1", visitCount);
+            // Kiểm tra xem IP đã được lưu trong localStorage chưa
+            let visitedIPs = JSON.parse(localStorage.getItem("visitedIPs")) || [];
 
-            // Cập nhật số lượt truy cập vào trang
-            const visitorText = document.getElementById("visitor-text");
-            visitorText.textContent = `Lượt truy cập: ${visitCount}`;
+            // Nếu IP chưa được lưu, tính là lượt truy cập mới
+            if (!visitedIPs.includes(ip)) {
+                visitedIPs.push(ip); // Thêm IP vào danh sách đã truy cập
+                localStorage.setItem("visitedIPs", JSON.stringify(visitedIPs)); // Lưu lại danh sách IP
+
+                // Cập nhật số lượt truy cập
+                let visitCount = parseInt(localStorage.getItem("visitCount1")) || 0;
+                visitCount++;
+                localStorage.setItem("visitCount1", visitCount); // Lưu lại số lượt truy cập
+
+                // Cập nhật hiển thị số lượt truy cập
+                const visitorText = document.getElementById("visitor-text");
+                visitorText.textContent = `Views: ${visitCount}`;
+            } else {
+                // Nếu IP đã được lưu, không tính lượt truy cập mới
+                const visitorText = document.getElementById("visitor-text");
+                const visitCount = localStorage.getItem("visitCount1") || 0;
+                visitorText.textContent = `Views: ${visitCount}`;
+            }
         });
     </script>
 </body>
