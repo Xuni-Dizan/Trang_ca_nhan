@@ -19,20 +19,34 @@
     gtag('config', 'G-WBP9VHQBMF');
     </script>
     <style>
-        /* Thêm CSS cho thông báo thông minh */
         .welcome-message {
     position: fixed;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 123, 255, 0.8);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 255, 255, 0.5);
+    font-size: 1.2em;
+    font-family: 'Poppins', sans-serif;
     display: none; /* Ẩn mặc định */
-    z-index: 99999;
-    text-align: center; /* Căn giữa văn bản */
+    opacity: 0;
+    z-index: 9999;
+    animation: fadeInUp 1s ease-out forwards;
+    text-align: center;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
 }
 
 
@@ -304,7 +318,7 @@ main {
         </div>
     </div>
     <!-- Thông báo thông minh -->
-    <div id="welcome-message" class="welcome-message"></div>
+    <div id="welcome-message" class="welcome-message" style="display: block;"></div>
     <div class="video-container">
         <!-- Video nền cho phần main -->
         <video id="background-video" autoplay loop muted preload="none">
@@ -483,13 +497,14 @@ function showWelcomeMessage(message) {
             welcomeMessage.style.opacity = "0"; // Mờ dần
             setTimeout(() => {
                 welcomeMessage.style.display = "none"; // Ẩn hoàn toàn
-                welcomeMessage.style.opacity = "1"; // Reset lại opacity
+                welcomeMessage.style.opacity = "1"; // Reset opacity
             }, 500); // Thời gian chờ sau khi mờ dần
-        }, 10000); // Ẩn sau 10 giây
+        }, 7000); // Thời gian hiện thông báo
     } else {
         console.error("Thẻ welcome-message không tồn tại!");
     }
 }
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Trang đã tải hoàn toàn!");
     const firstVisitKey = "firstVisit";
