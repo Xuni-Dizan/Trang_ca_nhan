@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="styles.css">
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.getElementById("overlay");
+            // Theo dõi trạng thái tải tài nguyên
+        const resourcesLoaded = () => {
+            const images = Array.from(document.images);
+            const loaded = images.every(img => img.complete);
+            return loaded;
+        };
+    
+            // Chờ toàn bộ tài nguyên được tải
+            window.addEventListener("load", () => {
+                overlay.style.transition = "opacity 0.5s ease-out";
+            overlay.style.opacity = "0";
+
+            // Đợi animation kết thúc trước khi ẩn hoàn toàn
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 500);
+                // overlay.style.display = "none";
+            });
+
+            // Kiểm tra tài nguyên định kỳ
+        const checkResources = setInterval(() => {
+            if (resourcesLoaded()) {
+                clearInterval(checkResources);
+                hideOverlay();
+            }
+        }, 100);
+        });
+    </script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=DM+Sans&display=swap'>
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
@@ -228,12 +259,12 @@
                     </a>
                     <span class="tooltip">Coding</span>
                 </li>
-                <li id="sidebar-news_project">
-                    <a class="links" onclick="openApp(event, 'news_project')">
+                <li id="sidebar-latest_project">
+                    <a class="links" onclick="openApp(event, 'latest_project')">
                     <i class='bx bx-news'></i>
-                    <span class="links_name">News project</span>
+                    <span class="links_name">Latest project</span>
                     </a>
-                    <span class="tooltip">News project</span>
+                    <span class="tooltip">Latest project</span>
                 </li>
                 <li id="sidebar-messages">
                     <a class="links" onclick="openApp(event, 'messages')">
@@ -278,8 +309,8 @@
             <section id="coding" class="tab-content" style="display: none;">
                 <iframe src="app/coding.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
             </section>
-            <section id="news_project" class="tab-content" style="display: none;">
-                <iframe src="app/news_project.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+            <section id="latest_project" class="tab-content" style="display: none;">
+                <iframe src="app/latest_project.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
             </section>
             <section id="messages" class="tab-content" style="display: none;">
                 <iframe src="app/messages.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
@@ -366,18 +397,6 @@
             </p>
         </div>
     </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const overlay = document.getElementById("overlay");
-    
-            // Chờ toàn bộ tài nguyên được tải
-            window.addEventListener("load", () => {
-                // Ẩn overlay sau khi mọi tài nguyên đã sẵn sàng
-                overlay.style.display = "none";
-            });
-        });
-    </script>
-    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const menuBtn = document.getElementById('menu-btn');

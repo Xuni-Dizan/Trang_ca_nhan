@@ -215,6 +215,9 @@ li:hover .btn {
         width: 100%;
         height: 100%;
     }
+    iframe::-webkit-scrollbar {
+        display: none; 
+    }
 
     /* Các section khác */
     #section-ds, #section-p {

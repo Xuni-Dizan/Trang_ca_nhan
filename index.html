@@ -19,6 +19,23 @@
     gtag('config', 'G-WBP9VHQBMF');
     </script>
     <style>
+        /* Thêm CSS cho thông báo thông minh */
+        .welcome-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 123, 255, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none; /* Ẩn mặc định */
+    z-index: 99999;
+    text-align: center; /* Căn giữa văn bản */
+}
+
+
        /* Thêm hiệu ứng cho text gõ chữ */
 @keyframes typing {
     from { width: 0; }
@@ -182,10 +199,9 @@ main {
     transition: all 0.3s ease;
     animation: menuItemAppear 1.2s ease-out forwards;
 }
-nav .nav-class a:hover{
-    transform: translateY(-5px);
-}
-
+/* nav .nav-class a:hover{
+    transform: translateY(-5px) scale(2);
+} */
 /* Tạo hiệu ứng delay khác nhau cho từng mục nav */
 #main-nav a:nth-child(1) { animation-delay: 1s; }
 #main-nav a:nth-child(2) { animation-delay: 1.2s; }
@@ -287,16 +303,18 @@ nav .nav-class a:hover{
             </div>
         </div>
     </div>
+    <!-- Thông báo thông minh -->
+    <div id="welcome-message" class="welcome-message"></div>
     <div class="video-container">
         <!-- Video nền cho phần main -->
-        <video id="background-video" autoplay loop muted>
+        <video id="background-video" autoplay loop muted preload="none">
             <source src="videos/br1.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ video.
         </video>
     </div>
     <header id="animated-header">
         <h1 id="index-text">Welcome to my Website</h1>
-        <nav id="main-nav" class="nav-class">
+        <nav id="main-nav" >
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
@@ -379,6 +397,7 @@ nav .nav-class a:hover{
             const backgroundVideo = document.getElementById("background-video");
             const animatedHeader = document.getElementById("animated-header");
             const animatedH2 = document.getElementById("animated-h2");
+            // const welcomeMessage = document.getElementById("welcome-message");
     
             let videoLoaded = false;
     
@@ -397,18 +416,103 @@ nav .nav-class a:hover{
             // Kiểm tra nếu cả video và tài nguyên khác đã sẵn sàng
             function checkAllReady() {
                 if (videoLoaded) {
-                    overlay.style.display = "none"; // Ẩn overlay
+                    overlay.style.transition = "opacity 0.5s ease-out";
+                    overlay.style.opacity = "0";
+
+                    // Đợi animation kết thúc trước khi ẩn hoàn toàn
+                    setTimeout(() => {
+                        overlay.style.display = "none";
+                    }, 500);
                     mainContent.classList.remove("hidden");
                     mainContent.classList.add("visible");
     
                     // Kích hoạt animation
                     animatedHeader.style.opacity = "1";
                     animatedH2.style.opacity = "1";
+                    // welcomeMessage.style.opacity= "1";
                 }
             }
         });
     </script>
-    
+     <script>
+//         // Hiển thị thông báo
+// function showWelcomeMessage(message) {
+//     const welcomeMessage = document.getElementById("welcome-message");
+//     welcomeMessage.textContent = message;
+//     welcomeMessage.style.display = "block";
+//     // Hiệu ứng mờ dần sau khi hiển thị 10 giây
+//     setTimeout(() => {
+//         welcomeMessage.style.opacity = "0";
+//         setTimeout(() => {
+//             welcomeMessage.style.display = "none";
+//             welcomeMessage.style.opacity = "1"; // Reset opacity cho lần sau
+//         }, 500);
+//     }, 10000);
+// }
+
+// // Xử lý thông báo thông minh
+// document.addEventListener("DOMContentLoaded", function () {
+//     const firstVisitKey = "firstVisit";
+//     const lastVisitKey = "lastVisit";
+//     const currentTime = new Date().getTime();
+
+//     // Kiểm tra lần đầu truy cập
+//     if (!localStorage.getItem(firstVisitKey)) {
+//         localStorage.setItem(firstVisitKey, currentTime);
+//         showWelcomeMessage("Chào mừng bạn đến với trang web của tôi! Đây là lần đầu tiên bạn truy cập.");
+//     } else {
+//         const lastVisitTime = localStorage.getItem(lastVisitKey);
+//         const daysSinceLastVisit = lastVisitTime
+//             ? (currentTime - parseInt(lastVisitTime)) / (1000 * 3600 * 24)
+//             : 0;
+
+//         if (daysSinceLastVisit > 30) {
+//             showWelcomeMessage("Chào mừng bạn quay lại! Đã lâu rồi bạn không ghé thăm trang web của tôi.");
+//         }
+//     }
+
+//     // Cập nhật thời gian truy cập gần nhất
+//     localStorage.setItem(lastVisitKey, currentTime);
+// });
+function showWelcomeMessage(message) {
+    const welcomeMessage = document.getElementById("welcome-message");
+    if (welcomeMessage) {
+        welcomeMessage.textContent = message; // Đặt nội dung thông báo
+        welcomeMessage.style.display = "block"; // Hiển thị thông báo
+        setTimeout(() => {
+            welcomeMessage.style.opacity = "0"; // Mờ dần
+            setTimeout(() => {
+                welcomeMessage.style.display = "none"; // Ẩn hoàn toàn
+                welcomeMessage.style.opacity = "1"; // Reset lại opacity
+            }, 500); // Thời gian chờ sau khi mờ dần
+        }, 10000); // Ẩn sau 10 giây
+    } else {
+        console.error("Thẻ welcome-message không tồn tại!");
+    }
+}
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Trang đã tải hoàn toàn!");
+    const firstVisitKey = "firstVisit";
+    const lastVisitKey = "lastVisit";
+    const currentTime = new Date().getTime();
+
+    if (!localStorage.getItem(firstVisitKey)) {
+        localStorage.setItem(firstVisitKey, currentTime);
+        showWelcomeMessage("Chào mừng bạn đến với trang web của tôi! Đây là lần đầu tiên bạn truy cập.");
+    } else {
+        const lastVisitTime = localStorage.getItem(lastVisitKey);
+        const daysSinceLastVisit = lastVisitTime
+            ? (currentTime - parseInt(lastVisitTime)) / (1000 * 3600 * 24)
+            : 0;
+
+        if (daysSinceLastVisit > 30) {
+            showWelcomeMessage("Chào mừng bạn quay lại! Đã lâu rồi bạn không ghé thăm trang web của tôi.");
+        }
+    }
+    localStorage.setItem(lastVisitKey, currentTime);
+});
+
+    </script>
      
     <script >
         // function index-text
@@ -589,32 +693,33 @@ nav .nav-class a:hover{
                     });
             }
     
-            // Cập nhật lượt truy cập duy nhất từ mỗi địa chỉ IP
             document.addEventListener("DOMContentLoaded", async function () {
-                const ip = await getVisitorIP();  // Lấy địa chỉ IP của người dùng
-                if (!ip) {
-                    return;  // Nếu không thể lấy địa chỉ IP, không làm gì thêm
-                }
-    
-                // Kiểm tra xem IP đã được lưu trong localStorage chưa
-                let visitedIPs = JSON.parse(localStorage.getItem("visitedIPs")) || [];
-    
-                // Nếu IP chưa được lưu, tính là lượt truy cập mới
-                if (!visitedIPs.includes(ip)) {
-                    visitedIPs.push(ip); // Thêm IP vào danh sách đã truy cập
-                    localStorage.setItem("visitedIPs", JSON.stringify(visitedIPs)); // Lưu lại danh sách IP
-    
-                    // Cập nhật số lượt truy cập
-                    let visitCount = parseInt(localStorage.getItem("visitCount")) || 0;
-                    visitCount++;
-                    localStorage.setItem("visitCount", visitCount); // Lưu lại số lượt truy cập
-                }
-    
-                // Cập nhật hiển thị số lượt truy cập
-                const visitorText = document.getElementById("visitor-text");
-                const visitCount = localStorage.getItem("visitCount") || 0;
-                visitorText.textContent = `Views: ${visitCount}`;
-            });
+    const ip = await getVisitorIP();  // Lấy địa chỉ IP của người dùng
+    if (!ip) {
+        console.log('Không thể lấy địa chỉ IP');
+        return ;  // Nếu không thể lấy địa chỉ IP, không làm gì thêm
+    }
+
+    // Kiểm tra xem IP đã được lưu trong localStorage chưa
+    let visitedIPs = JSON.parse(localStorage.getItem("visitedIPs")) || [];
+
+    // Nếu IP chưa được lưu, tính là lượt truy cập mới
+    if (!visitedIPs.includes(ip)) {
+        visitedIPs.push(ip); // Thêm IP vào danh sách đã truy cập
+        localStorage.setItem("visitedIPs", JSON.stringify(visitedIPs)); // Lưu lại danh sách IP
+
+        // Cập nhật số lượt truy cập
+        let visitCount = parseInt(localStorage.getItem("visitCount")) || 0;
+        visitCount++;
+        localStorage.setItem("visitCount", visitCount); // Lưu lại số lượt truy cập
+    }
+
+    // Cập nhật hiển thị số lượt truy cập
+    const visitorText = document.getElementById("visitor-text");
+    const visitCount = localStorage.getItem("visitCount") || 0;
+    visitorText.textContent = `Views: ${visitCount}`;
+});
+
         </script>
 </body>
 </html>

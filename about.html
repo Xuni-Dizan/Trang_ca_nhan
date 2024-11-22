@@ -262,12 +262,32 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("overlay");
+            // Theo dõi trạng thái tải tài nguyên
+        const resourcesLoaded = () => {
+            const images = Array.from(document.images);
+            const loaded = images.every(img => img.complete);
+            return loaded;
+        };
     
             // Chờ toàn bộ tài nguyên được tải
             window.addEventListener("load", () => {
-                // Ẩn overlay sau khi mọi tài nguyên đã sẵn sàng
+                overlay.style.transition = "opacity 0.5s ease-out";
+            overlay.style.opacity = "0";
+
+            // Đợi animation kết thúc trước khi ẩn hoàn toàn
+            setTimeout(() => {
                 overlay.style.display = "none";
+            }, 500);
+                // overlay.style.display = "none";
             });
+
+            // Kiểm tra tài nguyên định kỳ
+        const checkResources = setInterval(() => {
+            if (resourcesLoaded()) {
+                clearInterval(checkResources);
+                hideOverlay();
+            }
+        }, 100);
         });
     </script>
     

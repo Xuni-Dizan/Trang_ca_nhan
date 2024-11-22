@@ -23,10 +23,10 @@
             <h2>Soạn thảo mã</h2>
             <!-- Language selection buttons -->
             <div class="editor-buttons">
-                <button onclick="showEditor('html')">HTML</button>
-                <button onclick="showEditor('css')">CSS</button>
-                <button onclick="showEditor('js')">JavaScript</button>
-            </div>
+                <button class="btn-link active" onclick="showEditor('html')">HTML</button>
+                <button class="btn-link" onclick="showEditor('css')">CSS</button>
+                <button class="btn-link" onclick="showEditor('js')">JavaScript</button>
+            </div>            
             
             <div id="editor-html"></div>
             <div id="editor-css" style="display: none;"></div>
@@ -42,7 +42,7 @@
 
     <!-- AI Section -->
     <section id="ai">
-        <iframe src="https://chat.webllm.ai/#/chat" frameborder="0"></iframe>
+        <iframe src="https://chat.webllm.ai/#/chat" frameborder="0"></iframe> 
     </section>
 
     <!-- AI Icon -->

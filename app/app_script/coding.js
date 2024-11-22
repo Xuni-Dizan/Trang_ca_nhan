@@ -95,20 +95,20 @@ function runCode() {
     iframeDocument.close();
 }
 
-function showEditor(editor) {
-    document.getElementById('editor-html').style.display = (editor === 'html') ? 'block' : 'none';
-    document.getElementById('editor-css').style.display = (editor === 'css') ? 'block' : 'none';
-    document.getElementById('editor-js').style.display = (editor === 'js') ? 'block' : 'none';
-}
+// function showEditor(editor) {
+//     document.getElementById('editor-html').style.display = (editor === 'html') ? 'block' : 'none';
+//     document.getElementById('editor-css').style.display = (editor === 'css') ? 'block' : 'none';
+//     document.getElementById('editor-js').style.display = (editor === 'js') ? 'block' : 'none';
+// }
 
-function toggleAI() {
-    const aiSection = document.getElementById('ai');
-    if (aiSection.style.display === 'none' || aiSection.style.display === '') {
-        aiSection.style.display = 'block';
-    } else {
-        aiSection.style.display = 'none';
-    }
-}
+// function toggleAI() {
+//     const aiSection = document.getElementById('ai');
+//     if (aiSection.style.display === 'none' || aiSection.style.display === '') {
+//         aiSection.style.display = 'block';
+//     } else {
+//         aiSection.style.display = 'none';
+//     }
+// }
 
 // Lưu mã vào localStorage khi thay đổi
 function saveCode() {
@@ -135,10 +135,20 @@ window.onload = function () {
 
 // Hàm để chuyển đổi giữa các editor
 function showEditor(editor) {
+    var i, btnlinks;
+    btnlinks = document.getElementsByClassName("btn-link");
+    for (i = 0; i < btnlinks.length; i++) {
+        btnlinks[i].classList.remove("active");  // Xóa lớp active
+    }
     document.getElementById('editor-html').style.display = (editor === 'html') ? 'block' : 'none';
     document.getElementById('editor-css').style.display = (editor === 'css') ? 'block' : 'none';
     document.getElementById('editor-js').style.display = (editor === 'js') ? 'block' : 'none';
+    
+    // Thêm lớp active vào nút hiện tại
+    var button = document.querySelector(`button[onclick="showEditor('${editor}')"]`);
+    button.classList.add("active");
 }
+
 
 // Toggle AI Section
 function toggleAI() {
