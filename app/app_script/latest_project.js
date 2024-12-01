@@ -172,3 +172,21 @@ const modalDialog = document.querySelector(".copy-link-dialog");
     showCurrentGroup();
 });
 
+
+const iframes = document.querySelectorAll('iframe');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const iframe = entry.target;
+            iframe.src = iframe.dataset.src;
+            observer.unobserve(iframe);
+        }
+    });
+});
+
+iframes.forEach(iframe => {
+    iframe.dataset.src = iframe.src;
+    iframe.src = '';
+    observer.observe(iframe);
+});
+

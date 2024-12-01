@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="js/script.js"></script>
     <script defer>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("overlay");
@@ -231,6 +233,9 @@
                 </div>
             </div>
           </section>
+          <div class="Thong-bao" style="display: none;">
+            <p>Do chiều rộng màn hình của bạn quá nhỏ, Laps App cần độ rộng màn hình lớn hơn để hoạt động tốt. Hãy thử với màn hình laptop hoặc monitor của bạn.</p>
+          </div>
           <section class="section-2" id="section-2">
             <!-- partial:index.partial.html -->
             <div class="sidebar">
@@ -327,19 +332,6 @@
             <section id="setting" class="tab-content" style="display: none;">
                 <iframe src="app/setting.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
             </section>
-        
-                <!-- <div class="section" id="section-1">
-                    <div class="text">Dashboard</div>
-                </div>
-                <div class="section" id="section-2">
-                    <div class="text">Analytics</div>
-                </div> -->         
-            <!-- <div class="home-section">
-                <button id="menu-btn">&#9776;</button>
-                <div class="content">
-                    <h2>Dash board</h2>
-                </div>
-            </div> -->
           </section>
     </main>
     <footer>
@@ -765,7 +757,6 @@ updateDynamicValue();
             }
         } 
       </script>
-      <script src="script.js"></script>
       <script>
         document.addEventListener("DOMContentLoaded", function() {
     // Ẩn section-1 và section-2 khi trang tải
@@ -851,7 +842,6 @@ updateDynamicValue();
     ctx.fillText("Nguyễn Xuân Đại", canvas.width / 2, canvas.height / 2 + 10);
 });
       </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script>
     let progress = 0; // Biến kiểm soát độ tiến của chữ
     let targetProgress = 0; // Tiến độ mục tiêu để làm mượt chuyển động
@@ -1034,13 +1024,30 @@ updateDynamicValue();
                 visitorText.textContent = `Views: ${visitCount}`;
             });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const thongBao = document.querySelector(".Thong-bao");
+            const section2 = document.querySelector(".section-2");
+            const section0 = document.querySelector(".section-0");
+            const section1 = document.querySelector(".section-1"); // Sửa selector đúng cho section1
+    
+            function handleResize() {
+                // Kiểm tra điều kiện chiều rộng cửa sổ và hiển thị các phần tử
+                if (window.innerWidth < 650 && (section0.style.display === "none" || section1.style.display === "none")) {
+                    section2.style.display = "none";
+                    thongBao.style.display = "block";
+                } else {
+                    if (section0.style.display === "none" || section1.style.display === "none") {
+                        section2.style.display = "block";
+                        thongBao.style.display = "none";
+                    }
+                }
+            }
+    
+            window.addEventListener("resize", handleResize);
+            handleResize(); // Kiểm tra khi tải trang
+        });
     </script>
+    
 </body>
 </html>
-
-
-
-
-
-
-

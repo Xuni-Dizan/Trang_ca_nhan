@@ -1515,6 +1515,8 @@ footer {
     overflow-y: auto;
     left: 0;
     top: 0;
+    z-index: 100; /* Đảm bảo sidebar nằm phía trên */
+    overflow: visible; /* Cho phép hiển thị các phần tử bên ngoài */
     overflow-x: hidden; 
     height: 100%;
     width: 50px;
@@ -1599,26 +1601,26 @@ footer {
     height: 100%;
   }
   .nav-list-1 {
-    position: relative; /* Đảm bảo tooltip dựa vào .nav-list-1 làm điểm gốc */
+    position: relative; 
 }
 
   .nav-list-1 li.active {
     border-radius: 10px;
-    background-color: rgba(100, 149, 237, 0.2); /* Màu nền nổi bật */
-    border-left: 4px solid #6495ED; /* Thêm đường viền trái */
-    color: #6495ED; /* Đổi màu chữ */
+    background-color: rgba(100, 149, 237, 0.2);
+    border-left: 4px solid #6495ED;
+    color: #6495ED;
 }
 .nav-list-1 li.active a {
   color: #6495ED;
   font-weight: bold;
 }
 .nav-list-1 li.active .tooltip {
-  background: #6495ED; /* Đổi màu tooltip */
+  background: #6495ED;
   color: #fff;
 }
 .nav-list-1 li:hover .tooltip {
-  visibility: visible; /* Hiển thị tooltip khi hover */
-  opacity: 1; /* Đặt tooltip thành hiện */
+  visibility: visible; 
+  opacity: 1; 
 }
   .sidebar li {
     position: relative;
@@ -1630,25 +1632,29 @@ footer {
   .sidebar li .tooltip {
     position: absolute;
     top: -20px;
-    left: calc(100% + 15px);
-    /* z-index: 99999; */
+    left: calc(100% - 23px);
+    z-index: 200;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     padding: 6px 2px;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 11px;
     font-weight: 400;
     opacity: 0;
     white-space: nowrap;
     pointer-events: none;
     transition: 0s;
+    transform: translate(-50%, calc(-100% - 20px));
+    visibility: hidden; /* Ẩn tooltip mặc định */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
   .sidebar li:hover .tooltip {
     opacity: 1;
     pointer-events: auto;
     transition: all 0.4s ease;
-    top: 50%;
+    top: -20%;
     transform: translateY(-50%);
+    visibility: visible;
   }
   .sidebar.open li .tooltip {
     display: none;
@@ -1741,7 +1747,7 @@ footer {
     width: calc(100% - 78px);
     transition: all 0.5s ease;
     z-index: 2;
-    height: 102%; /* Đảm bảo home-section chiếm toàn bộ chiều cao */
+    height: 102%;
     margin-left: auto; /* Khoảng cách với sidebar */
     flex: 1; /* Phân chia không gian đều */
     overflow: auto;
@@ -1773,8 +1779,6 @@ footer {
     }
 }
   @media only screen and (max-width: 546px) {
-    /* .section-mode{
-    } */
     
     .button-mode {
       font-size: 15px;
@@ -1788,6 +1792,16 @@ footer {
   .drop {
     min-width: 5em;
   }
+  }
+  @media only screen and (min-width: 1410px) {
+    .section-mode{
+      top: -40px;
+    }
+  }
+  @media only screen and (min-width: 1685px) {
+    .section-mode{
+      top: -50px;
+    }
   }
   @media only screen and (max-width: 1231px) {
     .wrapper{
@@ -1812,6 +1826,54 @@ footer {
 @media only screen and (max-width: 376px) {
   .drop{
     min-width: 4em;
+  }
+}
+@media only screen and (min-height: 567px) {
+    .tab-content{
+      top: -101.5%;
+      height: 101.5%;
+    }
+}
+@media only screen and (min-height: 758px) {
+  .tab-content{
+    top: -101.3%;
+    height: 101.3%;
+  }
+}
+@media only screen and (min-height: 880px) {
+  .tab-content{
+    top: -101.2%;
+    height: 101.2%;
+  }
+}
+@media only screen and (min-height: 950px) {
+  .tab-content{
+    top: -101.1%;
+    height: 101.1%;
+  }
+}
+@media only screen and (min-height: 1038px) {
+  .tab-content{
+    top: -101%;
+    height: 101%;
+  }
+}
+@media only screen and (min-height: 1145px) {
+  .tab-content{
+    top: -100.9%;
+    height: 100.9%;
+  }
+}
+@media only screen and (min-height: 1270px) {
+  .tab-content{
+    top: -100.8%;
+    height: 100.8%;
+  }
+}
+@media only screen and (min-height: 1430px) {
+  .tab-content{
+    top: -100.7%;
+    height: 100.7%;
   }
 }
 
@@ -2069,6 +2131,31 @@ nav#main-nav a{
 @media only screen and (min-height: 686px) {
   .home-section{
     height: calc(100%-var(--dynamic-value));
+  }
+}
+
+.Thong-bao {
+  display: none;
+  background-color: #ffdddd; /* Màu nền nhạt */
+  color: #b30000; /* Màu chữ đỏ nổi bật */
+  border: 1px solid #ff0000; /* Viền đỏ */
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px;
+  text-align: center;
+  font-size: 1.2em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
   }
 }
 
