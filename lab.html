@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="js/script.js"></script>
     <script defer>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("overlay");
@@ -236,102 +234,102 @@
           <div class="Thong-bao" style="display: none;">
             <p>Do chiều rộng màn hình của bạn quá nhỏ, Laps App cần độ rộng màn hình lớn hơn để hoạt động tốt. Hãy thử với màn hình laptop hoặc monitor của bạn.</p>
           </div>
-          <section class="section-2" id="section-2">
-            <!-- partial:index.partial.html -->
-            <div class="sidebar">
-                <div class="logo-details">
-                <i class='bx bxl-java icon'></i>
-                <div class="logo_name">Dizan</div>
-                <i class='bx bx-menu' id="btn"></i>
+          <section class="section-2" id="section-2" style="display: none;">
+                <!-- partial:index.partial.html -->
+                <div class="sidebar">
+                    <div class="logo-details">
+                    <i class='bx bxl-java icon'></i>
+                    <div class="logo_name">Dizan</div>
+                    <i class='bx bx-menu' id="btn"></i>
+                    </div>
+                    <ul class="nav-list-1">
+                    <li>
+                        <i class='bx bx-search'></i>
+                        <input type="text" links_namelinks_name placeholder="Search">
+                        <span class="tooltip">Search</span>
+                    </li>
+                    <li id="sidebar-dashboard">
+                        <a class="links active" onclick="openApp(event, 'dashboard')">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Dashboard</span>
+                        </a>
+                        <span class="tooltip">Dashboard</span>
+                    </li>
+                    <li id="sidebar-coding">
+                        <a class="links" onclick="openApp(event, 'coding')">
+                        <i class='bx bx-code-alt'></i>
+                        <span class="links_name">Coding</span>
+                        </a>
+                        <span class="tooltip">Coding</span>
+                    </li>
+                    <li id="sidebar-latest_project">
+                        <a class="links" onclick="openApp(event, 'latest_project')">
+                        <i class='bx bx-news'></i>
+                        <span class="links_name">Latest project</span>
+                        </a>
+                        <span class="tooltip">Latest project</span>
+                    </li>
+                    <li id="sidebar-messages">
+                        <a class="links" onclick="openApp(event, 'messages')">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Messages</span>
+                        </a>
+                        <span class="tooltip">Messages</span>
+                    </li>
+                    <li id="sidebar-analytics">
+                        <a class="links" onclick="openApp(event, 'analytics')">
+                        <i class='bx bx-pie-chart-alt-2'></i>
+                        <span class="links_name">Analytics</span>
+                        </a>
+                        <span class="tooltip">Analytics</span>
+                    </li>
+                    <li id="sidebar-file_manager">
+                        <a class="links" onclick="openApp(event, 'file_manager')">
+                        <i class='bx bx-folder'></i>
+                        <span class="links_name">File Manager</span>
+                        </a>
+                        <span class="tooltip">Files</span>
+                    </li>
+                    <li id="sidebar-color_code">
+                        <a class="links" onclick="openApp(event, 'color_code')">
+                        <i class='bx bx-color'></i>
+                        <span class="links_name">Color code</span>
+                        </a>
+                        <span class="tooltip">Color code</span>
+                    </li>
+                    <li id="sidebar-setting">
+                        <a class="links" onclick="openApp(event, 'setting')">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">Setting</span>
+                        </a>
+                        <span class="tooltip">Setting</span>
+                    </li>
+                    </ul>
                 </div>
-                <ul class="nav-list-1">
-                <li>
-                    <i class='bx bx-search'></i>
-                    <input type="text" links_namelinks_name placeholder="Search">
-                    <span class="tooltip">Search</span>
-                </li>
-                <li id="sidebar-dashboard">
-                    <a class="links active" onclick="openApp(event, 'dashboard')">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Dashboard</span>
-                    </a>
-                    <span class="tooltip">Dashboard</span>
-                </li>
-                <li id="sidebar-coding">
-                    <a class="links" onclick="openApp(event, 'coding')">
-                    <i class='bx bx-code-alt'></i>
-                    <span class="links_name">Coding</span>
-                    </a>
-                    <span class="tooltip">Coding</span>
-                </li>
-                <li id="sidebar-latest_project">
-                    <a class="links" onclick="openApp(event, 'latest_project')">
-                    <i class='bx bx-news'></i>
-                    <span class="links_name">Latest project</span>
-                    </a>
-                    <span class="tooltip">Latest project</span>
-                </li>
-                <li id="sidebar-messages">
-                    <a class="links" onclick="openApp(event, 'messages')">
-                    <i class='bx bx-chat'></i>
-                    <span class="links_name">Messages</span>
-                    </a>
-                    <span class="tooltip">Messages</span>
-                </li>
-                <li id="sidebar-analytics">
-                    <a class="links" onclick="openApp(event, 'analytics')">
-                    <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">Analytics</span>
-                    </a>
-                    <span class="tooltip">Analytics</span>
-                </li>
-                <li id="sidebar-file_manager">
-                    <a class="links" onclick="openApp(event, 'file_manager')">
-                    <i class='bx bx-folder'></i>
-                    <span class="links_name">File Manager</span>
-                    </a>
-                    <span class="tooltip">Files</span>
-                </li>
-                <li id="sidebar-color_code">
-                    <a class="links" onclick="openApp(event, 'color_code')">
-                    <i class='bx bx-color'></i>
-                    <span class="links_name">Color code</span>
-                    </a>
-                    <span class="tooltip">Color code</span>
-                </li>
-                <li id="sidebar-setting">
-                    <a class="links" onclick="openApp(event, 'setting')">
-                    <i class='bx bx-cog'></i>
-                    <span class="links_name">Setting</span>
-                    </a>
-                    <span class="tooltip">Setting</span>
-                </li>
-                </ul>
-            </div>
-            <section id="dashboard" class="tab-content" style="display: block;">
-                <iframe src="app/dashboard.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="coding" class="tab-content" style="display: none;">
-                <iframe src="app/coding.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="latest_project" class="tab-content" style="display: none;">
-                <iframe src="app/latest_project.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="messages" class="tab-content" style="display: none;">
-                <iframe src="app/messages.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="analytics" class="tab-content" style="display: none;">
-                <iframe src="app/analytics.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="file_manager" class="tab-content" style="display: none;">
-                <iframe src="app/file_manager.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="color_code" class="tab-content" style="display: none;">
-                <iframe src="app/color_code.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
-            <section id="setting" class="tab-content" style="display: none;">
-                <iframe src="app/setting.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-            </section>
+                <section id="dashboard" class="tab-content" style="display: block;">
+                    <iframe src="app/dashboard.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
+                <section id="coding" class="tab-content" style="display: none;">
+                    <iframe src="app/coding.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
+                <section id="latest_project" class="tab-content" style="display: none;">
+                    <iframe src="app/latest_project.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
+                <section id="messages" class="tab-content" style="display: none;">
+                    <iframe src="app/messages.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
+                <section id="analytics" class="tab-content" style="display: none;">
+                    <iframe src="app/analytics.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
+                <section id="file_manager" class="tab-content" style="display: none;">
+                    <iframe src="app/file_manager.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
+                <section id="color_code" class="tab-content" style="display: none;">
+                    <iframe src="app/color_code.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
+                <section id="setting" class="tab-content" style="display: none;">
+                    <iframe src="app/setting.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </section>
           </section>
     </main>
     <footer>
@@ -757,6 +755,8 @@ updateDynamicValue();
             }
         } 
       </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+      <script src="js/script.js"></script>
       <script>
         document.addEventListener("DOMContentLoaded", function() {
     // Ẩn section-1 và section-2 khi trang tải
@@ -780,6 +780,7 @@ updateDynamicValue();
             panelContainer.style.display = 'flex';
             section1.style.display = 'none';
             section2.style.display = 'none';
+            lab_text.textContent = "Danh sách Labs";
         });
     }
 
@@ -789,6 +790,7 @@ updateDynamicValue();
             panelContainer.style.display = 'none';
             section1.style.display = 'block';
             section2.style.display = 'none';
+            lab_text.textContent = "Danh sách Labs";
         });
     }
 
@@ -1024,7 +1026,7 @@ updateDynamicValue();
                 visitorText.textContent = `Views: ${visitCount}`;
             });
     </script>
-    <script>
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", () => {
             const thongBao = document.querySelector(".Thong-bao");
             const section2 = document.querySelector(".section-2");
@@ -1047,7 +1049,7 @@ updateDynamicValue();
             window.addEventListener("resize", handleResize);
             handleResize(); // Kiểm tra khi tải trang
         });
-    </script>
+    </script> -->
     
 </body>
 </html>
