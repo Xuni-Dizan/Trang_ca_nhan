@@ -291,6 +291,10 @@
                         <span class="tooltip">Setting</span>
                     </li>
                     </ul>
+                    <div class="guidance">
+                        <div class="arrow"></div>
+                        <div class="guide-text">Chào mừng bạn đến với sidebar! Bạn có thể điều hướng các mục trên đây.</div>
+                    </div>
                 </div>
                 <section id="dashboard" class="tab-content" style="display: block;">
                     <iframe src="app/dashboard.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
@@ -918,6 +922,21 @@
             }
 
             updateVisitorCount();
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Các mã JavaScript hiện tại...
+
+            // Thêm mã xử lý click vào icon 'bx bxl-java'
+            const javaIcon = document.querySelector('.bx.bxl-java.icon');
+            const section2 = document.getElementById('section-2');
+
+            if (javaIcon && section2) {
+                javaIcon.addEventListener('click', () => {
+                    section2.classList.toggle('fullscreen');
+                });
+            }
         });
     </script>
 </body>

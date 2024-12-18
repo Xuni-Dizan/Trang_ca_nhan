@@ -233,3 +233,52 @@ document.addEventListener("DOMContentLoaded", function () {
     // Gọi hàm với tham số pageKey
     updateVisitorCount(page);
 });
+
+// Kiểm tra xem phần hướng dẫn đã bị ẩn trong 30 ngày chưa
+function shouldShowGuidance() {
+    const lastDismiss = localStorage.getItem('guidanceDismissed');
+    if (!lastDismiss) return true;
+    const now = new Date().getTime();
+    const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+    return (now - lastDismiss) > thirtyDays;
+}
+
+// Hiển thị phần hướng dẫn nếu cần
+function toggleGuidance() {
+    const guidance = document.querySelector('.guidance');
+    if (shouldShowGuidance()) {
+        guidance.style.display = 'flex';
+    } else {
+        guidance.style.display = 'none';
+    }
+}
+
+// Xử lý sự kiện khi sidebar được mở rộng
+function handleSidebarToggle() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.addEventListener('transitionend', () => {
+        if (sidebar.classList.contains('open')) {
+            toggleGuidance();
+        } else {
+            const guidance = document.querySelector('.guidance');
+            guidance.style.display = 'none';
+        }
+    });
+}
+
+// Xử lý sự kiện khi người dùng nhấp vào icon bx bxl-java
+function handleIconClick() {
+    const javaIcon = document.querySelector('.bx.bxl-java');
+    const guidance = document.querySelector('.guidance');
+
+    javaIcon.addEventListener('click', () => {
+        guidance.style.display = 'none';
+        localStorage.setItem('guidanceDismissed', new Date().getTime());
+    });
+}
+
+// Khởi chạy các hàm khi DOM đã tải xong
+document.addEventListener('DOMContentLoaded', () => {
+    handleSidebarToggle();
+    handleIconClick();
+});
