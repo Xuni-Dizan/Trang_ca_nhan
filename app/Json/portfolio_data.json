@@ -1,6 +1,87 @@
 {
     "portfolio": [
       {
+        "id": "box-25",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/chu-ki/index.html",
+        "title": "Chữ Kí",
+        "description": "Chữ ký 'Dizan' được vẽ bằng full mã JavaScript.",
+        "timestamp": "21h31 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/chu-ki/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/chu-ki"
+    },
+    {
+        "id": "box-24",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-17/index.html",
+        "title": "Overlay-logo-17",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h30 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-17/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-17"
+    },
+    {
+        "id": "box-23",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-16/index.html",
+        "title": "Overlay-logo-16",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h29 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-16/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-16"
+    },
+    {
+        "id": "box-22",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-15/index.html",
+        "title": "Overlay-logo-15",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h28 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-15/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-15"
+    },
+    {
+        "id": "box-21",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-14/index.html",
+        "title": "Overlay-logo-14",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h28 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-14/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-14"
+    },
+    {
+        "id": "box-20",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-13/index.html",
+        "title": "Overlay-logo-13",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h27 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-13/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-13"
+    },
+    {
+        "id": "box-19",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-12/index.html",
+        "title": "Overlay-logo-12",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h27 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-12/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-12"
+    },
+    {
+        "id": "box-18",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-11/index.html",
+        "title": "Overlay-logo-11",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h26 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-11/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-11"
+    },
+    {
+        "id": "box-17",
+        "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-10/index.html",
+        "title": "Overlay-logo-10",
+        "description": "Overlay cách điệu chữ 'D' chuyển động lặp.",
+        "timestamp": "21h24 - 22/11/2024",
+        "link": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-10/index.html",
+        "github": "https://github.com/Xuni-Dizan/UI-project-small/tree/main/overlay-logo-10"
+    },
+      {
         "id": "box-16",
         "iframeSrc": "https://xuni-dizan.github.io/UI-project-small/overlay-logo-09/index.html",
         "title": "Overlay-logo-09",
@@ -87,63 +168,63 @@
         "title": "Web Design 6",
         "description": "Giao diện trang web coding với các mục edit code,...",
         "timestamp": "14h53 - 17/10/2024",
-        "links": "https://xuni-dizan.github.io/Lab_6/",
+        "link": "https://xuni-dizan.github.io/Lab_6/",
         "github": "https://xuni-dizan.github.io/Lab_6"
-      },
-      {
+    },
+    {
         "id": "box-6",
         "iframeSrc": "https://xuni-dizan.github.io/Lab_5/",
         "title": "Web Design 5",
         "description": "Giao diện mục My learning trong Trang web lớn Udemy.",
         "timestamp": "23h06 - 11/10/2024",
-        "links":  "https://xuni-dizan.github.io/Lab_5/",
+        "link": "https://xuni-dizan.github.io/Lab_5/",
         "github": "https://xuni-dizan.github.io/Lab_5"
-      },
-      {
+    },
+    {
         "id": "box-5",
         "iframeSrc": "https://xuni-dizan.github.io/Lab_4/",
         "title": "Web Design 4",
         "description": "Một trang web học tập bao gồm các mục như An ninh mạng, Khoa học dữ liệu,...",
         "timestamp": "12h46 - 30/9/2024",
-        "links":  "https://xuni-dizan.github.io/Lab_4/",
+        "link": "https://xuni-dizan.github.io/Lab_4/",
         "github": "https://github.com/Xuni-Dizan/Lab_4"
-      },
-      {
+    },
+    {
         "id": "box-4",
         "iframeSrc": "https://xuni-dizan.github.io/Lab_3/",
         "title": "Web Design 3",
         "description": "Một trang web trao đổi tài liệu với nhiều chức năng...",
         "timestamp": "15h46 - 25/9/2024",
-        "links":  "https://xuni-dizan.github.io/Lab_3/",
+        "link": "https://xuni-dizan.github.io/Lab_3/",
         "github": "https://github.com/Xuni-Dizan/Lab_3"
-      },
-      {
+    },
+    {
         "id": "box-3",
         "iframeSrc": "https://xuni-dizan.github.io/lab2/",
         "title": "Web Design 2",
-        "description": "Giao diện Login/Sign in",
+        "description": "Giao diện Login/Sign in.",
         "timestamp": "20h26 - 12/9/2024",
-        "links":  "https://xuni-dizan.github.io/lab2/",
+        "link": "https://xuni-dizan.github.io/lab2/",
         "github": "https://github.com/Xuni-Dizan/lab2"
-      },
-      {
+    },
+    {
         "id": "box-2",
         "iframeSrc": "https://xuni-dizan.github.io/lab1-nhom2/",
         "title": "Web Design 1",
         "description": "Giao diện trang web quản lý khóa học gồm các ô nhập liệu và button...",
         "timestamp": "21h46 - 28/8/2024",
-        "links":  "https://xuni-dizan.github.io/lab1-nhom2/",
+        "link": "https://xuni-dizan.github.io/lab1-nhom2/",
         "github": "https://github.com/Xuni-Dizan/lab1-nhom2"
-      },
-      {
+    },
+    {
         "id": "box-1",
         "iframeSrc": "https://xuni-dizan.github.io/lab1.html/",
         "title": "User Interface",
-        "description": "Giao diện người dùng yêu cầu các trường nhập liệu như Username, Password, Email, và Role, với validation và thông báo lỗi...",
+        "description": "Giao diện người dùng yêu cầu các trường nhập liệu như Username, Password, Email, và Role, với validation và thông báo lỗi.",
         "timestamp": "21h17 - 28/8/2024",
-        "links": "https://xuni-dizan.github.io/lab1.html/",
+        "link": "https://xuni-dizan.github.io/lab1.html/",
         "github": "https://github.com/Xuni-Dizan/lab1.html"
-      }
+    }
     ]
   }
   

@@ -69,11 +69,91 @@ html {
 font-size: 50.5%;
 overflow-x: hidden;
 }
-.portfolio {
-min-height: auto;
-height: 100%;
-width: 100%;
-/* padding-bottom: 10rem; */
+/* Cải tiến giao diện của portfolio-box */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.portfolio-container .portfolio-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 600px; /* Tăng chiều cao để hiển thị nội dung tốt hơn */
+    width: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #1f2833; /* Màu nền tối cho phong cách hiện đại */
+}
+
+.portfolio-container .portfolio-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-box iframe {
+    width: 100%;
+    height: 60%;
+    border-bottom: 2px solid var(--secondary-hover);
+    transition: opacity 0.5s ease;
+    background-color: #ffffff; /* Nền trắng cho iframe */
+}
+
+.portfolio-box .portfolio-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: rgba(0, 0, 0, 0.8); /* Nền mờ hơn */
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-box:hover .portfolio-layer {
+    opacity: 1;
+}
+
+.portfolio-layer h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-text);
+}
+
+.portfolio-layer p {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-hover);
+}
+
+.portfolio-layer .links-1 a,
+.portfolio-layer .links-1 button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.portfolio-layer .links-1 a:hover,
+.portfolio-layer .links-1 button:hover {
+    background: var(--accent);
+    transform: scale(1.1);
 }
 
 .portfolio h2 {
@@ -407,10 +487,33 @@ color: #16b18a;
     width: 5rem;
     height: 5rem;
     background: var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
 }
 
 .action-button--horizontal-scroll:hover {
     background: var(--accent-hover);
+}
+
+.action-button--horizontal-scroll:disabled {
+    background: var(--secondary);
+    cursor: not-allowed;
+}
+
+.back-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: #19c0a5;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.back-icon:hover {
+    color: #16b18a;
 }
 
 .action-button--horizontal-scroll:active {
