@@ -9,71 +9,141 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="app_css/latest_project.css">
+    <script>
+ function loadPortfolioData() {
+    fetch('Json/portfolio_data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const portfolioContainer = document.getElementById('portfolio-container');
+            portfolioContainer.innerHTML = '';  // Clear any existing content
+
+            data.portfolio.forEach(item => {
+                const box = document.createElement('div');
+                box.classList.add('portfolio-box');
+                box.id = item.id;
+
+                const iframe = document.createElement('iframe');
+                iframe.src = item.iframeSrc;
+                iframe.loading = 'lazy';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.border = 'none';
+                iframe.style.overflow = 'hidden';
+                iframe.scrolling = 'yes';
+                iframe.frameborder = '0';
+
+                const portfolioLayer = document.createElement('div');
+                portfolioLayer.classList.add('portfolio-layer');
+
+                const title = document.createElement('h4');
+                title.innerHTML = `<b>${item.title}</b>`;
+
+                const description = document.createElement('p');
+                description.textContent = item.description;
+
+                const timestamp = document.createElement('p');
+                timestamp.innerHTML = `<b>Đăng tải:</b> <span class="timestamp">${item.timestamp}</span>`;
+
+                const links = document.createElement('div');
+                links.classList.add('links-1');
+
+                const linkButton = document.createElement('a');
+                linkButton.classList.add('open-iframe-btn');
+                linkButton.href = item.link;
+                linkButton.target = '_blank';
+                linkButton.innerHTML = `<i class='bx bx-link-external'></i>`;
+
+                const shareButton = document.createElement('button');
+                shareButton.type = 'button';
+                shareButton.classList.add('share-btn');
+                shareButton.onclick = () => {
+                    window.open(item.link, '_blank');
+                };
+                shareButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-share" width="24" height="24"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                        <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                        <path d="M8.7 10.7l6.6 -3.4" />
+                        <path d="M8.7 13.3l6.6 3.4" />
+                    </svg>
+                `;
+
+                links.appendChild(linkButton);
+                links.appendChild(shareButton);
+
+                portfolioLayer.appendChild(title);
+                portfolioLayer.appendChild(description);
+                portfolioLayer.appendChild(timestamp);
+                portfolioLayer.appendChild(links);
+
+                box.appendChild(iframe);
+                box.appendChild(portfolioLayer);
+
+                portfolioContainer.appendChild(box);
+            });
+        })
+        .catch(error => {
+            console.error('Lỗi khi tải dữ liệu:', error);
+        });
+}
+    </script>
 </head>
 <body>
     <!-- <div><p>Đang được cập nhật và sẽ sớm hoạt động trong thời gian gần nhất.</p></div> -->
     <section class="portfolio" id="portfolio">
         <h2 class="heading">Latest <span>Project</span></h2>
 
-        <!-- Buttons to navigate between portfolio boxes -->
-<!-- <div class="navigation-buttons">
-    <button type="button" disabled id="action-button--previous" class="action-button--horizontal-scroll">
-        <svg width="16" height="16" fill="currentColor" focusable="false" viewBox="0 0 24 24">
-            <path
-                d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z">
-            </path>
-        </svg>
-    </button>
-    <button type="button" id="action-button--next" class="action-button--horizontal-scroll">
-        <svg width="16" height="16" fill="currentColor" focusable="false" viewBox="0 0 24 24">
-            <path
-                d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z">
-            </path>
-        </svg>
-    </button>
-</div> -->
-
-<div class="top-bar">
-    <div class="svg-h2">
-    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-        <path d="M16 3v4" />
-        <path d="M8 3v4" />
-        <path d="M4 11h16" />
-        <path d="M7 14h.013" />
-        <path d="M10.01 14h.005" />
-        <path d="M13.01 14h.005" />
-        <path d="M16.015 14h.005" />
-        <path d="M13.015 17h.005" />
-        <path d="M7.01 17h.005" />
-        <path d="M10.01 17h.005" />
-    </svg>
-    <h2>
-        Upcoming Project
-    </h2></div>
-
-    <div class="navigation-buttons">
-        <button type="button" disabled id="action-button--previous" class="action-button--horizontal-scroll">
-            <svg width="16" height="16" fill="currentColor" focusable="false" viewBox="0 0 24 24">
-                <path
-                    d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z">
-                </path>
+        <div class="top-bar">
+            <div class="svg-h2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                <path d="M16 3v4" />
+                <path d="M8 3v4" />
+                <path d="M4 11h16" />
+                <path d="M7 14h.013" />
+                <path d="M10.01 14h.005" />
+                <path d="M13.01 14h.005" />
+                <path d="M16.015 14h.005" />
+                <path d="M13.015 17h.005" />
+                <path d="M7.01 17h.005" />
+                <path d="M10.01 17h.005" />
             </svg>
-        </button>
-        <button type="button" id="action-button--next" class="action-button--horizontal-scroll">
-            <svg width="16" height="16" fill="currentColor" focusable="false" viewBox="0 0 24 24">
-                <path
-                    d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z">
-                </path>
-            </svg>
-        </button>
-    </div>
-</div>
+            <h2>
+                Upcoming Project
+            </h2></div>
+
+            <div class="navigation-buttons">
+                <button type="button" disabled id="action-button--previous" class="action-button--horizontal-scroll">
+                    <svg width="16" height="16" fill="currentColor" focusable="false" viewBox="0 0 24 24">
+                        <path
+                            d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z">
+                        </path>
+                    </svg>
+                </button>
+                <button type="button" id="action-button--next" class="action-button--horizontal-scroll">
+                    <svg width="16" height="16" fill="currentColor" focusable="false" viewBox="0 0 24 24">
+                        <path
+                            d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
         <div class="portfolio-container">
+            <div id="portfolio-container"></div>
             <!-- 25 -->
-            <div id="box-25" class="portfolio-box">
+            <!-- <div id="box-25" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/chu-ki/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Chữ Kí</b></h4>
@@ -98,10 +168,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 24 -->
-            <div id="box-24" class="portfolio-box">
+            <!-- <div id="box-24" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-17/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-17</b></h4>
@@ -126,10 +196,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 23 -->
-            <div id="box-23" class="portfolio-box">
+            <!-- <div id="box-23" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-16/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-16</b></h4>
@@ -154,10 +224,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 22 -->
-            <div id="box-22" class="portfolio-box">
+            <!-- <div id="box-22" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-15/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-15</b></h4>
@@ -182,10 +252,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 21 -->
-            <div id="box-21" class="portfolio-box">
+            <!-- <div id="box-21" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-14/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-14</b></h4>
@@ -210,10 +280,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 20 -->
-            <div id="box-20" class="portfolio-box">
+            <!-- <div id="box-20" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-13/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-13</b></h4>
@@ -238,10 +308,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 19 -->
-            <div id="box-19" class="portfolio-box">
+            <!-- <div id="box-19" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-12/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-12</b></h4>
@@ -266,10 +336,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 18 -->
-            <div id="box-18" class="portfolio-box">
+            <!-- <div id="box-18" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-11/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-11</b></h4>
@@ -294,10 +364,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 17 -->
-            <div id="box-17" class="portfolio-box">
+            <!-- <div id="box-17" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-10/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-10</b></h4>
@@ -322,10 +392,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 16 -->
-            <div id="box-16" class="portfolio-box">
+            <!-- <div id="box-16" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-09/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-09</b></h4>
@@ -350,10 +420,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 15 -->
-            <div id="box-15" class="portfolio-box">
+            <!-- <div id="box-15" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-08/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-08</b></h4>
@@ -378,10 +448,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 14 -->
-            <div id="box-14" class="portfolio-box">
+            <!-- <div id="box-14" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-07/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-07</b></h4>
@@ -406,10 +476,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 13 -->
-            <div id="box-13" class="portfolio-box">
+            <!-- <div id="box-13" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-06/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-06</b></h4>
@@ -434,10 +504,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 12 -->
-            <div id="box-12" class="portfolio-box">
+            <!-- <div id="box-12" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-05/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-05</b></h4>
@@ -462,10 +532,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 11 -->
-            <div id="box-11" class="portfolio-box">
+            <!-- <div id="box-11" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-04/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-04</b></h4>
@@ -490,10 +560,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 10 -->
-            <div id="box-10" class="portfolio-box">
+            <!-- <div id="box-10" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-03/index.html" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-03</b></h4>
@@ -518,10 +588,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 9 -->
-            <div id="box-9" class="portfolio-box">
+            <!-- <div id="box-9" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-02/index.html" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-02</b></h4>
@@ -543,10 +613,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 8 -->
-            <div id="box-8" class="portfolio-box">
+            <!-- <div id="box-8" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/UI-project-small/overlay-logo-01/index.html" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Overlay-logo-01</b></h4>
@@ -568,10 +638,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 7 -->
-            <div id="box-7" class="portfolio-box">
+            <!-- <div id="box-7" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/Lab_6/" loading="lazy" style="width: 100%; height: 100%; border:none; overflow: hidden;" scrolling="yes" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Web Design 6</b></h4>
@@ -596,10 +666,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 6 -->
-            <div id="box-6" class="portfolio-box">
+            <!-- <div id="box-6" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/Lab_5/" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Web Design 5</b></h4>
@@ -624,9 +694,9 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- 5 -->
-            <div id="box-5" class="portfolio-box">
+            <!-- <div id="box-5" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/Lab_4/" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Web Design 4</b></h4>
@@ -651,10 +721,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 4 -->
-            <div id="box-4" class="portfolio-box">
+            <!-- <div id="box-4" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/Lab_3/" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Web Design 3</b></h4>
@@ -679,10 +749,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 3 -->
-            <div id="box-3" class="portfolio-box">
+            <!-- <div id="box-3" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/lab2/" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Web Design 2</b></h4>
@@ -707,10 +777,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
             <!-- 2 -->
-            <div id="box-2" class="portfolio-box">
+            <!-- <div id="box-2" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/lab1-nhom2/" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b>Web Design 1</b></h4>
@@ -735,10 +805,10 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 1 -->
-            <div id="box-1" class="portfolio-box">
+            <!-- <div id="box-1" class="portfolio-box">
                 <iframe src="https://xuni-dizan.github.io/lab1.html/" loading="lazy" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 <div class="portfolio-layer">
                     <h4><b></b>User Interface</b></h4>
@@ -763,7 +833,8 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
+        </div>
     </section>
 
     <dialog class="copy-link-dialog">

@@ -2159,5 +2159,56 @@ nav#main-nav a{
   }
 }
 
+.logo {
+  position: absolute !important;
+  z-index: 4;
+  top: 28px;
+  left: 28px;
+  width: 60px !important;
+  height: 60px !important;
+  background: none;
+  border-radius: 50%;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  pointer-events: all;
+  color: #6a11cb;
+  text-decoration: none;
+  font-size: 28px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover svg {
+  transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 768px) {
+  .logo {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 24px;
+    top: 20px;
+    left: 20px;
+  }
+}
+@media only screen and (max-width: 452px) {
+  .logo {
+    display: none;
+  }
+}
 
 

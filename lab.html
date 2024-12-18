@@ -4,35 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="styles.css">
+    <script defer src="js/updateVisitor.js"></script>
     <script defer>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("overlay");
-            // Theo dõi trạng thái tải tài nguyên
-        const resourcesLoaded = () => {
-            const images = Array.from(document.images);
-            const loaded = images.every(img => img.complete);
-            return loaded;
-        };
-    
-            // Chờ toàn bộ tài nguyên được tải
-            window.addEventListener("load", () => {
-                overlay.style.transition = "opacity 0.5s ease-out";
-            overlay.style.opacity = "0";
 
-            // Đợi animation kết thúc trước khi ẩn hoàn toàn
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 500);
-                // overlay.style.display = "none";
+            function hideOverlay() {
+                overlay.style.transition = "opacity 0.5s ease-out";
+                overlay.style.opacity = "0";
+
+                setTimeout(() => {
+                    overlay.style.display = "none";
+                }, 500);
+            }
+
+            const resourcesLoaded = () => {
+                const images = Array.from(document.images);
+                const loaded = images.every(img => img.complete);
+                return loaded;
+            };
+
+            window.addEventListener("load", () => {
+                hideOverlay();
             });
 
-            // Kiểm tra tài nguyên định kỳ
-        const checkResources = setInterval(() => {
-            if (resourcesLoaded()) {
-                clearInterval(checkResources);
-                hideOverlay();
-            }
-        }, 100);
+            const checkResources = setInterval(() => {
+                if (resourcesLoaded()) {
+                    clearInterval(checkResources);
+                    hideOverlay();
+                }
+            }, 100);
         });
     </script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
@@ -55,12 +56,28 @@
         </div>
     </div>
     <header>
-        <div >
-        <h1 >LAB</h1>
+        <a href="https://xuni-dizan.github.io/Trang_ca_nhan/" target="_blank" class="logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff7e5f;stop-opacity:1">
+                            <animate attributeName="stop-color" values="#ff7e5f;#feb47b;#ff7e5f" dur="4s" repeatCount="indefinite" />
+                        </stop>
+                        <stop offset="100%" style="stop-color:#feb47b;stop-opacity:1">
+                            <animate attributeName="stop-color" values="#feb47b;#ff7e5f;#feb47b" dur="4s" repeatCount="indefinite" />
+                        </stop>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="5" fill="none" />
+                <text x="50%" y="55%" text-anchor="middle" fill="url(#logoGradient)" font-size="40" font-family="Roboto" dy=".3em">D</text>
+            </svg>
+        </a>
+        <h1>LAB</h1>
         <nav id="main-nav">
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
+            <a href="result01.html" class="nav-button">Result</a>
         </nav>
         <section class="section-mode">
             <div class="button-mode">
@@ -71,37 +88,17 @@
                             <button class="drop__btn" type="button" value="windows">Preview 1</button>
                             <button class="drop__btn" type="button" value="mac">Preview 2</button>
                             <button class="drop__btn" type="button" value="linux">Labs app</button>
-                            <!-- <button class="drop__btn" type="button" value="android">Android</button>
-                            <button class="drop__btn" type="button" value="ios">iOS</button>
-                            <button class="drop__btn" type="button" value="ubuntu">Ubuntu</button> -->
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- <section class="section-mode">
-            <div class="buttton-mode">
-                <div class="drop" id="dummy">
-                    <button class="drop__btn" aria-expanded="false" aria-haspopup="true" type="button"></button>
-                    <div class="drop__items" data-items>
-                        <div class="drop__items-inner">
-                            <button class="drop__btn" type="button" value="windows">Windows</button>
-                            <button class="drop__btn" type="button" value="mac">Mac</button>
-                            <button class="drop__btn" type="button" value="linux">Linux</button>
-                            <button class="drop__btn" type="button" value="android">Android</button>
-                            <button class="drop__btn" type="button" value="ios">iOS</button>
-                            <button class="drop__btn" type="button" value="ubuntu">Ubuntu</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         </div>
     </header>
     <main>
         <div>
-        <h2 contenteditable="false" id="lab-text">Danh sách Labs</h2>
-        <section class="section-0">
+            <h2 contenteditable="false" id="lab-text">Danh sách Labs</h2>
+            <section class="section-0">
                 <div id="panel-container" class="container">
                     <div class="panel active" style="background-image: url('images/panel_1.jpg'); background-size: cover; background-position: center;">
                         <div class="lab-label">L<br>A<br>B<br>1</div>
@@ -129,7 +126,7 @@
                         <div class="icon">2</div>
                     </div>
                     <div class="panel" style="background-image: url('images/panel_3.jpg'); background-size: cover; background-position: center;">
-                        <div class="portrait" style="background-image: url('images/panel_1.jpg');"></div> <!-- Thêm ảnh chân dung -->
+                        <div class="portrait" style="background-image: url('images/panel_1.jpg');"></div>
                         <div class="lab-label">L<br>A<br>B<br>3</div>
                         <div class="card">
                             <img src="images/lab_3.jpg" alt="" class="card-image">
@@ -189,53 +186,42 @@
                         </div>
                         <div class="icon">7</div>
                     </div>
-                    <!-- <div class="panel" style="background-color: rgb(120, 181, 34);">
-                        <div class="lab-label">L<br>A<br>B</div>
-                        <div class="card">
-                            <img src="https://th.bing.com/th?id=OIP.OXS4iGk4qXFpIG21i1pjbwHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="" class="card-image">
-                            <div class="card-content">
-                                <h1 class="card-title">Morocco</h1>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae ab nostrum maxime.</p>
-                                <a href="#" class="read-more-btn">Read More</a>
-                            </div>
-                        </div>
-                    </div> -->
-            </section>
-          <section class="section-1">
-            <div class="section-1-body">
-                <div class="box">
-                    <span id="img1" style="--i:1;" data-link="https://xuni-dizan.github.io/lab1.html/">
-                        <img src="images/lab_1.jpg" alt="Image 1">
-                      </span>
-                      <span id="img2" style="--i:2;" data-link="https://xuni-dizan.github.io/lab2/">
-                        <img src="images/lab_2.jpg" alt="Image 2">
-                      </span>
-                      <span id="img3" style="--i:3;" data-link="https://xuni-dizan.github.io/Lab_3/">
-                        <img src="images/lab_3.jpg" alt="Image 3">
-                      </span>
-                      <span id="img4" style="--i:4;" data-link="https://xuni-dizan.github.io/Lab_4/">
-                        <img src="images/lab_4.jpg" alt="Image 4">
-                      </span>
-                      <span id="img5" style="--i:5;" data-link="https://xuni-dizan.github.io/Lab_5/">
-                        <img src="images/lab_5.jpg" alt="Image 5">
-                      </span>
-                      <span id="img6" style="--i:6;" data-link="https://xuni-dizan.github.io/Lab_6/">
-                        <img src="images/lab_6.jpg" alt="Image 6">
-                      </span>
-                      <span id="img7" style="--i:7;" data-link="https://xuni-dizan.github.io/lab1-nhom2/">
-                        <img src="images/lab_7.jpg" alt="Image 7">
-                      </span>
-                      <span id="img8" style="--i:8;" data-link="#">
-                        <img src="https://arena.fpt.edu.vn/wp-content/uploads/2021/02/152443816_770874713568127_2758432262338087352_o-1.jpg" alt="Image 8">
-                      </span>
                 </div>
+            </section>
+            <section class="section-1">
+                <div class="section-1-body">
+                    <div class="box">
+                        <span id="img1" style="--i:1;" data-link="https://xuni-dizan.github.io/lab1.html/">
+                            <img src="images/lab_1.jpg" alt="Image 1">
+                        </span>
+                        <span id="img2" style="--i:2;" data-link="https://xuni-dizan.github.io/lab2/">
+                            <img src="images/lab_2.jpg" alt="Image 2">
+                        </span>
+                        <span id="img3" style="--i:3;" data-link="https://xuni-dizan.github.io/Lab_3/">
+                            <img src="images/lab_3.jpg" alt="Image 3">
+                        </span>
+                        <span id="img4" style="--i:4;" data-link="https://xuni-dizan.github.io/Lab_4/">
+                            <img src="images/lab_4.jpg" alt="Image 4">
+                        </span>
+                        <span id="img5" style="--i:5;" data-link="https://xuni-dizan.github.io/Lab_5/">
+                            <img src="images/lab_5.jpg" alt="Image 5">
+                        </span>
+                        <span id="img6" style="--i:6;" data-link="https://xuni-dizan.github.io/Lab_6/">
+                            <img src="images/lab_6.jpg" alt="Image 6">
+                        </span>
+                        <span id="img7" style="--i:7;" data-link="https://xuni-dizan.github.io/lab1-nhom2/">
+                            <img src="images/lab_7.jpg" alt="Image 7">
+                        </span>
+                        <span id="img8" style="--i:8;" data-link="#">
+                            <img src="https://arena.fpt.edu.vn/wp-content/uploads/2021/02/152443816_770874713568127_2758432262338087352_o-1.jpg" alt="Image 8">
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <div class="Thong-bao" style="display: none;">
+                <p>Do chiều rộng màn hình của bạn quá nhỏ, Laps App cần độ rộng màn hình lớn hơn để hoạt động tốt. Hãy thử với màn hình laptop hoặc monitor của bạn.</p>
             </div>
-          </section>
-          <div class="Thong-bao" style="display: none;">
-            <p>Do chiều rộng màn hình của bạn quá nhỏ, Laps App cần độ rộng màn hình lớn hơn để hoạt động tốt. Hãy thử với màn hình laptop hoặc monitor của bạn.</p>
-          </div>
-          <section class="section-2" id="section-2" style="display: none;">
-                <!-- partial:index.partial.html -->
+            <section class="section-2" id="section-2" style="display: none;">
                 <div class="sidebar">
                     <div class="logo-details">
                     <i class='bx bxl-java icon'></i>
@@ -330,25 +316,23 @@
                 <section id="setting" class="tab-content" style="display: none;">
                     <iframe src="app/setting.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
-          </section>
+            </section>
+        </div>
     </main>
     <footer>
         <div class="footer-container">
-            <!-- Logo hoặc Tên trang -->
             <div class="footer-logo">
                 <img src="images/logo.jpg" alt="Logo của Xuni Dizan" class="logo-img">
                 <h2 class="logo-text-1">Xuni Dizan</h2>
             </div>
             
-            <!-- Điều hướng nhanh -->
             <div class="footer-nav">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="lab.html">Lab</a>
-                <a href="#contact">Contact</a>
+                <a href="result01.html">Result</a>
             </div>
             
-            <!-- Thông tin liên hệ -->
             <div class="footer-contact">
                 <p>📞 Call me : (+84) 0359103126</p>
                 <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
@@ -357,7 +341,6 @@
                 <p><i class="fas fa-university"></i> Đại học Nông Lâm TP HCM</p>
             </div>
             <div>
-                <!-- Mạng xã hội -->
                 <div class="footer-social">
                     <a href="https://www.facebook.com/xuni.dizan" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/xuni.dizan/" class="icon instagram"><i class="fab fa-instagram"></i></a>
@@ -370,100 +353,75 @@
                     <canvas id="signatureCanvas"></canvas>
                 </div>
             </div>
-            <!-- Chữ ký với hiệu ứng vẽ -->
             <div class="footer-signature" id="footer-signature"></div> 
         </div>
         <div class="footer-bottom">
-            <!-- <div id="visitor-count">
-                <i class="fas fa-eye"></i>
-                <span id="visitor-text">Lượt truy cập: 0</span>
-            </div> -->
-                <div id="visitor-count">
+            <div id="visitor-count">
                 <i class="fas fa-eye"></i>
                 <span id="visitor-text">View: 0</span>
-                </div>
-                <div class="ft">
+            </div>
+            <div class="ft">
                 <img src="images/logo.jpg" alt="logo" style="height: 30px; width: 30px; border-radius: 50%; margin-top: 5px;"> 
                 <p>&copy; 2024 Nguyễn Xuân Đại | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
             </div>
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const menuBtn = document.getElementById('menu-btn');
             const sidebar = document.querySelector('.sidebar');
             const homeSection = document.querySelector('.home-section');
         
-            // Sự kiện cho nút mở/đóng sidebar
             menuBtn.addEventListener('click', function () {
                 sidebar.classList.toggle('open');
             });
         
-            // Đóng sidebar khi nhấn vào bất kỳ đâu trên giao diện mobile
             document.addEventListener('click', function (event) {
                 if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
                     sidebar.classList.remove('open');
                 }
             });
         
-            // Sidebar cho desktop (thu/phóng sidebar khi nhấn vào nút menu)
             const desktopBtn = document.getElementById('btn');
             desktopBtn.addEventListener('click', function () {
                 sidebar.classList.toggle('open');
                 homeSection.classList.toggle('shifted');
             });
         });
-        </script>
-        
-    
+    </script>
     <script>
-        // Hàm khởi tạo xử lý sự kiện click cho các ảnh
         document.addEventListener('DOMContentLoaded', function() {
-          // Lấy tất cả các phần tử <span> trong .box
           const spans = document.querySelectorAll('.box span');
       
-          // Duyệt qua từng phần tử <span> và thêm sự kiện click
           spans.forEach(span => {
             span.addEventListener('click', function() {
               const link = span.getAttribute('data-link');
-              // Mở đường link trong tab mới
               window.open(link, '_blank');
             });
           });
         });
       </script>
       <script>
-        // function about-text
         function adjustTitle() {
             const lab_text = document.getElementById("lab-text");
-            if (window.innerWidth <= 889) {  // Kích thước màn hình điện thoại (<=768px)
+            if (window.innerWidth <= 889) {
             lab_text.textContent = "List Labs";
             } else {
-            lab_text.textContent = "Danh sách Labs";  // Giao diện desktop
+            lab_text.textContent = "Danh sách Labs";
             }
         }
-        // Gọi hàm khi tải trang và khi thay đổi kích thước cửa sổ
-  window.addEventListener('load', adjustTitle);
-  window.addEventListener('resize', adjustTitle);
+        window.addEventListener('load', adjustTitle);
+        window.addEventListener('resize', adjustTitle);
       </script>
       <script>
-        // Hàm cập nhật giá trị của biến CSS
-function updateDynamicValue() {
-    // Lấy chiều rộng cửa sổ
-    const viewportWidth = window.innerWidth;
+        function updateDynamicValue() {
+            const viewportWidth = window.innerWidth;
+            const newValue = (viewportWidth * 0.1 + 200) + "px";
+            document.documentElement.style.setProperty('--dynamic-value', newValue);
+        }
 
-    // Tính toán giá trị mới cho biến (ví dụ: 10% chiều rộng cửa sổ)
-    const newValue = (viewportWidth *0.1+200) + "px"; // 10% chiều rộng của viewport
-
-    // Cập nhật giá trị của biến CSS
-    document.documentElement.style.setProperty('--dynamic-value', newValue);
-}
-
-// Gọi hàm khi cửa sổ thay đổi kích thước
-window.addEventListener('resize', updateDynamicValue);
-
-// Gọi hàm lần đầu tiên khi trang tải
-updateDynamicValue();
+        window.addEventListener('resize', updateDynamicValue);
+        updateDynamicValue();
       </script>
       <script>
         "use strict";
@@ -471,35 +429,22 @@ updateDynamicValue();
             const drop = new DropdownMenu("#dummy");
         });
         class DropdownMenu {
-            /**
-            * @param el CSS selector of the menu
-            */
             constructor(el) {
                 var _a, _b, _c;
-                /** Animation objects */
                 this.animations = [];
-                /** Options for this menu */
                 this.options = [
                     { name: "windows", friendlyName: "Preview 1" },
                     { name: "mac", friendlyName: "Preview 2" },
                     { name: "linux", friendlyName: "Labs app" },
-                    // { name: "android", friendlyName: "Android" },  // Thêm lựa chọn Android
-                    // { name: "ios", friendlyName: "iOS" },          // Thêm lựa chọn iOS
-                    // { name: "ubuntu", friendlyName: "Ubuntu" }      // Thêm lựa chọn Ubuntu
                 ];
 
-                /** Selected option by name */
                 this.selected = "windows";
-                /** Menu is collapsing */
                 this.isCollapsing = false;
-                /** Menu is expanding */
                 this.isExpanding = false;
-                /** Actions to run after collapsing the item. */
                 this.animActionsCollapse = {
                     onfinish: this.onAnimationFinish.bind(this, false),
                     oncancel: () => { this.isCollapsing = false; }
                 };
-                /** Actions to run after expanding the item. */
                 this.animActionsExpand = {
                     onfinish: this.onAnimationFinish.bind(this, true),
                     oncancel: () => { this.isExpanding = false; }
@@ -513,7 +458,6 @@ updateDynamicValue();
                 (_c = this.el) === null || _c === void 0 ? void 0 : _c.addEventListener("click", this.toggle.bind(this));
                 window.addEventListener("keydown", this.kbdAction.bind(this));
             }
-            /** Transition duration specific to the menu */
             get transDuration() {
                 if (this.el) {
                     const style = getComputedStyle(this.el);
@@ -524,12 +468,10 @@ updateDynamicValue();
                         dur = dur.substring(0, mIndex);
                         return +dur;
                     }
-                    // seconds to milliseconds
                     return +dur * 1e3;
                 }
                 return 0;
             }
-            /** Display the default selected option. */
             defaultOption() {
                 var _a;
                 const buttonEl = (_a = this.itemList) === null || _a === void 0 ? void 0 : _a.querySelector(`[value="${this.selected}"]`);
@@ -539,10 +481,6 @@ updateDynamicValue();
                     this.menuButton.textContent = (optionFound === null || optionFound === void 0 ? void 0 : optionFound.friendlyName) || "";
                 }
             }
-            /**
-            * Navigate the menu options with arrow keys.
-            * @param e Keydown event
-            */
             kbdAction(e) {
                 var _a;
                 const { key } = e;
@@ -552,20 +490,12 @@ updateDynamicValue();
                     this.navigateOption(e);
                 }
             }
-            /**
-            * Press Esc to close the menu.
-            * @param e Keydown event
-            */
             escToClose(e) {
                 var _a;
                 if (e.key === "Escape" && (!this.isCollapsing && ((_a = this.menuButton) === null || _a === void 0 ? void 0 : _a.ariaExpanded) === "true")) {
                     this.toggle(e);
                 }
             }
-            /**
-            * Click outside the menu to close.
-            * @param e Click event
-            */
             outsideToClose(e) {
                 var _a;
                 let target = e.target;
@@ -582,16 +512,12 @@ updateDynamicValue();
                     }
                 }
             }
-            /**
-            * Navigate the menu options with arrow keys.
-            * @param e Keydown event
-            */
             navigateOption(e) {
                 var _a;
                 const itemList = (_a = this.el) === null || _a === void 0 ? void 0 : _a.querySelector("[data-items]");
                 const buttonEls = itemList === null || itemList === void 0 ? void 0 : itemList.querySelectorAll("button");
                 const buttons = Array.from(buttonEls || []);
-                const buttonsTemp = [...buttons]; // for getting the first and last
+                const buttonsTemp = [...buttons];
                 const first = buttonsTemp.shift();
                 const last = buttonsTemp.pop();
                 const currentItem = document.activeElement;
@@ -600,11 +526,9 @@ updateDynamicValue();
                 const upKey = key === "ArrowUp";
                 const currentIndex = buttons.indexOf(currentItem);
                 if (!buttons.length) {
-                    // do nothing for no items
                     e.preventDefault();
                 }
                 else if (downKey) {
-                    // next item, go to the first if on the last
                     e.preventDefault();
                     const nextIndex = currentIndex + 1;
                     if (nextIndex >= buttons.length) {
@@ -614,7 +538,6 @@ updateDynamicValue();
                     buttons[nextIndex].focus();
                 }
                 else if (upKey) {
-                    // previous item, go to the last if on the first
                     e.preventDefault();
                     const prevIndex = currentIndex - 1;
                     if (prevIndex < 0) {
@@ -624,20 +547,14 @@ updateDynamicValue();
                     buttons[prevIndex].focus();
                 }
                 else if (buttons.length === 1 || ((!(itemList === null || itemList === void 0 ? void 0 : itemList.contains(currentItem)) || currentItem === last) && !shiftKey)) {
-                    // go to the first item if on the last
                     e.preventDefault();
                     first === null || first === void 0 ? void 0 : first.focus();
                 }
                 else if ((!(itemList === null || itemList === void 0 ? void 0 : itemList.contains(currentItem)) || currentItem === first) && shiftKey) {
-                    // go to the last item if on the first
                     e.preventDefault();
                     last === null || last === void 0 ? void 0 : last.focus();
                 }
             }
-            /**
-            * Open or close the menu.
-            * @param e Click event
-            */
             toggle(e) {
                 var _a, _b;
                 e.preventDefault();
@@ -650,7 +567,6 @@ updateDynamicValue();
                     this.collapse(e);
                 }
             }
-            /** Expand the menu. */
             expand() {
                 var _a, _b;
                 if (!this.el || !this.itemList)
@@ -659,12 +575,10 @@ updateDynamicValue();
                 (_a = this.menuButton) === null || _a === void 0 ? void 0 : _a.setAttribute("aria-expanded", "true");
                 this.el.classList.add("drop--expanding");
                 this.isExpanding = true;
-                // reset the animations
                 this.animations.forEach(anim => anim.cancel());
                 this.animations = [];
                 const buttonEls = this.itemList.querySelectorAll("button");
                 const buttons = Array.from(buttonEls || []);
-                // animate the menu height
                 const startHeight = this.itemList.offsetHeight || 0;
                 const endHeight = ((_b = this.itemList.firstElementChild) === null || _b === void 0 ? void 0 : _b.offsetHeight) || 0;
                 const itemListAnim = this.itemList.animate({ height: [`${startHeight}px`, `${endHeight}px`] }, {
@@ -674,9 +588,7 @@ updateDynamicValue();
                 itemListAnim.onfinish = this.animActionsExpand.onfinish;
                 itemListAnim.oncancel = this.animActionsExpand.oncancel;
                 this.animations.push(itemListAnim);
-                // animate the buttons
                 buttons.forEach((button, i) => {
-                    // animate the buttons
                     const buttomAnim = button.animate({ transform: ["translateY(100%)", "translateY(0)"] }, {
                         duration: this.transDuration,
                         delay: this.transDuration / 12 * i,
@@ -684,26 +596,19 @@ updateDynamicValue();
                     });
                     this.animations.push(buttomAnim);
                 });
-                // animate the flare
                 this.el.style.setProperty("--drop-flare-dist", `${endHeight}px`);
             }
-            /**
-            * Collapse the menu.
-            * @param e Click event
-            */
             collapse(e) {
                 var _a, _b, _c;
                 if (!this.el || !this.itemList)
                     return;
                 this.el.classList.add("drop--collapsing");
                 this.isCollapsing = true;
-                // reset the animations
                 this.animations.forEach(anim => anim.cancel());
                 this.animations = [];
                 const clickedButton = e.target;
                 const buttonEls = (_a = this.itemList) === null || _a === void 0 ? void 0 : _a.querySelectorAll("button");
                 const buttons = Array.from(buttonEls || []);
-                // animate the menu height
                 const startHeight = ((_b = this.itemList) === null || _b === void 0 ? void 0 : _b.offsetHeight) || 0;
                 const endHeight = 0;
                 const easing = "cubic-bezier(0.33,1,0.68,1)";
@@ -711,13 +616,10 @@ updateDynamicValue();
                 itemListAnim.onfinish = this.animActionsCollapse.onfinish;
                 itemListAnim.oncancel = this.animActionsCollapse.oncancel;
                 this.animations.push(itemListAnim);
-                // animate the buttons
                 buttons.forEach((button, i) => {
                     if (clickedButton.value) {
-                        // remove the previous checkmark after selecting an option
                         button.classList.remove("drop__btn--selected");
                     }
-                    // animate the buttons
                     const delayInc = this.transDuration / 12;
                     const buttomAnim = button.animate({ transform: ["translateY(0)", "translateY(100%)"] }, {
                         duration: this.transDuration,
@@ -727,7 +629,6 @@ updateDynamicValue();
                     this.animations.push(buttomAnim);
                 });
                 if (clickedButton.value) {
-                    // set this menu’s option from a `value`
                     clickedButton.classList.add("drop__btn--selected");
                     if (this.menuButton) {
                         const optionFound = this.options.find(option => option.name === clickedButton.value);
@@ -735,13 +636,8 @@ updateDynamicValue();
                     }
                 }
                 (_c = this.menuButton) === null || _c === void 0 ? void 0 : _c.focus();
-                // animate the flare
                 this.el.style.setProperty("--drop-flare-dist", `${endHeight}px`);
             }
-            /**
-            * Actions to run when the animation is finished
-            * @param open Menu should be expanded
-            */
             onAnimationFinish(open) {
                 var _a, _b;
                 if (!this.el || !this.itemList)
@@ -755,56 +651,49 @@ updateDynamicValue();
             }
         } 
       </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-      <script src="js/script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js" defer></script>
+      <script src="js/script.js" defer></script>
       <script>
         document.addEventListener("DOMContentLoaded", function() {
-    // Ẩn section-1 và section-2 khi trang tải
-    document.querySelector('.section-1').style.display = 'none';
-    document.querySelector('.section-2').style.display = 'none';
+            document.querySelector('.section-1').style.display = 'none';
+            document.querySelector('.section-2').style.display = 'none';
+        
+            const buttonModeWindows = document.querySelector('.drop__btn[value="windows"]');
+            const buttonModeMac = document.querySelector('.drop__btn[value="mac"]');
+            const buttonModeLinux = document.querySelector('.drop__btn[value="linux"]');
+            
+            const panelContainer = document.querySelector('#panel-container');
+            const section1 = document.querySelector('.section-1');
+            const section2 = document.querySelector('.section-2');
+            const lab_text = document.getElementById("lab-text");
 
-    // Lấy các phần tử nút button-mode
-    const buttonModeWindows = document.querySelector('.drop__btn[value="windows"]');
-    const buttonModeMac = document.querySelector('.drop__btn[value="mac"]');
-    const buttonModeLinux = document.querySelector('.drop__btn[value="linux"]');
-    
-    // Lấy các phần tử section
-    const panelContainer = document.querySelector('#panel-container');
-    const section1 = document.querySelector('.section-1');
-    const section2 = document.querySelector('.section-2');
-    // const sidebar = section2.querySelector(".sidebar");
+            if (buttonModeWindows) {
+                buttonModeWindows.addEventListener('click', function() {
+                    panelContainer.style.display = 'flex';
+                    section1.style.display = 'none';
+                    section2.style.display = 'none';
+                    lab_text.textContent = "Danh sách Labs";
+                });
+            }
 
-    // Sự kiện cho nút "Preview 1"
-    if (buttonModeWindows) {
-        buttonModeWindows.addEventListener('click', function() {
-            panelContainer.style.display = 'flex';
-            section1.style.display = 'none';
-            section2.style.display = 'none';
-            lab_text.textContent = "Danh sách Labs";
+            if (buttonModeMac) {
+                buttonModeMac.addEventListener('click', function() {
+                    panelContainer.style.display = 'none';
+                    section1.style.display = 'block';
+                    section2.style.display = 'none';
+                    lab_text.textContent = "Danh sách Labs";
+                });
+            }
+
+            if (buttonModeLinux) {
+                buttonModeLinux.addEventListener('click', function() {
+                    panelContainer.style.display = 'none';
+                    section1.style.display = 'none';
+                    section2.style.display = 'block';
+                    lab_text.textContent = "Labs App";
+                });
+            }
         });
-    }
-
-    // Sự kiện cho nút "Preview 2"
-    if (buttonModeMac) {
-        buttonModeMac.addEventListener('click', function() {
-            panelContainer.style.display = 'none';
-            section1.style.display = 'block';
-            section2.style.display = 'none';
-            lab_text.textContent = "Danh sách Labs";
-        });
-    }
-
-    // Sự kiện cho nút "See lab live"
-    if (buttonModeLinux) {
-        const lab_text = document.getElementById("lab-text");
-        buttonModeLinux.addEventListener('click', function() {
-            panelContainer.style.display = 'none';
-            section1.style.display = 'none';
-            section2.style.display = 'block';
-            lab_text.textContent = "Labs App";
-        });
-    }
-});
       </script>
       <script>
         let sidebar = document.querySelector(".sidebar");
@@ -812,19 +701,17 @@ updateDynamicValue();
         let searchBtn = document.querySelector(".bx-search");
         closeBtn.addEventListener("click", () => {
         sidebar.classList.toggle("open");
-        menuBtnChange(); //calling the function(optional)
+        menuBtnChange();
         });
         searchBtn.addEventListener("click", () => {
-        // Sidebar open when you click on the search iocn
         sidebar.classList.toggle("open");
-        menuBtnChange(); //calling the function(optional)
+        menuBtnChange();
         });
-        // following are the code to change sidebar button(optional)
         function menuBtnChange() {
         if (sidebar.classList.contains("open")) {
-            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
         } else {
-            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
         }
         }
       </script>
@@ -833,40 +720,35 @@ updateDynamicValue();
     const canvas = document.getElementById("signatureCanvas");
     const ctx = canvas.getContext("2d");
     
-    // Đặt kích thước canvas
-    canvas.width = 300; // Chiều rộng
-    canvas.height = 100; // Chiều cao
+    canvas.width = 300;
+    canvas.height = 100;
     
-    // Vẽ chữ ký
-    ctx.font = "30px 'Great Vibes', cursive"; // Font chữ giống thiết kế
-    ctx.fillStyle = "#000"; // Màu chữ
+    ctx.font = "30px 'Great Vibes', cursive";
+    ctx.fillStyle = "#000";
     ctx.textAlign = "center";
     ctx.fillText("Nguyễn Xuân Đại", canvas.width / 2, canvas.height / 2 + 10);
 });
       </script>
     <script>
-    let progress = 0; // Biến kiểm soát độ tiến của chữ
-    let targetProgress = 0; // Tiến độ mục tiêu để làm mượt chuyển động
-    let signatureDrawn = false; // Đảm bảo vẽ đúng lúc
+    let progress = 0;
+    let targetProgress = 0;
+    let signatureDrawn = false;
 
     function setup() {
-        const canvas = createCanvas(240, 190); // Tạo canvas
-        canvas.parent('footer-signature'); // Gắn vào div có id là 'signatureCanvas'
+        const canvas = createCanvas(240, 190);
+        canvas.parent('footer-signature');
         noFill();
         strokeWeight(2);
         stroke(0); 
     }
 
     function draw() {
-        background(0,0); // Đặt nền tối
+        background(0,0);
+        targetProgress += 0.005;
+        progress = lerp(progress, targetProgress, 0.1);
 
-        // Tăng tiến độ
-        targetProgress += 0.005; // Tăng dần
-        progress = lerp(progress, targetProgress, 0.1); // Làm mượt
+        if (progress > 1) progress = 1;
 
-        if (progress > 1) progress = 1; // Giới hạn
-
-        // Vẽ từng chữ dựa trên tiến độ
         if (progress >= 0.1) drawD();
         if (progress >= 0.2) drawI();
         if (progress >= 0.4) drawZ();
@@ -874,7 +756,6 @@ updateDynamicValue();
         if (progress >= 0.8) drawN();
     }
 
-    // Các hàm vẽ chữ
     function drawD() { 
         var xtam = 22;
         var ytam = 0;
@@ -923,133 +804,121 @@ updateDynamicValue();
         curve(57, 392, xtam + 144, ytam + 177, xtam + 165, ytam + 187, -6, 180);
         }
 
-    // Kiểm tra nếu footer nằm trong viewport
     function isInViewport(el) {
         const rect = el.getBoundingClientRect();
         return rect.top < window.innerHeight && rect.bottom > 0;
     }
 
-    // Lắng nghe sự kiện cuộn
     document.addEventListener('scroll', function () {
         const footer = document.querySelector('.footer-signature');
         if (!signatureDrawn && isInViewport(footer)) {
-            signatureDrawn = true; // Đảm bảo chỉ vẽ một lần
-            loop(); // Kích hoạt vẽ
+            signatureDrawn = true;
+            loop();
         }
     });
     </script>
     <script>
-        // function openApp(evt, appName) {
-        //     var i, tabcontent, links;
-    
-        //     tabcontent = document.getElementsByClassName("tab-content");
-        //     for (i = 0; i < tabcontent.length; i++) {
-        //         tabcontent[i].style.display = "none";
-        //         tabcontent[i].classList.remove("active");
-        //     }
-    
-        //     links = document.getElementsByClassName("link");
-        //     for (i = 0; i < links.length; i++) {
-        //         links[i].className = links[i].className.replace(" active", "");
-        //     }
-    
-        //     document.getElementById(appName).style.display = "block";
-        //     document.getElementById(appName).classList.add("active");
-        //     evt.currentTarget.className += " active";
-        // }
-        document.addEventListener('DOMContentLoaded', () => {
-        // Gọi hàm openApp để thiết lập mặc định
-        openApp(null, 'dashboard');
-            });
-                    function openApp(event, tabId) {
-                // Ẩn tất cả tab-content
-                const tabs = document.querySelectorAll('.tab-content');
-                tabs.forEach(tab => {
-                    tab.style.display = 'none';
-                });
-
-                // Hiển thị tab-content được chọn
-                const activeTab = document.getElementById(tabId);
-                if (activeTab) {
-                    activeTab.style.display = 'block';
-                }
-
-                // Bỏ class 'active' của tất cả mục trong sidebar
-                const sidebarItems = document.querySelectorAll('.nav-list-1 li');
-                sidebarItems.forEach(item => {
-                    item.classList.remove('active');
-                });
-
-                // Thêm class 'active' vào mục tương ứng
-                const activeSidebarItem = document.getElementById(`sidebar-${tabId}`);
-                if (activeSidebarItem) {
-                    activeSidebarItem.classList.add('active');
-                }
-            }
-    </script>
-    <script>
-        // Lấy địa chỉ IP của người dùng từ API ipify
-        function getVisitorIP() {
-                return fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(data => data.ip)
-                    .catch(error => {
-                        console.error('Không thể lấy địa chỉ IP:', error);
-                        return null; // Trả về null nếu có lỗi
-                    });
-            }
-    
-            // Cập nhật lượt truy cập duy nhất từ mỗi địa chỉ IP
-            document.addEventListener("DOMContentLoaded", async function () {
-                const ip = await getVisitorIP();  // Lấy địa chỉ IP của người dùng
-                if (!ip) {
-                    return;  // Nếu không thể lấy địa chỉ IP, không làm gì thêm
-                }
-    
-                // Kiểm tra xem IP đã được lưu trong localStorage chưa
-                let visitedIPs = JSON.parse(localStorage.getItem("visitedIPs")) || [];
-    
-                // Nếu IP chưa được lưu, tính là lượt truy cập mới
-                if (!visitedIPs.includes(ip)) {
-                    visitedIPs.push(ip); // Thêm IP vào danh sách đã truy cập
-                    localStorage.setItem("visitedIPs", JSON.stringify(visitedIPs)); // Lưu lại danh sách IP
-    
-                    // Cập nhật số lượt truy cập
-                    let visitCount = parseInt(localStorage.getItem("visitCount2")) || 0;
-                    visitCount++;
-                    localStorage.setItem("visitCount2", visitCount); // Lưu lại số lượt truy cập
-                }
-    
-                // Cập nhật hiển thị số lượt truy cập
-                const visitorText = document.getElementById("visitor-text");
-                const visitCount = localStorage.getItem("visitCount2") || 0;
-                visitorText.textContent = `Views: ${visitCount}`;
-            });
-    </script>
-    <!-- <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const thongBao = document.querySelector(".Thong-bao");
-            const section2 = document.querySelector(".section-2");
-            const section0 = document.querySelector(".section-0");
-            const section1 = document.querySelector(".section-1"); // Sửa selector đúng cho section1
-    
-            function handleResize() {
-                // Kiểm tra điều kiện chiều rộng cửa sổ và hiển thị các phần tử
-                if (window.innerWidth < 650 && (section0.style.display === "none" || section1.style.display === "none")) {
-                    section2.style.display = "none";
-                    thongBao.style.display = "block";
-                } else {
-                    if (section0.style.display === "none" || section1.style.display === "none") {
-                        section2.style.display = "block";
-                        thongBao.style.display = "none";
+            openApp(null, 'dashboard');
+        });
+
+        function openApp(event, tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.style.display = 'none';
+            });
+
+            const activeTab = document.getElementById(tabId);
+            if (activeTab) {
+                activeTab.style.display = 'block';
+            }
+
+            const sidebarItems = document.querySelectorAll('.nav-list-1 li');
+            sidebarItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            const activeSidebarItem = document.getElementById(`sidebar-${tabId}`);
+            if (activeSidebarItem) {
+                activeSidebarItem.classList.add('active');
+            }
+        }
+    </script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lazyImages = document.querySelectorAll("img[data-src]");
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
                     }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            function debounce(func, wait) {
+                let timeout;
+                return function (...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            }
+
+            const handleResize = debounce(() => {
+                updateDynamicValue();
+                adjustTitle();
+            }, 200);
+
+            window.addEventListener('resize', handleResize);
+
+            const handleScroll = debounce(() => {
+                const footer = document.querySelector('.footer-signature');
+                if (!signatureDrawn && isInViewport(footer)) {
+                    signatureDrawn = true;
+                    loop();
+                }
+            }, 200);
+
+            window.addEventListener('scroll', handleScroll);
+
+            function isInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom > 0;
+            }
+
+            async function updateVisitorCount() {
+                try {
+                    const response = await fetch('https://api.ipify.org?format=json');
+                    const data = await response.json();
+                    const ip = data.ip;
+
+                    let visitedIPs = JSON.parse(localStorage.getItem("visitedIPs")) || [];
+
+                    if (!visitedIPs.includes(ip)) {
+                        visitedIPs.push(ip);
+                        localStorage.setItem("visitedIPs", JSON.stringify(visitedIPs));
+
+                        let visitCount = parseInt(localStorage.getItem("visitCount")) || 0;
+                        visitCount++;
+                        localStorage.setItem("visitCount", visitCount);
+                    }
+
+                    const visitorText = document.getElementById("visitor-text");
+                    const visitCount = localStorage.getItem("visitCount") || 0;
+                    visitorText.textContent = `Views: ${visitCount}`;
+                } catch (error) {
+                    console.error('Không thể lấy địa chỉ IP:', error);
                 }
             }
-    
-            window.addEventListener("resize", handleResize);
-            handleResize(); // Kiểm tra khi tải trang
+
+            updateVisitorCount();
         });
-    </script> -->
-    
+    </script>
 </body>
 </html>

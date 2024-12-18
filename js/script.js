@@ -1,4 +1,3 @@
-
 // Lấy tất cả các panel
 const panels = document.querySelectorAll('.panel');
 
@@ -183,3 +182,54 @@ document.addEventListener("DOMContentLoaded", function() {
 //   // Gọi hàm khi tải trang và khi thay đổi kích thước cửa sổ
 //   window.addEventListener('load', adjustTitle);
 //   window.addEventListener('resize', adjustTitle);
+
+// Hàm để lấy địa chỉ IP của người dùng
+function getVisitorIP() {
+    return fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => data.ip)
+        .catch(error => {
+            console.error('Không thể lấy địa chỉ IP:', error);
+            return null; // Trả về null nếu có lỗi
+        });
+}
+
+// Hàm để cập nhật lượt truy cập
+async function updateVisitorCount(pageKey) {
+    const ip = await getVisitorIP();  // Lấy địa chỉ IP của người dùng
+    if (!ip) {
+        console.log('Không thể lấy địa chỉ IP');
+        return;  // Nếu không thể lấy địa chỉ IP, không làm gì thêm
+    }
+
+    // Kiểm tra xem IP đã được lưu trong localStorage chưa
+    let visitedIPs = JSON.parse(localStorage.getItem(`visitedIPs_${pageKey}`)) || [];
+
+    // Nếu IP chưa được lưu, tính là lượt truy cập mới
+    if (!visitedIPs.includes(ip)) {
+        visitedIPs.push(ip); // Thêm IP vào danh sách đã truy cập
+        localStorage.setItem(`visitedIPs_${pageKey}`, JSON.stringify(visitedIPs)); // Lưu lại danh sách IP
+
+        // Cập nhật số lượt truy cập
+        let visitCount = parseInt(localStorage.getItem(`visitCount_${pageKey}`)) || 0;
+        visitCount++;
+        localStorage.setItem(`visitCount_${pageKey}`, visitCount); // Lưu lại số lượt truy cập
+    }
+
+    // Cập nhật hiển thị số lượt truy cập
+    const visitorText = document.getElementById("visitor-text");
+    if (visitorText) {
+        const visitCount = localStorage.getItem(`visitCount_${pageKey}`) || 0;
+        visitorText.textContent = `Views: ${visitCount}`;
+    }
+}
+
+// Gọi hàm updateVisitorCount khi tải trang
+document.addEventListener("DOMContentLoaded", function () {
+    // Lấy tên trang từ URL, ví dụ: 'index.html' sẽ là 'index'
+    const path = window.location.pathname;
+    const page = path.split("/").pop().split(".")[0];
+    
+    // Gọi hàm với tham số pageKey
+    updateVisitorCount(page);
+});

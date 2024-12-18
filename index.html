@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=DM+Sans&display=swap'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Shopping+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <title>Trang Chủ</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBP9VHQBMF"></script>
@@ -220,6 +223,7 @@ main {
 #main-nav a:nth-child(1) { animation-delay: 1s; }
 #main-nav a:nth-child(2) { animation-delay: 1.2s; }
 #main-nav a:nth-child(3) { animation-delay: 1.4s; }
+#main-nav a:nth-child(4) { animation-delay: 1.6s; }
 
 /* Hiệu ứng cho tiêu đề h1 */
 @keyframes titleAppear {
@@ -321,17 +325,34 @@ main {
     <div id="welcome-message" class="welcome-message"></div>
     <div class="video-container">
         <!-- Video nền cho phần main -->
-        <video id="background-video" autoplay loop muted preload="none">
+        <video id="background-video" autoplay loop muted preload="none" loading="lazy">
             <source src="videos/br1.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ video.
         </video>
     </div>
     <header id="animated-header">
+        <a href="https://xuni-dizan.github.io/Trang_ca_nhan/" target="_blank" class="logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff7e5f;stop-opacity:1">
+                            <animate attributeName="stop-color" values="#ff7e5f;#feb47b;#ff7e5f" dur="4s" repeatCount="indefinite" />
+                        </stop>
+                        <stop offset="100%" style="stop-color:#feb47b;stop-opacity:1">
+                            <animate attributeName="stop-color" values="#feb47b;#ff7e5f;#feb47b" dur="4s" repeatCount="indefinite" />
+                        </stop>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="5" fill="none" />
+                <text x="50%" y="55%" text-anchor="middle" fill="url(#logoGradient)" font-size="40" font-family="Roboto" dy=".3em">D</text>
+            </svg>
+        </a>
         <h1 id="index-text">Welcome to my Website</h1>
         <nav id="main-nav" >
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
+            <a href="result01.html" class="nav-button">Result</a>
         </nav>
     </header>
     <main>
@@ -360,7 +381,7 @@ main {
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="lab.html">Lab</a>
-                <a href="#contact">Contact</a>
+                <a href="result01.html">Result</a>
             </div>
             
             <!-- Thông tin liên hệ -->
@@ -603,7 +624,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.fillText("Nguyễn Xuân Đại", canvas.width / 2, canvas.height / 2 + 10);
     });
           </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
         <script>
         let progress = 0; // Biến kiểm soát độ tiến của chữ
         let targetProgress = 0; // Tiến độ mục tiêu để làm mượt chuyển động
@@ -739,5 +760,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
         </script>
+    <script defer src="js/optimizations.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const script = document.createElement('script');
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js";
+            script.defer = true;
+            document.body.appendChild(script);
+        });
+    </script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>

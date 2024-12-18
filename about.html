@@ -50,11 +50,28 @@
         </div>
     </div>
     <header>
+        <a href="https://xuni-dizan.github.io/Trang_ca_nhan/" target="_blank" class="logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff7e5f;stop-opacity:1">
+                            <animate attributeName="stop-color" values="#ff7e5f;#feb47b;#ff7e5f" dur="4s" repeatCount="indefinite" />
+                        </stop>
+                        <stop offset="100%" style="stop-color:#feb47b;stop-opacity:1">
+                            <animate attributeName="stop-color" values="#feb47b;#ff7e5f;#feb47b" dur="4s" repeatCount="indefinite" />
+                        </stop>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="5" fill="none" />
+                <text x="50%" y="55%" text-anchor="middle" fill="url(#logoGradient)" font-size="40" font-family="Roboto" dy=".3em">D</text>
+            </svg>
+        </a>
         <h1 id="about-text">Information</h1>
         <nav id="main-nav">
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
+            <a href="result01.html" class="nav-button">Result</a>
         </nav>
     </header>
     <main>
@@ -216,7 +233,7 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="lab.html">Lab</a>
-                <a href="#contact">Contact</a>
+                <a href="result01.html">Result</a>
             </div>
             
             <!-- Thông tin liên hệ -->
@@ -456,22 +473,22 @@
                 }
     
                 // Kiểm tra xem IP đã được lưu trong localStorage chưa
-                let visitedIPs = JSON.parse(localStorage.getItem("visitedIPs")) || [];
+                let visitedIPs = JSON.parse(localStorage.getItem("visitedIPs_about")) || [];
     
                 // Nếu IP chưa được lưu, tính là lượt truy cập mới
                 if (!visitedIPs.includes(ip)) {
                     visitedIPs.push(ip); // Thêm IP vào danh sách đã truy cập
-                    localStorage.setItem("visitedIPs", JSON.stringify(visitedIPs)); // Lưu lại danh sách IP
+                    localStorage.setItem("visitedIPs_about", JSON.stringify(visitedIPs)); // Lưu lại danh sách IP
     
                     // Cập nhật số lượt truy cập
-                    let visitCount = parseInt(localStorage.getItem("visitCount1")) || 0;
+                    let visitCount = parseInt(localStorage.getItem("visitCount_about")) || 0;
                     visitCount++;
-                    localStorage.setItem("visitCount1", visitCount); // Lưu lại số lượt truy cập
+                    localStorage.setItem("visitCount_about", visitCount); // Lưu lại số lượt truy cập
                 }
     
                 // Cập nhật hiển thị số lượt truy cập
                 const visitorText = document.getElementById("visitor-text");
-                const visitCount = localStorage.getItem("visitCount1") || 0;
+                const visitCount = localStorage.getItem("visitCount_about") || 0;
                 visitorText.textContent = `Views: ${visitCount}`;
             });
     </script>
