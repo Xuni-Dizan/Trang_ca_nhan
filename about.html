@@ -280,32 +280,33 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("overlay");
-            // Theo dõi trạng thái tải tài nguyên
-        const resourcesLoaded = () => {
-            const images = Array.from(document.images);
-            const loaded = images.every(img => img.complete);
-            return loaded;
-        };
-    
-            // Chờ toàn bộ tài nguyên được tải
-            window.addEventListener("load", () => {
-                overlay.style.transition = "opacity 0.5s ease-out";
-            overlay.style.opacity = "0";
 
-            // Đợi animation kết thúc trước khi ẩn hoàn toàn
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 500);
-                // overlay.style.display = "none";
+            // Hàm ẩn overlay
+            function hideOverlay() {
+                overlay.style.transition = "opacity 0.5s ease-out";
+                overlay.style.opacity = "0";
+
+                // Đợi transition hoàn thành trước khi ẩn hoàn toàn
+                overlay.addEventListener("transitionend", () => {
+                    overlay.style.display = "none";
+                });
+            }
+
+            // Kiểm tra tất cả hình ảnh đã được tải
+            function areImagesLoaded() {
+                const images = Array.from(document.images);
+                return images.every(img => img.complete && img.naturalHeight !== 0);
+            }
+
+            // Chờ tất cả tài nguyên được tải
+            window.addEventListener("load", () => {
+                hideOverlay();
             });
 
-            // Kiểm tra tài nguyên định kỳ
-        const checkResources = setInterval(() => {
-            if (resourcesLoaded()) {
-                clearInterval(checkResources);
+            // Nếu tất cả hình ảnh đã được tải trước khi sự kiện load xảy ra
+            if (areImagesLoaded()) {
                 hideOverlay();
             }
-        }, 100);
         });
     </script>
     
