@@ -51,23 +51,23 @@ body {
 
 /* Cải thiện các nút trong section */
 .btn {
-    box-shadow: 0 0 20px rgba(19, 129, 146, 0.7); /* Tăng bóng đổ */
-    background: linear-gradient(45deg, #00d4ff, #0198c4); /* Sử dụng gradient cho nền */
+    box-shadow: 0 0 20px rgba(19, 129, 146, 0.7);
+    background: linear-gradient(45deg, #00d4ff, #0198c4);
     color: #fff;
     width: 100%;
     max-width: 300px;
-    height: 50px; /* Tăng kích thước nút */
+    height: 50px;
     align-self: center;
     font-weight: bold;
     border: none;
-    border-radius: 25px; /* Bo tròn nút */
+    border-radius: 25px;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
 
 .btn:hover {
     background: linear-gradient(45deg, #0198c4, #00d4ff);
-    transform: scale(1.05); /* Phóng to nút khi hover */
+    transform: scale(1.05);
 }
 
 /* Cải thiện danh sách các mục */
@@ -79,21 +79,22 @@ ul {
 }
 
 li {
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Thay đổi màu viền */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     transition: background 0.3s ease, transform 0.3s;
-    background: rgba(33, 33, 33, 0.8); /* Thêm độ trong suốt cho nền */
-    border-radius: 10px; /* Bo góc mềm mại hơn */
+    background: rgba(33, 33, 33, 0.8);
+    border-radius: 10px;
     padding: 20px;
     margin-bottom: 15px;
 }
 
 li:hover {
-    background: rgba(19, 185, 165, 0.9); /* Thay đổi màu nền khi hover */
-    transform: translateX(10px); /* Hiệu ứng di chuyển nhẹ */
+    background: rgba(19, 185, 165, 0.9);
+    transform: translateX(10px);
 }
 
 li .btn {
@@ -105,6 +106,8 @@ li .btn {
     border-radius: 25px;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
+    align-self: flex-end;
+    margin-top: 10px;
 }
 
 li .btn:hover {
@@ -114,9 +117,8 @@ li .btn:hover {
 
 li p {
     max-width: 400px;
-    line-height: 1.6; /* Tăng khoảng cách dòng cho dễ đọc */
+    line-height: 1.6;
 }
-
 /* Cải thiện phần thông tin trong mỗi mục */
 .info {
     display: flex;
@@ -308,7 +310,6 @@ li p {
 }
 
 /* ... Thêm các icon cho các tab khác tương tự */
-
 /* Cải thiện nội dung tab */
 .section-labs {
     display: flex;
@@ -338,7 +339,17 @@ li p {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .section-01 {
+        padding: 30px;
+    }
+}
+
 @media (max-width: 768px) {
+    .section-01 {
+        padding: 20px;
+    }
+
     .tab-container {
         flex-direction: column;
         align-items: center;
@@ -349,4 +360,31 @@ li p {
         max-width: 300px;
         justify-content: center;
     }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    li .btn {
+        align-self: center;
+    }
+
+    .tab-link {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .btn {
+        max-width: 250px;
+        height: 45px;
+    }
+    .section-labs{
+        height: 55%;       
+    }
 }
+
