@@ -220,7 +220,7 @@
         "id": "box-1",
         "iframeSrc": "https://xuni-dizan.github.io/lab1.html/",
         "title": "User Interface",
-        "description": "Giao diện người dùng yêu cầu các trường nhập liệu như Username, Password, Email, và Role, với validation và thông báo lỗi.",
+        "description": "Giao diện người dùng yêu cầu các trường nhập liệu.",
         "timestamp": "21h17 - 28/8/2024",
         "link": "https://xuni-dizan.github.io/lab1.html/",
         "github": "https://github.com/Xuni-Dizan/lab1.html"

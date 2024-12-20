@@ -1,0 +1,14 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff7e5f;stop-opacity:1">
+                <animate attributeName="stop-color" values="#ff7e5f;#feb47b;#ff7e5f" dur="4s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" style="stop-color:#feb47b;stop-opacity:1">
+                <animate attributeName="stop-color" values="#feb47b;#ff7e5f;#feb47b" dur="4s" repeatCount="indefinite" />
+            </stop>
+        </linearGradient>
+    </defs>
+    <circle cx="50" cy="50" r="45" stroke="url(#logoGradient)" stroke-width="5" fill="none" />
+    <text x="50%" y="55%" text-anchor="middle" fill="url(#logoGradient)" font-size="40" font-family="Roboto" dy=".3em">D</text>
+</svg>

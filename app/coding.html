@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trình Soạn Thảo Mã</title>
+    <link rel="icon" href="../images/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/material-darker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/dracula.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
@@ -21,18 +22,19 @@
     <div class="container">
         <div class="editor">
             <h2>Soạn thảo mã</h2>
-            <!-- Language selection buttons -->
+            <!-- Nút chọn ngôn ngữ với biểu tượng FontAwesome -->
             <div class="editor-buttons">
-                <button class="btn-link active" onclick="showEditor('html')">HTML</button>
-                <button class="btn-link" onclick="showEditor('css')">CSS</button>
-                <button class="btn-link" onclick="showEditor('js')">JavaScript</button>
+                <button class="btn-link active" onclick="showEditor('html')"><i class="fas fa-code"></i> HTML</button>
+                <button class="btn-link" onclick="showEditor('css')"><i class="fas fa-paint-brush"></i> CSS</button>
+                <button class="btn-link" onclick="showEditor('js')"><i class="fas fa-js"></i> JavaScript</button>
+                <button class="btn-link" onclick="downloadZip()"><i class="fas fa-download"></i> Tải xuống ZIP</button>
             </div>            
             
             <div id="editor-html"></div>
             <div id="editor-css" style="display: none;"></div>
             <div id="editor-js" style="display: none;"></div>
             
-            <button onclick="runCode()">Chạy mã</button>
+            <button class="run-button" onclick="runCode()"><i class="fas fa-play"></i> Chạy mã</button>
         </div>
         <div class="result">
             <h2>Hiển thị kết quả</h2>
@@ -40,14 +42,16 @@
         </div>
     </div>
 
-    <!-- AI Section -->
+    <!-- Phần AI -->
     <section id="ai">
         <iframe src="https://chat.webllm.ai/#/chat" frameborder="0"></iframe> 
     </section>
 
-    <!-- AI Icon -->
+    <!-- Biểu tượng AI -->
     <div id="ai-icon" onclick="toggleAI()"><img src="https://github.com/mlc-ai.png?size=460" alt="AI"></div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="app_script/coding.js"></script>
 </body>
 </html>

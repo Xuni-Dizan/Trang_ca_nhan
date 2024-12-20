@@ -1,7 +1,7 @@
 // Khởi tạo editor cho HTML, CSS và JavaScript với autocomplete
 let htmlEditor = CodeMirror(document.getElementById('editor-html'), {
     mode: 'htmlmixed',
-    theme: 'material-darker',
+    theme: 'dracula',
     lineNumbers: true,
     matchBrackets: true,
     indentUnit: 4,
@@ -18,18 +18,17 @@ let htmlEditor = CodeMirror(document.getElementById('editor-html'), {
             });
         },
         alignWithWord: true, // Căn chỉnh với từ đang được gõ
-        // Gợi ý thêm các thuộc tính HTML dựa trên vị trí con trỏ
     }
 });
 
 let cssEditor = CodeMirror(document.getElementById('editor-css'), {
     mode: 'css',
-    theme: 'material-darker',
+    theme: 'dracula',
     lineNumbers: true,
     matchBrackets: true,
     indentUnit: 4,
     extraKeys: {
-        "Ctrl-Space": "autocomplete", // Phím tắt Ctrl + Space để kích hoạt autocomplete
+        "Ctrl-Space": "autocomplete",
         "Ctrl-Q": function(cm) { cm.foldCode(cm.getCursor()); }
     },
     hintOptions: {
@@ -40,19 +39,18 @@ let cssEditor = CodeMirror(document.getElementById('editor-css'), {
                 /* Gợi ý về các thuộc tính CSS */
             });
         },
-        alignWithWord: true, // Căn chỉnh với từ đang được gõ
-        // Gợi ý các thuộc tính CSS khi con trỏ đang ở trong giá trị của thuộc tính CSS
+        alignWithWord: true,
     }
 });
 
 let jsEditor = CodeMirror(document.getElementById('editor-js'), {
     mode: 'javascript',
-    theme: 'material-darker',
+    theme: 'dracula',
     lineNumbers: true,
     matchBrackets: true,
     indentUnit: 4,
     extraKeys: {
-        "Ctrl-Space": "autocomplete", // Phím tắt Ctrl + Space để kích hoạt autocomplete
+        "Ctrl-Space": "autocomplete",
         "Ctrl-Q": function(cm) { cm.foldCode(cm.getCursor()); }
     },
     hintOptions: {
@@ -63,11 +61,9 @@ let jsEditor = CodeMirror(document.getElementById('editor-js'), {
                 /* Gợi ý về các hàm và đối tượng JavaScript */
             });
         },
-        alignWithWord: true, // Căn chỉnh với từ đang được gõ
-        // Gợi ý các hàm hoặc biến JavaScript khi con trỏ đang trong một hàm hoặc đối tượng JavaScript
+        alignWithWord: true,
     }
 });
-
 
 function runCode() {
     const htmlCode = htmlEditor.getValue();
@@ -78,7 +74,7 @@ function runCode() {
 
     const completeCode = `
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="vi">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,21 +90,6 @@ function runCode() {
     iframeDocument.write(completeCode);
     iframeDocument.close();
 }
-
-// function showEditor(editor) {
-//     document.getElementById('editor-html').style.display = (editor === 'html') ? 'block' : 'none';
-//     document.getElementById('editor-css').style.display = (editor === 'css') ? 'block' : 'none';
-//     document.getElementById('editor-js').style.display = (editor === 'js') ? 'block' : 'none';
-// }
-
-// function toggleAI() {
-//     const aiSection = document.getElementById('ai');
-//     if (aiSection.style.display === 'none' || aiSection.style.display === '') {
-//         aiSection.style.display = 'block';
-//     } else {
-//         aiSection.style.display = 'none';
-//     }
-// }
 
 // Lưu mã vào localStorage khi thay đổi
 function saveCode() {
@@ -135,9 +116,8 @@ window.onload = function () {
 
 // Hàm để chuyển đổi giữa các editor
 function showEditor(editor) {
-    var i, btnlinks;
-    btnlinks = document.getElementsByClassName("btn-link");
-    for (i = 0; i < btnlinks.length; i++) {
+    var btnlinks = document.getElementsByClassName("btn-link");
+    for (var i = 0; i < btnlinks.length; i++) {
         btnlinks[i].classList.remove("active");  // Xóa lớp active
     }
     document.getElementById('editor-html').style.display = (editor === 'html') ? 'block' : 'none';
@@ -149,7 +129,6 @@ function showEditor(editor) {
     button.classList.add("active");
 }
 
-
 // Toggle AI Section
 function toggleAI() {
     const aiSection = document.getElementById('ai');
@@ -160,20 +139,21 @@ function toggleAI() {
     }
 }
 
-// Lưu mã vào localStorage khi tải lại trang
-// window.onload = function () {
-//     const savedHtml = localStorage.getItem('html');
-//     const savedCss = localStorage.getItem('css');
-//     const savedJs = localStorage.getItem('js');
+// Hàm để tải xuống mã nguồn dưới dạng file ZIP
+function downloadZip() {
+    const zip = new JSZip();
+    const htmlCode = htmlEditor.getValue();
+    const cssCode = cssEditor.getValue();
+    const jsCode = jsEditor.getValue();
 
-//     if (savedHtml) htmlEditor.setValue(savedHtml);
-//     if (savedCss) cssEditor.setValue(savedCss);
-//     if (savedJs) jsEditor.setValue(savedJs);
-// };
+    // Thêm các file vào ZIP
+    zip.file("index.html", htmlCode);
+    zip.file("styles.css", cssCode);
+    zip.file("script.js", jsCode);
 
-// // Hàm lưu mã vào localStorage
-// function saveCode() {
-//     localStorage.setItem('html', htmlEditor.getValue());
-//     localStorage.setItem('css', cssEditor.getValue());
-//     localStorage.setItem('js', jsEditor.getValue());
-// }
+    // Tạo và tải xuống file ZIP
+    zip.generateAsync({ type: "blob" })
+        .then(function(content) {
+            saveAs(content, "code_project.zip");
+        });
+}
