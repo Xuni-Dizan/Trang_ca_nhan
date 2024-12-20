@@ -1,53 +1,82 @@
 function openLab(evt, labName) {
-    var i, tabcontent, tablinks;
+    const tabContents = document.querySelectorAll(".tab-content");
+    const tabLinks = document.querySelectorAll(".tab-link");
 
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-        tabcontent[i].classList.remove("active");
+    // Ẩn tất cả các nội dung tab
+    tabContents.forEach(content => {
+        content.style.display = "none";
+        content.classList.remove("active");
+    });
+
+    // Loại bỏ class 'active' khỏi tất cả các tab
+    tabLinks.forEach(link => {
+        link.classList.remove("active");
+    });
+
+    // Hiển thị nội dung tab được chọn và thêm class 'active'
+    const selectedTab = document.getElementById(labName);
+    if (selectedTab) {
+        selectedTab.style.display = "block";
+        selectedTab.classList.add("active");
     }
 
-    tablinks = document.getElementsByClassName("tab-link");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    // Thêm class 'active' vào tab được nhấn
+    if (evt.currentTarget) {
+        evt.currentTarget.classList.add("active");
     }
-
-    document.getElementById(labName).style.display = "block";
-    document.getElementById(labName).classList.add("active");
-    evt.currentTarget.className += " active";
 }
 
-// Quay lại trang chủ
+// Hàm quay lại trang chủ
 function goBack(sectionId) {
-    document.getElementById(sectionId).style.display = 'block';
-    let sections = ['section-hci', 'section-ds', 'section-p'];
-    sections.forEach(function(section) {
-        if (section !== sectionId) {
-            document.getElementById(section).style.display = 'none';
+    const sections = ['section-hci', 'section-ds', 'section-p', 'home'];
+    
+    sections.forEach(section => {
+        const sectionElement = document.getElementById(section);
+        if (sectionElement) {
+            sectionElement.style.display = (section === sectionId) ? 'block' : 'none';
         }
     });
 }
 
-document.getElementById('btn-hci').addEventListener('click', function() {
-document.getElementById('home').style.display = 'none';
-let sectionHci = document.getElementById('section-hci');
-let sectionLab1 = document.getElementById('lab1_1');
-sectionHci.style.display = 'block';
-sectionHci.classList.add('transition-fade');
-sectionLab1.style.display = 'block';
-sectionLab1.classList.add('transition-fade');
+// Hàm khởi tạo sự kiện khi DOM đã tải xong
+document.addEventListener('DOMContentLoaded', () => {
+    // Gán sự kiện cho các nút chi tiết
+    document.getElementById('btn-hci')?.addEventListener('click', () => {
+        toggleSection('home', 'section-hci');
+    });
+
+    document.getElementById('btn-ds')?.addEventListener('click', () => {
+        toggleSection('home', 'section-ds');
+    });
+
+    document.getElementById('btn-p')?.addEventListener('click', () => {
+        toggleSection('home', 'section-p');
+    });
+
+    // Gán sự kiện cho các nút quay lại
+    const backIcons = document.querySelectorAll('.back-icon');
+    backIcons.forEach(icon => {
+        icon.addEventListener('click', () => goBack('home'));
+    });
+
+    // Hiển thị lab đầu tiên mặc định khi mở HCI
+    const sectionHci = document.getElementById('section-hci');
+    if (sectionHci) {
+        const firstLab = sectionHci.querySelector('.tab-link');
+        if (firstLab) {
+            firstLab.click();
+        }
+    }
 });
 
-document.getElementById('btn-ds').addEventListener('click', function() {
-document.getElementById('home').style.display = 'none';
-let sectionDs = document.getElementById('section-ds');
-sectionDs.style.display = 'block';
-sectionDs.classList.add('transition-fade');
-});
+// Hàm chuyển đổi giữa các section
+function toggleSection(hideSectionId, showSectionId) {
+    const hideSection = document.getElementById(hideSectionId);
+    const showSection = document.getElementById(showSectionId);
 
-document.getElementById('btn-p').addEventListener('click', function() {
-document.getElementById('home').style.display = 'none';
-let sectionP = document.getElementById('section-p');
-sectionP.style.display = 'block';
-sectionP.classList.add('transition-fade');
-});
+    if (hideSection && showSection) {
+        hideSection.style.display = 'none';
+        showSection.style.display = 'block';
+        showSection.classList.add('transition-fade');
+    }
+}

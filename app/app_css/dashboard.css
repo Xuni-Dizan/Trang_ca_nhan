@@ -1,254 +1,352 @@
+/* Reset một số style cơ bản để đảm bảo tính nhất quán */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     height: 100vh;
     margin: 0;
-    background: #121212; /* Màu nền tối */
+    background: linear-gradient(135deg, #1f1c2c, #928dab); /* Sử dụng gradient thay vì màu nền đơn */
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Roboto', sans-serif; /* Chọn font hiện đại hơn */
 }
-.section-01{
+
+/* Cải tiến cho section-01 */
+.section-01 {
     display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 1200px;
-        margin: 20px;
-        background: #1e1e1e; /* Màu nền của section */
-        padding: 30px;
-        border-radius: 10px; /* Bo góc mềm mại */
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+    background: rgba(30, 30, 30, 0.9); /* Thêm độ trong suốt và cải thiện màu nền */
+    padding: 40px;
+    border-radius: 12px; /* Bo góc mềm mại hơn */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Tăng bóng đổ để tạo chiều sâu */
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ nền phía sau */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Thêm viền nhẹ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động */
 }
+
+/* .section-01:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+} */
+
 .section-01::-webkit-scrollbar {
     display: none; /* Ẩn thanh cuộn */
 }
+
 .section-01 h2 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        color: #19c0a5; /* Màu nhấn chính */
-        font-weight: bold;
-}
-/* Thêm icon trở về */
-.back-icon {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 24px;
-    color: #19c0a5;
-    cursor: pointer;
-    transition: color 0.3s;
+    font-size: 2.5rem; /* Tăng kích thước tiêu đề */
+    margin-bottom: 1.5rem;
+    color: #00d4ff; /* Đổi màu nhấn chính sang xanh sáng hơn */
+    font-weight: 700; /* Tăng độ đậm của font */
+    text-align: center; /* Căn giữa tiêu đề */
 }
 
-.back-icon:hover {
-    color: #16b18a;
-}
-.section-labs{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%; /* Đảm bảo section-labs chiếm 100% chiều cao */
-    flex-direction: column;
-}
-.section-labs .tab-content {
-    display: none;
-    width: 100%;
-    height: 90%;
-}
-#section-hci::-webkit-scrollbar {
-    display: none; /* Ẩn thanh cuộn */
-}
-.section-labs iframe {
-    width: 100%;
-    height: 100%; /* Đảm bảo iframe chiếm toàn bộ không gian của tab-content */
-}
-.section-labs .tab-content.active {
-    display: block;
-}
-/* Các nút điều hướng trong từng section */
-.tab-container {
-    position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        top: -20px;
-        left: 20px;
-        /* margin-bottom: 5px; */
-    }
-
-    .tab-link {
-        background: #292929;
-        color: #b3b3b3;
-        border: 1px solid #3a3a3a;
-        padding: 10px 20px;
-        margin-left: 10px;
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        border-radius: 6px;
-        transition: background 0.3s, color 0.3s;
-    }
-
-    .tab-link:hover, .tab-link.active {
-        background: #19c0a5;
-        color: #fff;
-    }
-
-    /* Hiệu ứng cho các iframe */
-    iframe {
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Định dạng cho các phần nội dung */
-    .tab-content {
-        display: none;
-        /* margin-top: 5px; */
-        width: 100%;
-        height: 100%;
-    }
+/* Cải thiện các nút trong section */
 .btn {
-    box-shadow: 0 0 15px rgb(19, 129, 146);
-    background: black;
-    color: white;
-    width: 300px;
-    height: 40px;
+    box-shadow: 0 0 20px rgba(19, 129, 146, 0.7); /* Tăng bóng đổ */
+    background: linear-gradient(45deg, #00d4ff, #0198c4); /* Sử dụng gradient cho nền */
+    color: #fff;
+    width: 100%;
+    max-width: 300px;
+    height: 50px; /* Tăng kích thước nút */
     align-self: center;
     font-weight: bold;
     border: none;
+    border-radius: 25px; /* Bo tròn nút */
     cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
 }
 
+.btn:hover {
+    background: linear-gradient(45deg, #0198c4, #00d4ff);
+    transform: scale(1.05); /* Phóng to nút khi hover */
+}
+
+/* Cải thiện danh sách các mục */
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
     width: 100%;
 }
+
 li {
-    border: 1px solid rgba(218, 218, 218, 0.24);
-    /* padding: 1rem; */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Thay đổi màu viền */
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    transition: background-color 0.3s ease;
-    background: #212121;
-    /* border: 1px solid #333; */
-    border-radius: 8px;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s;
+    background: rgba(33, 33, 33, 0.8); /* Thêm độ trong suốt cho nền */
+    border-radius: 10px; /* Bo góc mềm mại hơn */
     padding: 20px;
     margin-bottom: 15px;
-    /* display: flex; */
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-li .btn {
-        padding: 12px 25px;
-        background-color: transparent;
-        border: 2px solid #19c0a5;
-        color: #19c0a5;
-        font-weight: 600;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s;
-}
-li .btn:hover {
-        background: #19c0a5;
-        color: #fff;
-    }
-
-li p {
-    max-width: 400px;
 }
 
 li:hover {
-    background: rgb(19, 129, 146);
+    background: rgba(19, 185, 165, 0.9); /* Thay đổi màu nền khi hover */
+    transform: translateX(10px); /* Hiệu ứng di chuyển nhẹ */
 }
 
-li:hover .btn {
-    background: white;
-    color: black;
+li .btn {
+    padding: 12px 30px;
+    background: none;
+    border: 2px solid #00d4ff;
+    color: #00d4ff;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
 }
 
+li .btn:hover {
+    background: #00d4ff;
+    color: #fff;
+}
+
+li p {
+    max-width: 400px;
+    line-height: 1.6; /* Tăng khoảng cách dòng cho dễ đọc */
+}
+
+/* Cải thiện phần thông tin trong mỗi mục */
 .info {
     display: flex;
     flex-direction: column;
 }
 
 .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-/* Các phần nội dung của từng section */
-#section-hci, #section-ds, #section-p {
-    top: 25px;
-    width: 100%;
-    height: 95%;
-    display: none;
-    position: relative;
+    font-size: 1.8rem; /* Tăng kích thước tiêu đề */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #00d4ff;
 }
 
-    /* Điều chỉnh padding và border cho các section */
+/* Các phần nội dung khác được giữ nguyên hoặc cải thiện nhẹ */
 #section-hci, #section-ds, #section-p {
-    /* display: block; */
-    background: #1e1e1e;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    display: none;
+    position: relative;
+    background: rgba(30, 30, 30, 0.95);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
-    /* Làm cho các tab nội dung thêm nổi bật */
-    .tab-content {
-        padding: 5px;
-        background: #292929;
-        border-radius: 8px;
-        border: 1px solid #3a3a3a;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.tab-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-link {
+    background: rgba(41, 41, 41, 0.8);
+    color: #b3b3b3;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.tab-link:hover, .tab-link.active {
+    background: #00d4ff;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.section-labs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.section-labs .tab-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.section-labs iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.section-labs .tab-content.active {
+    display: block;
+}
+
+.back-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 28px;
+    color: #00d4ff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.back-icon:hover {
+    color: #00b0cc;
+}
+
+/* Hiệu ứng chuyển tiếp */
+.transition-fade {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Các nút điều hướng */
+.btn-section {
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #00d4ff, #0198c4);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s;
+}
+
+.btn-section:hover {
+    background: linear-gradient(45deg, #0198c4, #00d4ff);
+    transform: scale(1.05);
+}
+
+/* Cải tiến section-hci */
+#section-hci, #section-ds, #section-p {
+    display: none;
+    width: 100%;  
+    margin: 20px auto;
+    background: rgba(30, 30, 30, 0.95);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Cải thiện Tab Navigation */
+.tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -20px;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-link {
+    background: rgba(41, 41, 41, 0.8);
+    color: #b3b3b3;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-link i {
+    font-size: 1.2rem;
+}
+
+.tab-link:hover, .tab-link.active {
+    background: #00d4ff;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Biểu tượng cho từng tab */
+.tab-link.lab1_1::before {
+    content: "\f121"; /* Icon FontAwesome cho Lab 1_1 */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.tab-link.lab1_2::before {
+    content: "\f0c0"; /* Icon FontAwesome cho Lab 1_2 */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.tab-link.lab2::before {
+    content: "\f0e7"; /* Icon FontAwesome cho Lab 2 */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+/* ... Thêm các icon cho các tab khác tương tự */
+
+/* Cải thiện nội dung tab */
+.section-labs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 95%;
+    flex-direction: column;
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+    height: 90%;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.section-labs iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tab-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .tab-content iframe {
-        border: none;
-        border-radius: 8px;
+    .tab-link {
         width: 100%;
-        height: 100%;
+        max-width: 300px;
+        justify-content: center;
     }
-    iframe::-webkit-scrollbar {
-        display: none; 
-    }
-
-    /* Các section khác */
-    #section-ds, #section-p {
-        padding: 20px;
-        text-align: center;
-    }
-    
-    /* Hiệu ứng chuyển tiếp */
-    .transition-fade {
-        opacity: 0;
-        animation: fadeIn 0.6s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-    }
-
-    /* Các nút điều hướng */
-    .btn-section {
-        padding: 15px 30px;
-        background: #19c0a5;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-section:hover {
-        background-color: #16b18a;
-    }
+}
