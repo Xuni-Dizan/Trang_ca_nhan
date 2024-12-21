@@ -586,7 +586,7 @@ header {
 @media (max-width: 768px) {
     .carousel-item {
         --width: clamp(120px, 40vw, 250px);
-        --height: clamp(160px, 50vw, 350px);
+        --height: clamp(360px, 50vw, 350px);
         --x: calc(var(--active) * 600%);
         --y: calc(var(--active) * 150%);
         --rot: calc(var(--active) * 90deg);
@@ -628,7 +628,7 @@ header {
 @media (max-width: 480px) {
     .carousel-item {
         --width: clamp(100px, 50vw, 200px);
-        --height: clamp(140px, 60vw, 300px);
+        --height: clamp(340px, 60vw, 300px);
         --x: calc(var(--active) * 400%);
         --y: calc(var(--active) * 100%);
         --rot: calc(var(--active) * 60deg);
@@ -664,9 +664,6 @@ header {
     #task-title::after {
         left: -20px;
         font-size: 1.5rem;
-    }
-    .project-description{
-        display: none;
     }
 }
   @font-face {
