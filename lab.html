@@ -144,7 +144,7 @@
                         <div class="card">
                             <img src="images/lab_4.jpg" alt="" class="card-image">
                             <div class="card-content">
-                                <h1 class="card-title">web học tập</h1>
+                                <h1 class="card-title">Web học tập</h1>
                                 <p class="card-text">Tạo ra trang web theo Req1 và Req2 (hình ảnh cô đã gửi)</p>
                                 <a href="https://xuni-dizan.github.io/Lab_4/" class="read-more-btn" target="_blank">See More</a>
                             </div>
@@ -298,27 +298,51 @@
                     </div>
                 </div>
                 <section id="dashboard" class="tab-content" style="display: block;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/dashboard.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
                 <section id="coding" class="tab-content" style="display: none;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/coding.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
                 <section id="latest_project" class="tab-content" style="display: none;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/latest_project.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
                 <section id="messages" class="tab-content" style="display: none;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/messages.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
                 <section id="analytics" class="tab-content" style="display: none;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/analytics.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
                 <section id="file_manager" class="tab-content" style="display: none;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/file_manager.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
                 <section id="color_code" class="tab-content" style="display: none;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/color_code.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
                 <section id="setting" class="tab-content" style="display: none;">
+                    <button class="fullscreen-btn" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
                     <iframe src="app/setting.html" style="width: 100%; height: 100%;" frameborder="0"></iframe>
                 </section>
             </section>
@@ -938,6 +962,73 @@
                     section2.classList.toggle('fullscreen');
                 });
             }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fullscreenButtons = document.querySelectorAll('.fullscreen-btn');
+
+            fullscreenButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabContent = this.closest('.tab-content');
+                    
+                    if (!document.fullscreenElement) {
+                        // Yêu cầu toàn màn hình cho phần tử tab-content
+                        if (tabContent.requestFullscreen) {
+                            tabContent.requestFullscreen().catch(err => {
+                                alert(`Không thể bật chế độ toàn màn hình: ${err.message} (${err.name})`);
+                            });
+                        } else if (tabContent.webkitRequestFullscreen) { /* Safari */
+                            tabContent.webkitRequestFullscreen();
+                        } else if (tabContent.msRequestFullscreen) { /* IE11 */
+                            tabContent.msRequestFullscreen();
+                        }
+                        this.innerHTML = '<i class="fas fa-compress"></i>'; // Thay đổi icon khi ở chế độ fullscreen
+                    } else {
+                        // Thoát khỏi chế độ toàn màn hình
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.webkitExitFullscreen) { /* Safari */
+                            document.webkitExitFullscreen();
+                        } else if (document.msExitFullscreen) { /* IE11 */
+                            document.msExitFullscreen();
+                        }
+                        this.innerHTML = '<i class="fas fa-expand"></i>'; // Thay đổi icon khi thoát chế độ fullscreen
+                    }
+                });
+            });
+
+            // Thay đổi icon khi người dùng thoát fullscreen bằng phím Esc hoặc các phương thức khác
+            document.addEventListener('fullscreenchange', () => {
+                fullscreenButtons.forEach(button => {
+                    if (!document.fullscreenElement) {
+                        button.innerHTML = '<i class="fas fa-expand"></i>';
+                    } else {
+                        button.innerHTML = '<i class="fas fa-compress"></i>';
+                    }
+                });
+            });
+
+            // Hỗ trợ cho các trình duyệt khác
+            document.addEventListener('webkitfullscreenchange', () => {
+                fullscreenButtons.forEach(button => {
+                    if (!document.webkitFullscreenElement) {
+                        button.innerHTML = '<i class="fas fa-expand"></i>';
+                    } else {
+                        button.innerHTML = '<i class="fas fa-compress"></i>';
+                    }
+                });
+            });
+
+            document.addEventListener('msfullscreenchange', () => {
+                fullscreenButtons.forEach(button => {
+                    if (!document.msFullscreenElement) {
+                        button.innerHTML = '<i class="fas fa-expand"></i>';
+                    } else {
+                        button.innerHTML = '<i class="fas fa-compress"></i>';
+                    }
+                });
+            });
         });
     </script>
 </body>

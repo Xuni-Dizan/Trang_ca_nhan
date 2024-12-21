@@ -2434,4 +2434,62 @@ nav#main-nav a{
     }
 }
 
+/* Styling cho nút Fullscreen */
+.fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(31, 40, 51, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e5e5e5;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 99999999;
+}
+/* Khi ở chế độ fullscreen, mở rộng iframe để chiếm toàn bộ không gian */
+.tab-content.fullscreen-active iframe {
+  width: 100%;
+  height: 100%;
+}
 
+/* Chỉnh sửa khi tab-content đang ở chế độ fullscreen */
+.tab-content:fullscreen .fullscreen-btn,
+.tab-content:-webkit-full-screen .fullscreen-btn,
+.tab-content:-moz-full-screen .fullscreen-btn,
+.tab-content:-ms-fullscreen .fullscreen-btn {
+  /* Có thể thêm các hiệu ứng hoặc thay đổi kiểu dáng nếu cần */
+  /* Thay đổi màu nền khi hover */
+  /* background-color: rgba(66, 245, 195, 0.9); */
+  
+  /* Thêm hiệu ứng phóng to khi hover */
+  transform: scale(1.5);
+  
+  /* Thay đổi màu viền khi hover */
+  border-color: #1F2833;
+  
+  /* Thêm hiệu ứng chuyển đổi mượt mà */
+  transition: all 0.3s ease;
+}
+
+.fullscreen-btn:hover {
+    /* background-color: rgba(102, 252, 241, 0.8); */
+    transform: scale(1.1);
+}
+
+.fullscreen-btn i {
+    font-size: 1.2em;
+}
+
+/* Ẩn nút fullscreen trên các màn hình lớn hơn 768px */
+@media only screen and (min-width: 769px) {
+    .fullscreen-btn {
+        display: none;
+    }
+}
