@@ -139,7 +139,7 @@ function toggleAI() {
     }
 }
 
-// Hàm để tải xuống mã nguồn dưới dạng file ZIP
+// Hàm để tải xuống mã nguồn dưới dạng file ZIP với hỗ trợ di động tốt hơn
 function downloadZip() {
     const zip = new JSZip();
     const htmlCode = htmlEditor.getValue();
@@ -154,6 +154,55 @@ function downloadZip() {
     // Tạo và tải xuống file ZIP
     zip.generateAsync({ type: "blob" })
         .then(function(content) {
-            saveAs(content, "code_project.zip");
+            // Tạo URL tạm cho file ZIP
+            const url = URL.createObjectURL(content);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "code_project.zip";
+            document.body.appendChild(a);
+            a.click();
+            // Loại bỏ phần tử <a> và giải phóng URL
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        })
+        .catch(function(error) {
+            console.error("Lỗi khi tạo file ZIP:", error);
+            alert("Không thể tải xuống ZIP. Vui lòng thử lại.");
         });
+}
+// Hàm để mở Modal
+function openModal() {
+    document.getElementById('resetModal').style.display = 'flex';
+}
+
+// Hàm để đóng Modal
+function closeModal() {
+    document.getElementById('resetModal').style.display = 'none';
+}
+
+// Hàm để xác nhận Reset
+function confirmReset() {
+    // Thực hiện reset sau khi xác nhận
+    htmlEditor.setValue('');
+    cssEditor.setValue('');
+    jsEditor.setValue('');
+    // Xóa mã từ localStorage
+    localStorage.removeItem('html');
+    localStorage.removeItem('css');
+    localStorage.removeItem('js');
+    // Đóng modal
+    closeModal();
+}
+
+// Cập nhật hàm resetAll để mở Modal thay vì confirm
+function resetAll() {
+    openModal();
+}
+
+// Đóng modal khi click ra ngoài nội dung modal
+window.onclick = function(event) {
+    const modal = document.getElementById('resetModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 }

@@ -28,6 +28,7 @@
                 <button class="btn-link" onclick="showEditor('css')"><i class="fas fa-paint-brush"></i> CSS</button>
                 <button class="btn-link" onclick="showEditor('js')"><i class="fas fa-js"></i> JavaScript</button>
                 <button class="btn-link" onclick="downloadZip()"><i class="fas fa-download"></i> Tải xuống ZIP</button>
+                <button class="btn-link reset-button" onclick="resetAll()">Reset All</button>
             </div>            
             
             <div id="editor-html"></div>
@@ -53,5 +54,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="app_script/coding.js"></script>
+
+    <!-- Modal Xác Nhận Reset All -->
+    <div id="resetModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Xác nhận Reset</h2>
+            <p>Bạn có chắc chắn muốn xóa toàn bộ mã hiện tại?</p>
+            <div class="modal-actions">
+                <button class="btn-confirm" onclick="confirmReset()">Xác nhận</button>
+                <button class="btn-cancel" onclick="closeModal()">Huỷ bỏ</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

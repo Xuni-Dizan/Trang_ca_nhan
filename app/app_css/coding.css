@@ -347,3 +347,152 @@ iframe {
         height: 40%;
     }
 }
+
+/* Ẩn nút Reset All trên các thiết bị không phải di động */
+.reset-button {
+    display: none;
+}
+
+/* Hiển thị nút Reset All chỉ trên chế độ giao diện điện thoại */
+@media (max-width: 768px) {
+    .reset-button {
+        display: flex;
+        background-color: #ff4d4d;
+        color: #fff;
+    }
+}
+
+@media (max-width: 480px) {
+    .reset-button {
+        background-color: #ff1a1a;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Thêm hiệu ứng hover cho nút Reset All trên di động */
+.reset-button:hover {
+    background-color: #e60000;
+    transform: scale(1.05);
+}
+
+/* Cải tiến giao diện Modal Xác Nhận Reset */
+
+/* Hiển thị modal với hiệu ứng fade-in */
+.modal {
+    display: none; /* Ẩn mặc định */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Nền đen trong suốt */
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ nền */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out; /* Hiệu ứng chuyển động */
+    z-index: 1001; /* Đảm bảo modal nằm trên các phần tử khác */
+}
+
+/* Nội dung của modal */
+.modal-content {
+    background-color: #2c2c2c;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+/* Nút đóng modal */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: #ff4d4d;
+}
+
+/* Tiêu đề modal */
+.modal-content h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Nội dung thông báo */
+.modal-content p {
+    color: #dddddd;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Các nút hành động trong modal */
+.modal-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.btn-confirm, .btn-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 100px;
+}
+
+/* Nút xác nhận */
+.btn-confirm {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.btn-confirm:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Nút huỷ bỏ */
+.btn-cancel {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-cancel:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Hiệu ứng chuyển động cho modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
