@@ -378,7 +378,7 @@ iframe {
 
 /* Cải tiến giao diện Modal Xác Nhận Reset */
 
-/* Hiển thị modal với hiệu ứng fade-in */
+/* Hiển thị modal với hiệu ứng fade-in và backdrop mờ */
 .modal {
     display: none; /* Ẩn mặc định */
     position: fixed;
@@ -386,94 +386,113 @@ iframe {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Nền đen trong suốt */
-    backdrop-filter: blur(5px); /* Hiệu ứng mờ nền */
+    background: rgba(0, 0, 0, 0.5); /* Nền đen trong suốt với độ mờ cao hơn */
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ nền mạnh hơn */
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease-in-out; /* Hiệu ứng chuyển động */
-    z-index: 1001; /* Đảm bảo modal nằm trên các phần tử khác */
+    animation: fadeIn 0.4s ease-in-out; /* Tăng thời gian animation để mượt hơn */
+    z-index: 1001; /* Đảm bảo modal luôn nằm trên các phần tử khác */
 }
 
 /* Nội dung của modal */
 .modal-content {
-    background-color: #2c2c2c;
-    border-radius: 15px;
-    padding: 30px;
+    background: linear-gradient(135deg, #1e1e1e, #2c2c2c); /* Nền gradient hiện đại */
+    border-radius: 20px; /* Bo tròn góc mềm mại hơn */
+    padding: 40px 30px; /* Tăng padding để không gian bên trong rộng rãi hơn */
     width: 90%;
-    max-width: 400px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    max-width: 500px; /* Giới hạn chiều rộng tối đa */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Độ bóng mạnh hơn để nổi bật */
     position: relative;
-    animation: slideDown 0.3s ease-in-out;
+    animation: slideDown 0.4s ease-in-out; /* Tăng thời gian animation để mượt hơn */
+    transform: translateY(-20px); /* Độ cao khởi đầu khi mở modal */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Hiệu ứng chuyển động mềm mại */
 }
 
 /* Nút đóng modal */
 .close-button {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
+    top: 20px;
+    right: 25px;
+    font-size: 28px; /* Tăng kích thước phông chữ */
     color: #ffffff;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .close-button:hover {
-    color: #ff4d4d;
+    color: #ff4d4d; /* Đổi màu khi hover để tạo điểm nhấn */
 }
 
 /* Tiêu đề modal */
 .modal-content h2 {
     color: #ffffff;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
-    font-size: 24px;
+    font-size: 26px; /* Tăng kích thước tiêu đề */
+    font-weight: 800; /* Đậm hơn để nổi bật */
+    text-transform: uppercase; /* Chữ hoa tất cả để tạo sự trang trọng */
+    letter-spacing: 1px; /* Tăng khoảng cách giữa các chữ */
+    position: relative;
+}
+
+.modal-content h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #00aaff; /* Màu xanh dương để tạo điểm nhấn */
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
 /* Nội dung thông báo */
 .modal-content p {
     color: #dddddd;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px; /* Tăng kích thước phông chữ */
+    line-height: 1.5; /* Tăng khoảng cách dòng để dễ đọc hơn */
 }
 
 /* Các nút hành động trong modal */
 .modal-actions {
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content: center;
+    gap: 30px; /* Tăng khoảng cách giữa các nút */
 }
 
 .btn-confirm, .btn-cancel {
-    padding: 10px 20px;
+    padding: 12px 30px; /* Tăng kích thước nút để dễ nhấn hơn */
     border: none;
-    border-radius: 8px;
+    border-radius: 50px; /* Bo tròn hoàn toàn để hiện đại hơn */
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    min-width: 100px;
+    min-width: 120px; /* Đảm bảo độ rộng nhất quán */
 }
 
 /* Nút xác nhận */
 .btn-confirm {
-    background-color: #28a745;
+    background-color: #28a745; /* Xanh lá cây */
     color: #ffffff;
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3); /* Độ bóng để nổi bật */
 }
 
 .btn-confirm:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+    background-color: #218838; /* Xanh lá cây đậm hơn khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nhấn nhẹ */
 }
 
 /* Nút huỷ bỏ */
 .btn-cancel {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Đỏ */
     color: #ffffff;
+    box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3); /* Độ bóng để nổi bật */
 }
 
 .btn-cancel:hover {
-    background-color: #c82333;
-    transform: translateY(-2px);
+    background-color: #c82333; /* Đỏ đậm hơn khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nhấn nhẹ */
 }
 
 /* Hiệu ứng chuyển động cho modal */
@@ -488,7 +507,7 @@ iframe {
 
 @keyframes slideDown {
     from {
-        transform: translateY(-50px);
+        transform: translateY(-30px);
         opacity: 0;
     }
     to {
