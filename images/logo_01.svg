@@ -1,0 +1,38 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Gradient Radial nhẹ nhàng cho logo -->
+        <radialGradient id="logoGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:#ff7e5f; stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#feb47b; stop-opacity:0.7" />
+        </radialGradient>
+
+        <!-- Ánh sáng nhẹ cho vòng tròn -->
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Bóng đổ nhẹ cho chữ -->
+        <filter id="softShadow">
+            <feGaussianBlur stdDeviation="2" result="shadow"/>
+            <feOffset dx="1" dy="1" result="offset"/>
+            <feFlood flood-color="black" result="color"/>
+            <feComposite in2="shadow" operator="in" result="finalShadow"/>
+            <feComposite in="SourceGraphic" in2="finalShadow" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- Vòng tròn với gradient nhẹ, thanh thoát -->
+    <circle cx="50" cy="50" r="42" stroke="url(#logoGradient)" stroke-width="5" fill="none" filter="url(#glow)" />
+    
+    <!-- Chữ D với phông chữ thanh thoát và bóng đổ nhẹ -->
+    <text x="50%" y="55%" text-anchor="middle" fill="url(#logoGradient)" font-size="60" font-family="Roboto" dy=".3em">
+        D
+    </text>
+
+    <!-- Background trong suốt -->
+    <rect x="0" y="0" width="100" height="100" fill="none" />
+</svg>

@@ -89,7 +89,13 @@ function showWeekDetails(weekNumber, progress) {
         headerTitle.textContent = `Week ${weekNumber}`;
     }
     if (progressSpan) {
-        progressSpan.textContent = `${progress}% Completed`;
+        progressSpan.innerHTML = `<h4>${progress}% Completed</h4>`;
+    }
+
+    // Cập nhật độ rộng của thanh tiến độ
+    const progressBar = document.getElementById("progress-bar");
+    if (progressBar) {
+        progressBar.style.width = `${progress}%`;
     }
 
     // Hiển thị section-overview
@@ -280,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const weekSections = document.querySelectorAll("[class^='week-']");
     const headerTitle = document.querySelector(".text-5xl.font-extrabold");
     const progressSpan = document.querySelector(".ml-6.text-lg.font-medium");
+    const progressBar = document.getElementById("progress-bar");
 
     // Hàm ẩn tất cả các section tuần
     function hideAllWeeks() {
@@ -295,22 +302,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedWeek) {
             selectedWeek.style.display = "block";
         }
-        headerTitle.textContent = `Week ${weekNumber}`;
-        progressSpan.textContent = `${progress}% Completed`;
+        if (headerTitle) {
+            headerTitle.textContent = `Week ${weekNumber}`;
+        }
+        if (progressSpan) {
+            progressSpan.innerHTML = `<h4>${progress}% Completed</h4>`;
+        }
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
     }
 
     // Thiết lập trạng thái ban đầu
     hideAllWeeks();
-    showWeekLocal(1, 70); // Hiển thị tuần 1 mặc định với 70% hoàn thành
+    showWeekLocal(1, 90); // Hiển thị tuần 1 mặc định với 90% hoàn thành
 
     // Thêm sự kiện click cho từng nút tuần
     weekNodes.forEach(node => {
         node.addEventListener("click", () => {
             const weekNumber = node.querySelector(".text-2xl.font-bold").textContent.trim();
             const progressText = node.querySelector(".text-sm.text-gray-400").textContent.trim();
-            const progress = progressText.match(/\d+/)[0]; // Lấy số từ chuỗi 'Progress: X%'
+            const progressMatch = progressText.match(/\d+/);
+            const progressValue = progressMatch ? progressMatch[0] : 0; // Lấy số từ chuỗi 'Progress: X%'
 
-            showWeekLocal(weekNumber, progress);
+            showWeekLocal(weekNumber, progressValue);
         });
     });
 
@@ -335,13 +350,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Thêm sự kiện click cho details-button
-    const detailsButton = document.querySelector('.details-button');
-    if (detailsButton) {
-        detailsButton.addEventListener('click', hideSidebar);
-    }
+    const detailsButtons = document.querySelectorAll('.details-button');
+    detailsButtons.forEach(button => {
+        button.addEventListener('click', hideSidebar);
+    });
 
     // Thêm sự kiện click cho overview-button
-    // const overviewButton = document.querySelector('.overview-button');
     if (overviewButton) {
         overviewButton.addEventListener('click', showSidebar);
     }

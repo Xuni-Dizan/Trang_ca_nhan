@@ -1,0 +1,83 @@
+I. Yêu cầu chức năng
+1. Thông báo chung
+
+Mục đích: Cung cấp thông tin quan trọng, cập nhật mới nhất hoặc thông báo về sự kiện đến người dùng một cách nhanh chóng và hiệu quả.
+Chức năng:
+Hiển thị thông tin: Hiển thị các thông báo với tiêu đề ngắn gọn, nội dung dễ hiểu và được phân loại rõ ràng.
+Thu hút sự chú ý: Sử dụng màu sắc nổi bật, icon trực quan hoặc hiệu ứng animation để thu hút sự chú ý của người dùng vào thông báo mới hoặc quan trọng.
+Cập nhật thông tin: Cho phép quản trị viên dễ dàng thêm, xóa hoặc chỉnh sửa thông báo.
+Lưu trữ thông báo: Lưu trữ các thông báo cũ để người dùng có thể xem lại nếu cần.
+Ví dụ:
+Thông báo về việc bảo trì website, thay đổi chính sách, sự kiện sắp diễn ra, ra mắt khóa học mới...
+2. Biểu mẫu liên hệ
+
+Mục đích: Tạo kênh liên lạc trực tiếp giữa người dùng và quản trị viên website.
+Chức năng:
+Thu thập thông tin: Thu thập thông tin người dùng như họ tên, email, số điện thoại (nếu cần) và nội dung tin nhắn.
+Gửi email: Chuyển tiếp nội dung tin nhắn đến địa chỉ email của quản trị viên.
+Xác nhận: Gửi email xác nhận đến người dùng sau khi nhận được tin nhắn.
+Lưu trữ tin nhắn: Lưu trữ tin nhắn để quản trị viên có thể theo dõi và quản lý.
+Ví dụ:
+Người dùng có thể gửi câu hỏi, yêu cầu hỗ trợ, góp ý hoặc báo cáo lỗi thông qua biểu mẫu liên hệ.
+3. Forum hoặc trang hỏi đáp
+
+Mục đích: Xây dựng cộng đồng người dùng, nơi mọi người có thể trao đổi thông tin, giúp đỡ lẫn nhau và học hỏi kinh nghiệm.
+Chức năng:
+Tạo chủ đề thảo luận: Cho phép người dùng tạo chủ đề thảo luận mới về các vấn đề liên quan đến nội dung website.
+Bình luận và trả lời: Cho phép người dùng bình luận, trả lời các chủ đề thảo luận và tương tác với nhau.
+Tìm kiếm: Cung cấp chức năng tìm kiếm để người dùng dễ dàng tìm thấy thông tin họ cần.
+Phân loại chủ đề: Phân loại chủ đề theo danh mục để dễ dàng quản lý và theo dõi.
+Ví dụ:
+Forum thảo luận về các bài học, khóa học, dự án, công nghệ mới...
+Trang hỏi đáp với các câu hỏi thường gặp và câu trả lời chi tiết.
+
+II. Yêu cầu về giao diện
+1.  Màu sắc và font chữ:
+
+Sử dụng bảng màu hài hòa, hiện đại, tương phản nhẹ nhàng giữa nền và chữ để dễ đọc. Ví dụ:
+Nền trắng/xám nhạt, chữ đen/xám đậm.
+Nền xanh dương nhạt, chữ trắng.
+Chọn font chữ dễ đọc, ví dụ: Roboto, Open Sans, Lato.
+Sử dụng font chữ lớn hơn và màu sắc nổi bật cho tiêu đề thông báo.
+Phân loại thông báo bằng màu sắc:
+Thông báo quan trọng: màu đỏ.
+Thông báo sự kiện: màu xanh lá.
+Thông báo cập nhật: màu xanh dương.
+2. Bố cục:
+
+Chia trang thành hai khu vực chính:
+Khu vực hiển thị thông báo chung.
+Khu vực biểu mẫu liên hệ.
+Sử dụng thẻ (card) để hiển thị từng thông báo:
+Mỗi thẻ bao gồm: tiêu đề, nội dung ngắn gọn, thời gian đăng (nếu có).
+Sắp xếp các thẻ theo thứ tự thời gian, thông báo mới nhất ở trên cùng.
+Thiết kế biểu mẫu liên hệ gọn gàng, dễ nhìn:
+Các trường thông tin được sắp xếp hợp lý.
+Sử dụng placeholder để hướng dẫn người dùng nhập liệu.
+Nút "Gửi" được thiết kế nổi bật.
+3. Hình ảnh và icon:
+
+Sử dụng icon để minh họa cho từng loại thông báo. Ví dụ:
+Thông báo quan trọng: icon dấu chấm than.
+Thông báo sự kiện: icon lịch.
+Thông báo cập nhật: icon mũi tên xoay vòng.
+Sử dụng hình ảnh minh họa phù hợp với nội dung thông báo (nếu cần).
+4. Hiệu ứng:
+
+Hiệu ứng hover cho các thẻ thông báo: đổi màu nền, đổ bóng...
+Hiệu ứng loading khi gửi biểu mẫu liên hệ.
+Sử dụng animation tinh tế để thông báo mới xuất hiện (ví dụ: slide-in từ bên phải).
+5.  Tối ưu UX:
+
+Đảm bảo trang web hiển thị tốt trên mọi thiết bị (responsive design).
+Tối ưu tốc độ tải trang.
+Sử dụng nút "Xem thêm" nếu có nhiều thông báo.
+Thêm liên kết đến trang FAQ hoặc forum (nếu có).
+Ví dụ minh họa:
+
+Bạn có thể tham khảo các trang web tin tức, blog hoặc các nền tảng học tập trực tuyến để lấy ý tưởng thiết kế cho trang messages.html.
+
+Lưu ý:
+
+Giao diện cần được thiết kế phù hợp với phong cách chung của toàn bộ website.
+Nên sử dụng các framework CSS (ví dụ: Bootstrap, Tailwind CSS) để xây dựng giao diện nhanh chóng và hiệu quả hơn.

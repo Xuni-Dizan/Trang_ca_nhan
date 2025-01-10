@@ -2,13 +2,144 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Thêm link FontAwesome cho icon -->
-    <link rel="stylesheet" href="app_css/dashboard.css">
+    <link rel="stylesheet" href="app_css/messages.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Messages</title>
 </head>
 <body>
-    <div><p>Đang được cập nhật và sẽ sớm hoạt động trong thời gian gần nhất.</p></div>
+    <div class="container">
+        <!-- Thanh Điều Hướng -->
+        <nav class="navbar" aria-label="Trang Điều Hướng">
+            <ul class="nav-list">
+                <li class="nav-item active" data-target="thong-bao-chung" tabindex="0">Thông Báo Chung</li>
+                <li class="nav-item" data-target="bieu-mau-lien-he" tabindex="0">Biểu Mẫu Liên Hệ</li>
+                <li class="nav-item" data-target="forum-hoi-dap" tabindex="0">Forum Hỏi Đáp</li>
+            </ul>
+        </nav>
+
+        <!-- Khu vực Thông Báo Chung -->
+        <section id="thong-bao-chung" class="section active" aria-labelledby="thong-bao-chung-title">
+            <h2 id="thong-bao-chung-title">Thông Báo Chung</h2>
+            <div class="thong-bao-list">
+                <!-- Các thông báo sẽ được thêm vào đây -->
+                <div class="thong-bao-card important">
+                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                    <div class="thong-bao-content">
+                        <h3>Thông Báo Quan Trọng</h3>
+                        <p>Website sẽ bảo trì vào cuối tuần này.</p>
+                        <span class="thoi-gian">01/12/2023</span>
+                    </div>
+                </div>
+                <div class="thong-bao-card event">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    <div class="thong-bao-content">
+                        <h3>Sự Kiện Sắp Diễn Ra</h3>
+                        <p>Tham gia workshop phát triển web miễn phí.</p>
+                        <span class="thoi-gian">15/12/2023</span>
+                    </div>
+                </div>
+                <div class="thong-bao-card update">
+                    <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                    <div class="thong-bao-content">
+                        <h3>Cập Nhật Mới Nhất</h3>
+                        <p>Đã ra mắt khóa học mới về ReactJS.</p>
+                        <span class="thoi-gian">20/12/2023</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Khu vực Biểu Mẫu Liên Hệ -->
+        <section id="bieu-mau-lien-he" class="section" aria-labelledby="bieu-mau-lien-he-title">
+            <h2 id="bieu-mau-lien-he-title">Liên Hệ Với Chúng Tôi</h2>
+            <form id="lien-he-form" novalidate>
+                <div class="form-group">
+                    <label for="ho-ten">Họ Tên</label>
+                    <input type="text" id="ho-ten" name="hoTen" placeholder="Nhập họ tên của bạn" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="so-dien-thoai">Số Điện Thoại</label>
+                    <input type="tel" id="so-dien-thoai" name="soDienThoai" placeholder="Nhập số điện thoại của bạn">
+                </div>
+                <div class="form-group">
+                    <label for="noi-dung">Nội Dung</label>
+                    <textarea id="noi-dung" name="noiDung" placeholder="Nhập nội dung tin nhắn của bạn" required aria-required="true"></textarea>
+                </div>
+                <button type="submit">Gửi</button>
+                <div id="loading" class="hidden" aria-live="polite">
+                    <i class="fas fa-spinner fa-spin"></i> Đang gửi...
+                </div>
+                <div id="thong-bao" class="hidden" aria-live="polite"></div>
+            </form>
+        </section>
+
+        <!-- Khu vực Forum Hỏi Đáp -->
+        <section id="forum-hoi-dap" class="section" aria-labelledby="forum-hoi-dap-title">
+            <h2 id="forum-hoi-dap-title">Forum Hỏi Đáp</h2>
+            <div class="forum-search">
+                <input type="text" id="search" placeholder="Tìm kiếm trong forum..." aria-label="Tìm kiếm trong forum">
+                <button id="search-btn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="forum-list" id="forum-list">
+                <!-- Các chủ đề thảo luận sẽ được thêm vào đây -->
+                <div class="forum-card">
+                    <h3>Cách học JavaScript hiệu quả?</h3>
+                    <p>Người dùng A hỏi: Tôi đang gặp khó khăn trong việc nắm vững JavaScript, bạn có lời khuyên nào không?</p>
+                    <span class="thoi-gian">10/12/2023</span>
+                    <button class="tra-loi-btn">Trả Lời</button>
+
+                    <!-- Form Trả Lời -->
+                    <div class="answer-form">
+                        <h4>Trả lời</h4>
+                        <div class="form-group">
+                            <label for="answer">Nội dung trả lời:</label>
+                            <textarea id="answer" name="answer" placeholder="Nhập câu trả lời của bạn..." required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button class="submit-answer">Gửi trả lời</button>
+                            <button class="cancel-answer">Hủy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-card">
+                    <h3>Khóa học ReactJS tốt nhất hiện nay?</h3>
+                    <p>Người dùng B hỏi: Tôi muốn học ReactJS, bạn có gợi ý khóa học nào uy tín không?</p>
+                    <span class="thoi-gian">12/12/2023</span>
+                    <button class="tra-loi-btn">Trả Lời</button>
+
+                    <!-- Form Trả Lời -->
+                    <div class="answer-form">
+                        <h4>Trả lời</h4>
+                        <div class="form-group">
+                            <label for="answer">Nội dung trả lời:</label>
+                            <textarea id="answer" name="answer" placeholder="Nhập câu trả lời của bạn..." required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button class="submit-answer">Gửi trả lời</button>
+                            <button class="cancel-answer">Hủy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="xem-them">Xem Thêm</button>
+        </section>
+    </div>
+
+    <!-- Thêm SDK của EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Thay YOUR_USER_ID bằng User ID từ EmailJS
+        })();
+    </script>
+
+    <!-- Script xử lý Form và Forum -->
+    <script src="app_script/messages.js"></script>
 </body>
 </html>

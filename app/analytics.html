@@ -2,13 +2,117 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Thêm link FontAwesome cho icon -->
-    <link rel="stylesheet" href="app_css/dashboard.css">
+    <link rel="stylesheet" href="modern_analytics.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="app_css/analytics.css">
+    <title>Phân tích học tập - Hiện đại</title>
 </head>
 <body>
-    <div><p>Đang được cập nhật và sẽ sớm hoạt động trong thời gian gần nhất.</p></div>
+    <header class="modern-header">
+        <div class="logo">Phân tích Học tập</div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="#progress">Tiến độ</a></li>
+                <li><a href="#achievements">Thành tích</a></li>
+                <li><a href="#statistics">Thống kê</a></li>
+                <li><a href="#rewards">Phần thưởng</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="progress" class="section progress-section">
+            <div class="progress-header">
+                <h1>Tiến độ học tập</h1>
+                <p>Quản lý và theo dõi tiến trình của bạn.</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="progress-bar" data-percent="70">
+                        <div class="circle">
+                            <span>70%</span>
+                        </div>
+                    </div>
+                    <h2>Hoàn thành khóa học</h2>
+                    <p>Khóa học "HTML cơ bản" đã hoàn thành 70%.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-star card-icon"></i>
+                    <h2>Điểm số trung bình</h2>
+                    <p><span>8.0/10</span> <i class="fas fa-star"></i></p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-check-circle card-icon"></i>
+                    <h2>Bài tập hoàn thành</h2>
+                    <p><span>40</span> bài tập</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-clock card-icon"></i>
+                    <h2>Thời gian học</h2>
+                    <p><span>15</span> giờ</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="section achievements-section">
+            <h1>Thành tích nổi bật</h1>
+            <div class="achievement-container">
+                <div class="achievement">
+                    <img src="../images/trophy.png" alt="Trophy">
+                    <p>Học viên chăm chỉ</p>
+                </div>
+                <div class="achievement">
+                    <img src="../images/medal.png" alt="Medal">
+                    <p>Huy chương vàng</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="statistics" class="section statistics-section">
+            <h1>Thống kê học tập</h1>
+            <p>Biểu đồ thống kê hoạt động của bạn qua thời gian:</p>
+            <div class="chart-container">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </section>
+
+        <section id="rewards" class="section rewards-section">
+            <h1>Phần thưởng</h1>
+            <div class="reward-container">
+                <div class="reward">
+                    <img src="../images/certificate.png" alt="Certificate">
+                    <p>Chứng chỉ hoàn thành</p>
+                </div>
+                <div class="reward">
+                    <div class="coupon">SPRING20</div>
+                    <p>Giảm giá 20%</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6'],
+                datasets: [{
+                    label: 'Số giờ học mỗi ngày',
+                    data: [1, 2, 3, 2, 4],
+                    borderColor: '#4d5bf9',
+                    backgroundColor: 'rgba(77, 91, 249, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
 </body>
 </html>
