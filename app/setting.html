@@ -2,13 +2,246 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Thêm link FontAwesome cho icon -->
+    <!-- Sử dụng Google Fonts cho font chữ hiện đại -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Sử dụng icon hơn từ Heroicons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/heroicons/1.0.6/outline.min.css" rel="stylesheet">
+    <!-- Thêm thư viện Tailwind CSS cho thiết kế nhanh chóng -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app_css/dashboard.css">
+    <link rel="stylesheet" href="app_css/setting.css">
+    <title>Cài đặt</title>
 </head>
-<body>
-    <div><p>Đang được cập nhật và sẽ sớm hoạt động trong thời gian gần nhất.</p></div>
+<body class="bg-gray-100 text-gray-800">
+    <div class="settings-container mx-auto my-10 bg-white rounded-lg shadow-lg overflow-hidden">
+        <header class="bg-indigo-600 text-white text-center py-6">
+            <h1 class="text-3xl font-bold">Cài đặt</h1>
+        </header>
+        <nav class="bg-white shadow-md sticky top-0 z-50">
+            <ul class="flex justify-around flex-wrap">
+                <li><a href="#chung" class="nav-link active px-4 py-2 block hover:bg-indigo-100 rounded transition">Chung</a></li>
+                <li><a href="#giao-dien" class="nav-link px-4 py-2 block hover:bg-indigo-100 rounded transition">Giao diện</a></li>
+                <li><a href="#hoc-tap" class="nav-link px-4 py-2 block hover:bg-indigo-100 rounded transition">Học tập</a></li>
+                <li><a href="#ho-tro" class="nav-link px-4 py-2 block hover:bg-indigo-100 rounded transition">Hỗ trợ</a></li>
+                <li><a href="#cac-chuc-nang" class="nav-link px-4 py-2 block hover:bg-indigo-100 rounded transition">Các chức năng khác</a></li>
+            </ul>
+        </nav>
+        <main class="p-6">
+            <!-- Chung -->
+            <section id="chung" class="active-section">
+                <h2 class="text-2xl font-semibold mb-4">Chung</h2>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Ảnh đại diện</label>
+                    <div class="flex items-center space-x-4">
+                        <img id="avatar" src="../images/default-avatar.png" alt="Avatar" class="w-32 h-32 rounded-full border-4 border-indigo-500 transition-transform transform hover:scale-105">
+                        <button id="change-avatar" class="btn-secondary px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition">Thay đổi</button>
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Tên người dùng</label>
+                    <input type="text" id="username" value="Nguyễn Văn A" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Email</label>
+                    <input type="email" id="email" value="nguyenvana@example.com" disabled class="w-full px-4 py-2 bg-gray-200 border rounded cursor-not-allowed">
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Mật khẩu</label>
+                    <button id="change-password" class="btn-secondary px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">Đổi mật khẩu</button>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Ngôn ngữ</label>
+                    <select id="language-select" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="vi">Tiếng Việt</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Giao diện -->
+            <section id="giao-dien" class="hidden-section">
+                <h2 class="text-2xl font-semibold mb-4">Giao diện</h2>
+                <div class="form-group mb-6 flex items-center justify-between">
+                    <label class="font-medium">Chế độ sáng/tối</label>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Màu sắc chủ đề</label>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #3498db;" data-color="#3498db"></div>
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #e74c3c;" data-color="#e74c3c"></div>
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #2ecc71;" data-color="#2ecc71"></div>
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #9b59b6;" data-color="#9b59b6"></div>
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #f1c40f;" data-color="#f1c40f"></div>
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #ff7f50;" data-color="#ff7f50"></div>
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #00ced1;" data-color="#00ced1"></div>
+                        <div class="color-option w-10 h-10 rounded-full cursor-pointer border-2 transition transform hover:scale-110" style="background-color: #ff69b4;" data-color="#ff69b4"></div>
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Kích thước chữ</label>
+                    <div class="flex items-center">
+                        <input type="range" id="font-size-slider" min="14" max="24" value="16" class="flex-1">
+                        <span id="font-size-value" class="ml-4 font-semibold">16px</span>
+                    </div>
+                </div>
+                <div class="form-group mb-6 flex items-center justify-between">
+                    <label class="font-medium">Âm thanh thông báo</label>
+                    <label class="switch">
+                        <input type="checkbox" id="sound-toggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Học tập -->
+            <section id="hoc-tap" class="hidden-section">
+                <h2 class="text-2xl font-semibold mb-4">Học tập</h2>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Thông báo</label>
+                    <div class="flex flex-col space-y-2">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="notification-type form-checkbox h-5 w-5 text-indigo-600">
+                            <span class="ml-2">Thông báo chung</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="notification-type form-checkbox h-5 w-5 text-indigo-600">
+                            <span class="ml-2">Cập nhật khóa học</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="notification-type form-checkbox h-5 w-5 text-indigo-600">
+                            <span class="ml-2">Sự kiện</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Tần suất thông báo</label>
+                    <select id="notification-frequency" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="daily">Hàng ngày</option>
+                        <option value="weekly">Hàng tuần</option>
+                        <option value="monthly">Hàng tháng</option>
+                    </select>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Lựa chọn khóa học</label>
+                    <div class="flex flex-wrap gap-4">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="course-checkbox form-checkbox h-5 w-5 text-indigo-600">
+                            <span class="ml-2">Khóa học 1</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="course-checkbox form-checkbox h-5 w-5 text-indigo-600">
+                            <span class="ml-2">Khóa học 2</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="course-checkbox form-checkbox h-5 w-5 text-indigo-600">
+                            <span class="ml-2">Khóa học 3</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="course-checkbox form-checkbox h-5 w-5 text-indigo-600">
+                            <span class="ml-2">Khóa học 4</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="block mb-2 font-medium">Mục tiêu học tập</label>
+                    <div class="flex flex-col sm:flex-row sm:space-x-4">
+                        <input type="number" id="study-goal-hours" placeholder="Số giờ học mỗi ngày" class="mb-4 sm:mb-0 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <input type="number" id="study-goal-exercises" placeholder="Số bài tập mỗi tuần" class="px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hỗ trợ -->
+            <section id="ho-tro" class="hidden-section">
+                <h2 class="text-2xl font-semibold mb-6">Hỗ trợ</h2>
+                <div class="form-group mb-8">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c1.549-1.327 3.75-1.327 5.298 0a4.5 4.5 0 01-.504 7.06M12 15h.01M12 17h.01" />
+                        </svg>
+                        Câu hỏi thường gặp
+                    </h3>
+                    <div class="accordion border rounded shadow-sm">
+                        <div class="accordion-item border-b">
+                            <div class="accordion-header flex justify-between items-center p-4 cursor-pointer bg-gray-100 hover:bg-indigo-50 transition">
+                                <span>Câu hỏi 1?</span>
+                                <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content p-4 hidden bg-white">
+                                <p>Trả lời cho câu hỏi 1.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-b">
+                            <div class="accordion-header flex justify-between items-center p-4 cursor-pointer bg-gray-100 hover:bg-indigo-50 transition">
+                                <span>Câu hỏi 2?</span>
+                                <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content p-4 hidden bg-white">
+                                <p>Trả lời cho câu hỏi 2.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header flex justify-between items-center p-4 cursor-pointer bg-gray-100 hover:bg-indigo-50 transition">
+                                <span>Câu hỏi 3?</span>
+                                <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content p-4 hidden bg-white">
+                                <p>Trả lời cho câu hỏi 3.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-8">
+                    <button id="support-request" class="btn-primary flex items-center justify-center w-full px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+                        <i class="fas fa-envelope-open-text mr-2"></i> Gửi yêu cầu hỗ trợ
+                    </button>
+                </div>
+                <div class="form-group">
+                    <button id="submit-feedback" class="btn-primary flex items-center justify-center w-full px-6 py-3 bg-purple-500 text-white rounded hover:bg-purple-600 transition">
+                        <i class="fas fa-comment-dots mr-2"></i> Gửi góp ý
+                    </button>
+                </div>
+            </section>
+
+            <!-- Các chức năng khác -->
+            <section id="cac-chuc-nang" class="hidden-section">
+                <h2 class="text-2xl font-semibold mb-4">Các chức năng khác</h2>
+                <div class="form-group mb-6">
+                    <h3 class="text-xl font-medium mb-3">Kết nối mạng xã hội</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="social-btn facebook flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                            <i class="fab fa-facebook-f mr-2"></i> Facebook
+                        </button>
+                        <button class="social-btn google flex items-center px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                            <i class="fab fa-google mr-2"></i> Google
+                        </button>
+                        <button class="social-btn twitter flex items-center px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500 transition">
+                            <i class="fab fa-twitter mr-2"></i> Twitter
+                        </button>
+                        <button class="social-btn linkedin flex items-center px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800 transition">
+                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <h3 class="text-xl font-medium mb-3">Sao lưu và khôi phục</h3>
+                    <div class="flex space-x-4">
+                        <button id="backup-data" class="btn-secondary px-6 py-3 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">Sao lưu dữ liệu</button>
+                        <button id="restore-data" class="btn-secondary px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 transition">Khôi phục dữ liệu</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="app_script/setting.js"></script>
 </body>
 </html>

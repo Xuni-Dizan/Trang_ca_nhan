@@ -282,3 +282,43 @@ document.addEventListener('DOMContentLoaded', () => {
     handleSidebarToggle();
     handleIconClick();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const profileImage = document.querySelector('.profile-image');
+
+    profileImage.addEventListener('mouseenter', () => {
+        profileImage.classList.add('active');
+    });
+
+    profileImage.addEventListener('mouseleave', () => {
+        profileImage.classList.remove('active');
+    });
+});
+
+// Hàm xử lý khi trang đã tải hoàn tất và bắt đầu animation của header
+document.addEventListener("DOMContentLoaded", function() {
+    // Đợi tất cả tài nguyên (hình ảnh, video, ...) được tải hoàn chỉnh
+    window.addEventListener('load', () => {
+        const overlay = document.querySelector('.loading-overlay');
+        const header = document.querySelector('header');
+
+        if (overlay && header) {
+            // Bắt đầu ẩn overlay bằng cách thêm lớp 'fade-out'
+            overlay.classList.add('fade-out');
+
+            // Lắng nghe sự kiện khi transition opacity kết thúc
+            overlay.addEventListener('transitionend', function handleTransitionEnd(event) {
+                if (event.propertyName === 'opacity') {
+                    // Ẩn overlay hoàn toàn sau khi transition kết thúc
+                    overlay.style.display = 'none';
+
+                    // Thêm lớp 'start-animation' để bắt đầu animation của header
+                    header.classList.add('start-animation');
+
+                    // Loại bỏ listener để tránh gọi lại nhiều lần
+                    overlay.removeEventListener('transitionend', handleTransitionEnd);
+                }
+            });
+        }
+    });
+});

@@ -299,31 +299,50 @@ header {
     bottom: 15px;
     right: 10px;
     padding: 12px 24px;
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
     color: #fff;
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
     opacity: 0;
     transition: opacity 0.4s ease, background 0.4s ease, transform 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     font-size: 16px;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    z-index: 999999; /* Đảm bảo nút nằm trên các yếu tố khác */
+    z-index: 999999;
+    /* Thêm hiệu ứng neon */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+                 0 0 10px rgba(255, 255, 255, 0.6),
+                 0 0 20px rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .details-button::before {
-    content: '🔍 '; /* Thêm icon cho nút */
+    content: '🔍 ';
+    margin-right: 8px;
+    transition: transform 0.3s ease;
 }
 
 .details-button:hover {
-    background: linear-gradient(45deg, #2575fc, #6a11cb);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #feb47b, #ff7e5f);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+                 0 0 20px rgba(255, 255, 255, 0.8),
+                 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+.details-button:hover::before {
+    transform: translateX(5px);
+}
+
+.details-button:active {
+    transform: translateY(0px) scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-box:hover .details-button {

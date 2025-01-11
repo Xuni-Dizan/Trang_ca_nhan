@@ -307,6 +307,8 @@ main {
     opacity: 1;
 }
     </style>
+    <!-- Thêm AOS CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 </head>
 <body>
     <!-- Spinner hiển thị khi video đang tải -->
@@ -773,5 +775,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     </script>
     <script src="js/script.js" defer></script>
+    <!-- Thêm AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // Thời gian animation
+            once: true, // Chỉ chạy một lần khi cuộn vào
+        });
+    </script>
 </body>
 </html>
