@@ -145,7 +145,7 @@ main{
 
 /* --- Header Styles --- */
 header {
-    /* position: relative; */
+    position: relative;
     color: rgb(230, 219, 219);
     background-color: rgba(31, 40, 51, 0.9);
     padding: 20px;
@@ -158,13 +158,42 @@ header {
     animation: slideDownFadeIn 1s ease-out forwards;
 }
 /* Thêm Sticky Header */
-header {
+/* header {
   position: sticky;
   top: 0;
-  /* background-color: rgba(31, 40, 51, 0.8); */
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
+} */
+/* header .scrolled {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+header.scrolled {
+  background-color: rgba(31, 40, 51, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  transition: opacity 0.3s ease;
+}
+
+header.scrolled h1 {
+  opacity: 0;
+}
+
+nav {
+  transition: all 0.3s ease;
+}
+
+header.scrolled nav {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  transform: translate(0, 0);
+} */
 
 /* Thay đổi nền và thêm bóng khi cuộn */
 header.scrolled {
@@ -564,15 +593,16 @@ h3 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Thêm bóng đổ */
 }
 
-.card-content h1 {
+.card-content .card-title {
   font-family: 'Poppins', sans-serif;
   font-size: 2em;
   margin-bottom: 15px;
   color: #ffdd57;
   transition: color 0.3s ease;
+  z-index: 99999;
 }
 
-.card-content h1:hover {
+.card-content .card-title:hover {
   color: #ff6347;
 }
 

@@ -333,7 +333,7 @@ main {
             Trình duyệt của bạn không hỗ trợ video.
         </video>
     </div>
-    <header id="animated-header">
+    <header id="animated-header" class="scrolled">
         <a href="https://xuni-dizan.github.io/Dizan/" target="_blank" class="logo">
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -429,39 +429,43 @@ main {
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const header = document.querySelector('header');
-        const h1 = header.querySelector('h1');
-        const nav = header.querySelector('nav');
-    
-        if (!header || !h1 || !nav) {
-            console.error('Không tìm thấy các phần tử HTML cần thiết!');
-            return;
+        document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    const h1 = header.querySelector('h1');
+    const nav = header.querySelector('nav');
+
+    if (!header || !h1 || !nav) {
+        console.error('Required elements are missing from the DOM!');
+        return;
+    }
+
+    const triggerPoint = 50; // Y-axis scroll threshold
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > triggerPoint) {
+            h1.style.display = 'none'; // Hide title
+            nav.style.position = 'fixed';
+            nav.style.top = '10px';
+            nav.style.right = '10px';
+            nav.style.transform = 'translate(0, 0)';
+            nav.style.transition = 'all 0.3s ease';
+
+            header.classList.add('scrolled');
+            header.style.backgroundColor = 'rgba(31, 40, 51, 0.9)';
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+        } else {
+            h1.style.display = 'block'; // Show title
+            nav.style.position = 'static';
+            nav.style.transform = 'translate(0, 0)';
+
+            header.classList.remove('scrolled');
+            header.style.backgroundColor = 'transparent';
+            header.style.boxShadow = 'none';
         }
-    
-        let lastScrollY = window.scrollY;
-    
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            console.log('Current Scroll Y:', currentScrollY);
-            if (currentScrollY > 50) {
-                h1.style.display = 'none'; // Ẩn tiêu đề
-                console.log("Tiêu đề đã bị ẩn");
-                nav.style.position = 'fixed';
-                nav.style.top = '10px';
-                nav.style.right = '10px';
-                nav.style.transform = 'translate(0, 0)';
-                nav.style.transition = 'all 0.3s ease';
-            } else {
-                h1.style.display = 'block'; // Hiển thị lại tiêu đề
-                console.log("Tiêu đề đã được hiển thị lại");
-                nav.style.position = 'static';
-                nav.style.transform = 'translate(0, 0)';
-            }
-    
-            lastScrollY = currentScrollY;
-        });
     });
+});
         </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
