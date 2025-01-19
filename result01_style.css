@@ -55,6 +55,11 @@ body {
     /* background: rgba(255, 255, 255, 0.1); */
     border-radius: 15px;
 }
+.carousel-item .carousel-box span{
+    color: #ff7e5f;
+    font-size: 1.1rem;  
+    font-weight: bold;
+}
 
 .carousel-item .carousel-box:before {
     content: "";

@@ -355,7 +355,7 @@ main {
             <a href="index.html" class="nav-button active">Home</a>
             <a href="about.html" class="nav-button">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
-            <a href="result01.html" class="nav-button">Result</a>
+            <a href="result.html" class="nav-button">Result</a>
         </nav>
     </header>
     <main>
@@ -384,14 +384,14 @@ main {
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="lab.html">Lab</a>
-                <a href="result01.html">Result</a>
+                <a href="result.html">Result</a>
             </div>
             
             <!-- Thông tin liên hệ -->
             <div class="footer-contact">
-                <p>📞 Call me : (+84) 0359103126</p>
-                <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
-                <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+                <p><i class="fas fa-phone-alt"></i> Call me : (+84) 0359103126</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:daivan060307@gmail.com" style="color: aquamarine; text-decoration: none;">daivan060307@gmail.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Dĩ An, Bình Dương, Việt Nam</p>
                 <p><i class="fas fa-laptop-code"></i> Khoa Công nghệ Thông tin</p>
                 <p><i class="fas fa-university"></i> Đại học Nông Lâm TP HCM</p>
             </div>
@@ -428,6 +428,41 @@ main {
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('header');
+        const h1 = header.querySelector('h1');
+        const nav = header.querySelector('nav');
+    
+        if (!header || !h1 || !nav) {
+            console.error('Không tìm thấy các phần tử HTML cần thiết!');
+            return;
+        }
+    
+        let lastScrollY = window.scrollY;
+    
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            console.log('Current Scroll Y:', currentScrollY);
+            if (currentScrollY > 50) {
+                h1.style.display = 'none'; // Ẩn tiêu đề
+                console.log("Tiêu đề đã bị ẩn");
+                nav.style.position = 'fixed';
+                nav.style.top = '10px';
+                nav.style.right = '10px';
+                nav.style.transform = 'translate(0, 0)';
+                nav.style.transition = 'all 0.3s ease';
+            } else {
+                h1.style.display = 'block'; // Hiển thị lại tiêu đề
+                console.log("Tiêu đề đã được hiển thị lại");
+                nav.style.position = 'static';
+                nav.style.transform = 'translate(0, 0)';
+            }
+    
+            lastScrollY = currentScrollY;
+        });
+    });
+        </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("overlay");

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Tuần Thành Tích Cá Nhân</title>
+    <link rel="stylesheet" href="result-temp.css">
+</head>
+<body>
+    <header>
+        <h1>10 Tuần Thành Tích Cá Nhân</h1>
+    </header>
+    <main>
+        <section id="timeline">
+            <!-- Các tuần sẽ được tạo ở đây -->
+            <div class="week" data-week="1">Tuần 1</div>
+            <div class="week" data-week="2">Tuần 2</div>
+            <div class="week" data-week="3">Tuần 3</div>
+            <div class="week" data-week="4">Tuần 4</div>
+            <div class="week" data-week="5">Tuần 5</div>
+            <div class="week" data-week="6">Tuần 6</div>
+            <div class="week" data-week="7">Tuần 7</div>
+            <div class="week" data-week="8">Tuần 8</div>
+            <div class="week" data-week="9">Tuần 9</div>
+            <div class="week" data-week="10">Tuần 10</div>
+        </section>
+    </main>
+    <!-- Modal hiển thị chi tiết thành tích -->
+    <div id="achievementModal" class="hidden" style="display: none;">
+        <div class="modal-content">
+            <span id="closeModal">&times;</span>
+            <h2>Chi tiết thành tích tuần <span id="weekNumber"></span></h2>
+            <p id="achievementDetails">Nội dung sẽ hiển thị tại đây...</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Thành Tích Cá Nhân</p>
+    </footer>
+
+    <script src="result.js"></script>
+</body>
+</html>

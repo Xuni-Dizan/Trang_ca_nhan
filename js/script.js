@@ -322,3 +322,99 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+// Thêm Animation khi cuộn trang
+document.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('.cv-section');
+    const triggerPoint = window.innerHeight / 5 * 4;
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if(sectionTop < triggerPoint) {
+            section.classList.add('show');
+        }
+    });
+});
+
+// Khởi tạo AOS
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: 1200,
+    });
+});
+
+// Thêm chức năng tải CV khi người dùng nhấp vào nút
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadBtn = document.querySelector('.download-cv-btn');
+    
+    downloadBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Ngăn hành động mặc định của thẻ <a>
+        
+        const pdfUrl = downloadBtn.getAttribute('href');
+        
+        // Tạo một thẻ <a> ẩn để tải file
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'CV_NguyenXuanDai.pdf';
+        
+        // Thêm thẻ <a> vào body
+        document.body.appendChild(link);
+        
+        // Kích hoạt click để tải xuống
+        link.click();
+        
+        // Loại bỏ thẻ <a> khỏi DOM
+        document.body.removeChild(link);
+        
+        // Hiển thị thông báo tải xuống thành công bằng SweetAlert
+        Swal.fire({
+            title: 'Đang tải...',
+            text: 'CV của bạn đang được tải xuống.',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    });
+});
+
+// Thêm Smooth Scroll cho các liên kết trong navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Thêm lớp 'scrolled' cho header khi cuộn
+// window.addEventListener('scroll', () => {
+//     const header = document.querySelector('header');
+//     if (window.scrollY > 50) {
+//         header.classList.add('scrolled');
+//     } else {
+//         header.classList.remove('scrolled');
+//     }
+// });
+
+// Lắng nghe sự kiện cuộn trang
+// document.addEventListener('scroll', function() {
+//     // Lấy h1 và nav
+//     const h1 = document.querySelector('h1');
+//     const nav = document.querySelector('nav');
+
+//     // Nếu người dùng đã cuộn trang, ẩn h1 và thêm transition cho nav
+//     if (window.scrollY > 0) {
+//         h1.style.display = 'none';
+//         nav.style.transition = 'all 0.5s ease';
+//         nav.style.transform = 'translateX(50%)';
+//     } else {
+//         // Nếu người dùng cuộn lên đầu trang, hiển thị h1 và xóa transition cho nav
+//         h1.style.display = 'block';
+//         nav.style.transition = 'none';
+//         nav.style.transform = 'none';
+//     }
+// });

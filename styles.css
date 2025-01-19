@@ -145,7 +145,7 @@ main{
 
 /* --- Header Styles --- */
 header {
-    position: relative;
+    /* position: relative; */
     color: rgb(230, 219, 219);
     background-color: rgba(31, 40, 51, 0.9);
     padding: 20px;
@@ -156,6 +156,20 @@ header {
     overflow: hidden;
     /* Thêm animation mới cho header */
     animation: slideDownFadeIn 1s ease-out forwards;
+}
+/* Thêm Sticky Header */
+header {
+  position: sticky;
+  top: 0;
+  /* background-color: rgba(31, 40, 51, 0.8); */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+/* Thay đổi nền và thêm bóng khi cuộn */
+header.scrolled {
+  background-color: rgba(31, 40, 51, 1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Animation mới: slideDownFadeIn */
@@ -181,7 +195,15 @@ header h1 {
     /* Thêm hiệu ứng mới nếu cần */
     /* Ví dụ: hiệu ứng nhấp nháy nhẹ */
     animation: pulse 2s infinite;
+}/* styles.css */
+header h1 {
+  transition: opacity 0.3s ease;
 }
+
+header nav {
+  transition: all 0.3s ease;
+}
+
 
 /* Animation nhấp nháy nhẹ cho tiêu đề */
 @keyframes pulse {
@@ -532,12 +554,14 @@ h3 {
 .card-content {
   /* Các thuộc tính trước đây */
   animation: fadeInUp 0.6s ease forwards;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .panel.active .card:hover .card-content {
-  transform: translateY(0); /* Hiển thị card-content khi hover */
+  transform: translateY(-10px); /* Nâng card-content lên khi hover */
   opacity: 1;
   background: rgba(0, 0, 0, 0.8); /* Nền đậm hơn khi hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Thêm bóng đổ */
 }
 
 .card-content h1 {
@@ -710,6 +734,7 @@ h3 {
 /* CV Container */
 .cv-container {
     display: flex;
+    flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
     background-color: #fff;
@@ -717,6 +742,7 @@ h3 {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 20px;
+    transition: transform 0.3s ease;
 }
 
 /* Sidebar - Left */
@@ -932,13 +958,13 @@ h3 {
 }
 
 .cv-name {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
-    font-size: 2.1em;
+    font-size: 2.5em;
     margin-bottom: 10px;
     color: #fff;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 2px;
 }
 
@@ -1100,22 +1126,24 @@ footer {
 }
 
 .footer-social .icon {
-  width: 45px;
-  height: 45px;
-  color: #E5E5E5;
-  background-color: #0B0C10;
-  border-radius: 50%;
-  font-size: 1.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    color: #E5E5E5;
+    background-color: #0B0C10;
+    border-radius: 50%;
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .footer-social .icon:hover {
-  background-color: #66FCF1;
-  color: #1F2833;
-  transform: scale(1.2);
+    background-color: #66FCF1;
+    color: #1F2833;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.6);
 }
 
 .footer-bottom {
@@ -2026,9 +2054,6 @@ footer {
   font-size: 1.3em;
   text-align: center;
 }
-.cv-section p {
-  font-size: 1em;
-}
 .cv-section p, .cv-section ul {
   font-size: 1em;
   text-align: center;
@@ -2603,4 +2628,248 @@ nav#main-nav a{
 
 .profile-image:hover::after {
     opacity: 1;
+}
+
+/* Cải tiến lab-label và icon cho giao diện điện thoại */
+@media only screen and (max-width: 768px) {
+    .panel {
+        display: flex;
+        flex-direction: row; /* Sắp xếp các phần tử theo hàng ngang */
+        align-items: center;
+        justify-content: space-between; /* Phân bố đều không gian giữa các phần tử */
+        padding: 10px;
+        position: relative;
+    }
+
+    .icon {
+        order: 1; /* Đảm bảo icon nằm bên trái */
+        font-size: 24px;
+        color: #66FCF1;
+        margin-right: 10px; /* Khoảng cách giữa icon và lab-label */
+    }
+
+    .lab-label {
+        display: flex;
+        flex-direction: row; /* Hiển thị các chữ cái theo hàng ngang */
+        gap: 5px;
+        font-size: 18px;
+        color: #fff;
+        justify-content: center; /* Đẩy nội dung về bên phải */
+        width: calc(100% - 50px); /* Điều chỉnh chiều rộng để icon có không gian */
+    }
+
+    .lab-label span {
+        display: inline-block;
+    }
+
+    /* Khi panel được mở rộng */
+    .panel.active {
+        flex-direction: column;
+        align-items: center;
+        background: transparent; /* Ẩn background khi mở rộng */
+        transition: all 0.5s ease;
+    }
+
+    .panel.active .card-image {
+        width: 100%;
+        height: 66.66%; /* Chiếm 2/3 panel */
+        object-fit: cover;
+        border-radius: 0;
+    }
+
+    .panel.active .card-content {
+        width: 100%;
+        height: 33.33%; /* Chiếm 1/3 panel */
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 15px;
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateY(100%);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .panel.active .card-content.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* Cải tiến hiệu ứng mở rộng panel */
+    .panel {
+        overflow: hidden;
+        transition: all 0.5s ease;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .panel.active {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Ẩn background khi panel được mở rộng */
+    .panel.active {
+        background: none;
+    }
+
+    /* Hiệu ứng card-image khi mở rộng */
+    .panel.active .card-image {
+        transition: width 0.5s ease, height 0.5s ease;
+    }
+
+    /* Hiển thị card-content khi panel mở rộng */
+    .panel.active .card-content {
+        opacity: 0;
+    }
+
+    .panel.active .card-content.show {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Cải tiến cho card-content khi ở giao diện điện thoại */
+    .section-0 .panel.active .card-content {
+        position: relative; /* Thay đổi từ absolute sang relative để phù hợp với layout di động */
+        width: 100%; /* Chiếm toàn bộ chiều rộng của card */
+        padding: 20px 15px; /* Giảm padding để phù hợp với màn hình nhỏ */
+        border-radius: 0 0 10px 10px; /* Làm tròn góc cho card-content */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Giảm độ bóng để không quá nặng mắt */
+        background: rgba(0, 0, 0, 0.8); /* Đảm bảo nền trong suốt để nội dung dễ đọc */
+    }
+
+    .section-0 .panel.active .card-content h1 {
+        font-size: 1.5em; /* Giảm kích thước chữ tiêu đề */
+        text-align: center; /* Căn giữa tiêu đề */
+        margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
+    }
+
+    .section-0 .panel.active .card-content p {
+        font-size: 0.9em; /* Giảm kích thước chữ đoạn văn */
+        line-height: 1.4; /* Điều chỉnh khoảng cách dòng */
+        text-align: left; /* Căn lề trái cho dễ đọc */
+        margin-bottom: 15px; /* Khoảng cách dưới đoạn văn */
+    }
+
+    .section-0 .panel.active .card-content .read-more-btn {
+        padding: 10px 20px; /* Giảm kích thước nút */
+        font-size: 0.9em; /* Giảm kích thước chữ trên nút */
+        border-radius: 20px; /* Làm tròn nút */
+        width: 100%; /* Chiếm toàn bộ chiều rộng của card-content */
+        box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước nút */
+        text-align: center; /* Căn giữa chữ trên nút */
+    }
+
+    /* Điều chỉnh hiệu ứng khi card-content được hiển thị */
+    .section-0 .panel.active .card-content.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.download-cv-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.download-cv-btn:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.portfolio-item {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.portfolio-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.portfolio-info h5 {
+    margin: 10px 0;
+    color: #1F2833;
+    font-size: 1.2em;
+}
+
+.portfolio-info p {
+    color: #333;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+}
+
+.portfolio-link {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    background-color: #1F2833;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-link:hover {
+    background-color: #66FCF1;
+    color: #1F2833;
+}
+
+.personal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    color: #fff;
+}
+
+.info-item i {
+    color: #66FCF1;
+    font-size: 1.5em;
+    min-width: 30px;
+    text-align: center;
 }

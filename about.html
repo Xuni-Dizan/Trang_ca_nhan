@@ -36,6 +36,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet">
     <script src="js/script.js" defer></script>
     <title>About</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div id="overlay" class="loading-overlay">
@@ -72,7 +74,7 @@
             <a href="index.html" class="nav-button">Home</a>
             <a href="about.html" class="nav-button active">About</a>
             <a href="lab.html" class="nav-button">Lab</a>
-            <a href="result01.html" class="nav-button">Result</a>
+            <a href="result.html" class="nav-button">Result</a>
         </nav>
     </header>
     <main>
@@ -109,11 +111,28 @@
                 <p class="cv-role" style="text-align: center;">Frontend Developer - Designer</p>
                 <section class="cv-section" id="thong-tin-ca-nhan">
                     <h4>Thông tin cá nhân</h4>
-                    <p>📞 (+84) 0359103126</p>
-                    <p>✉️ <a style="color: white;" href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
-                    <p><i class="fas fa-laptop-code"></i> Khoa Công nghệ Thông tin</p>
-                    <p><i class="fas fa-university"></i> Đại học Nông Lâm TP HCM</p>
-                    <p>📍Dĩ An, Bình Dương, Việt Nam</p>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(+84) 0359103126</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:daivan060307@gmail.com" style="color: aquamarine; text-decoration: none;">daivan060307@gmail.com</a></span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Khoa Công nghệ Thông tin</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-university"></i>
+                            <span>Đại học Nông Lâm TP HCM</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Dĩ An, Bình Dương, Việt Nam</span>
+                        </div>
+                    </div>
                 </section>
                 <section class="cv-section" id="cac-ky-nang">
                     <h4>Các kỹ năng</h4>
@@ -218,6 +237,25 @@
                         <li>Xây dựng giao diện UI/UX tối ưu...</li>
                     </ul>
                 </section>
+                <section class="cv-section" id="du-an">
+                    <h4>Dự Án Portfolio</h4>
+                    <div class="portfolio-container">
+                        <div class="portfolio-item">
+                            <img src="images/project1.jpg" alt="Dự án 1" class="portfolio-img">
+                            <div class="portfolio-info">
+                                <h5>Website Đặt Phòng Khách Sạn</h5>
+                                <p>Thiết kế giao diện người dùng và phát triển frontend bằng HTML, CSS, JavaScript.</p>
+                                <a href="https://duyhuunguyen.github.io/HotelManagerWeb/login" target="_blank" class="portfolio-link">Xem dự án</a>
+                            </div>
+                        </div>
+                        <!-- Thêm các portfolio-item khác tương tự -->
+                    </div>
+                </section>
+                <section class="cv-section">
+                    <a href="documents/CV_NguyenXuanDai.pdf" class="download-cv-btn" download>
+                        Tải CV của tôi
+                    </a>
+                </section>
             </div>
         </div>
     </main>
@@ -234,14 +272,14 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="lab.html">Lab</a>
-                <a href="result01.html">Result</a>
+                <a href="result.html">Result</a>
             </div>
             
             <!-- Thông tin liên hệ -->
             <div class="footer-contact">
-                <p>📞 Call me : (+84) 0359103126</p>
-                <p>✉️ <a href="mailto:daivan060307@gmail.com">daivan060307@gmail.com</a></p>
-                <p>📍 Dĩ An, Bình Dương, Việt Nam</p>
+                <p><i class="fas fa-phone-alt"></i> Call me : (+84) 0359103126</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:daivan060307@gmail.com" style="color: aquamarine; text-decoration: none;">daivan060307@gmail.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Dĩ An, Bình Dương, Việt Nam</p>
                 <p><i class="fas fa-laptop-code"></i> Khoa Công nghệ Thông tin</p>
                 <p><i class="fas fa-university"></i> Đại học Nông Lâm TP HCM</p>
             </div>
